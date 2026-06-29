@@ -1,6 +1,5 @@
 import { useState, useCallback } from 'react';
 import { deleteSave } from '../data/saveManager';
-import { ICONS } from '../data/assets';
 import { audioManager } from '../utils/audioManager';
 import './SettingsPanel.css';
 
@@ -62,7 +61,7 @@ export default function SettingsPanel({ onClose, onOpenReview }) {
         <div className="settings-panel__header">
           <span className="settings-panel__title">游戏设置</span>
           <button className="settings-panel__close" onClick={onClose}>
-            <img src={ICONS.CLOSE} alt="关闭" className="settings-panel__close-icon" />
+            ×
           </button>
         </div>
 

@@ -1,5 +1,4 @@
 import { PIGMENTS } from '../data/pigments';
-import { TANGKA_IMAGES } from '../data/assets';
 import './ThangkaReplicaViewer.css';
 
 const GRID_SIZE = 16;
@@ -59,12 +58,12 @@ export default function ThangkaReplicaViewer({ onClose }) {
 
         <div className="replica-viewer__canvas">
           {replica?.completed ? (
-            /* 成品 — 精制唐卡 PNG */
-            <img
-              src={TANGKA_IMAGES.THANGKA_REFINED}
-              alt="度母唐卡复制品"
-              className="replica-viewer__refined-img"
-            />
+            <div className="replica-viewer__refined-css">
+              <div className="refined-bg" />
+              <div className="refined-figure" />
+              <div className="refined-lotus" />
+              <span className="refined-label">度母护法图</span>
+            </div>
           ) : regionColors ? (
             /* 百分比区域渲染 */
             REPLICA_REGIONS.map((region) => {

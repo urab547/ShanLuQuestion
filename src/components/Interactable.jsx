@@ -195,7 +195,7 @@ export default function Interactable({
           draggable={false}
         />
       ) : (
-        <span className="interactable__emoji" style={{ fontSize: `${52 * displayScale}px` }}>
+        <span className="interactable__emoji" style={{ transform: `scale(${displayScale})` }}>
           {item.emoji}
         </span>
       )}

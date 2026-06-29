@@ -309,10 +309,11 @@ function MemoryFragment({ frag, state, customLayout, containerRef, onMove, onRes
       onContextMenu={(e) => e.preventDefault()}
     >
       <div className="mc-region__image">
-        {owned && frag.image ? (
-          <img src={frag.image} alt={frag.label} />
-        ) : null}
-        {!owned && <span className="mc-region__placeholder">?</span>}
+        {owned ? (
+          <span className="mc-region__owned-icon">🖼</span>
+        ) : (
+          <span className="mc-region__placeholder">?</span>
+        )}
         {read && <span className="mc-region__check">✓</span>}
       </div>
       {showLabel && (

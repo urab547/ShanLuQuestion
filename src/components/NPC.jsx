@@ -190,7 +190,7 @@ export default function NPC({
           draggable={false}
         />
       ) : (
-        <span className="npc__emoji" style={{ fontSize: `${64 * displayScale}px` }}>
+        <span className="npc__emoji" style={{ transform: `scale(${displayScale})` }}>
           {npc.emoji}
         </span>
       )}

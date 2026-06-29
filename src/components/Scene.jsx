@@ -27,22 +27,22 @@ import SettingsPanel from './SettingsPanel';
 import DialogueReview from './DialogueReview';
 import { getTalkedToNpcs } from '../data/dialogueHistory';
 import { PIGMENTS } from '../data/pigments';
-import { ICONS, SOUNDS, SCENE_BG } from '../data/assets';
+import { SOUNDS, SCENE_BG } from '../data/assets';
 import customDefaults from '../data/customPositions';
 import { audioManager } from '../utils/audioManager';
 import './Scene.css';
 
 // 出口方向 → 默认位置（百分比）映射
 const EXIT_DEFAULT_POSITIONS = {
-  'left': { top: '50%', left: '6%' },
-  'left-top': { top: '38%', left: '6%' },
-  'left-bottom': { top: '62%', left: '6%' },
-  'right': { top: '50%', left: '94%' },
-  'right-top': { top: '38%', left: '94%' },
-  'right-bottom': { top: '62%', left: '94%' },
-  'top-left': { top: '6%', left: '30%' },
-  'top-right': { top: '6%', left: '70%' },
-  'center': { top: '75%', left: '50%' },
+  'left': { top: '50%', left: '5%' },
+  'left-top': { top: '30%', left: '5%' },
+  'left-bottom': { top: '70%', left: '5%' },
+  'right': { top: '50%', left: '95%' },
+  'right-top': { top: '30%', left: '95%' },
+  'right-bottom': { top: '70%', left: '95%' },
+  'top-left': { top: '8%', left: '25%' },
+  'top-right': { top: '8%', left: '75%' },
+  'center': { top: '80%', left: '50%' },
 };
 
 // 出口方向 → 默认箭头旋转角度（度）
@@ -1275,7 +1275,7 @@ export default custom;
         aria-label="游戏设置"
         title="设置"
       >
-        <img src={ICONS.SETTINGS} alt="" className="scene__icon" />
+        <span className="scene__icon-text">⚙</span>
       </button>
 
       {settingsOpen && (
@@ -1298,7 +1298,7 @@ export default custom;
         aria-label="对话回顾"
         title="对话回顾"
       >
-        <img src={ICONS.NOTEBOOK} alt="" className="scene__icon" />
+        <span className="scene__icon-text">📖</span>
         {redDots.dialogue && <span className="scene__reddot" />}
       </button>
 
@@ -1319,7 +1319,7 @@ export default custom;
         aria-label="记忆画布"
         title="记忆画布"
       >
-        <img src={ICONS.CANVAS} alt="" className="scene__icon" />
+        <span className="scene__icon-text">🖼</span>
         {redDots.canvas && <span className="scene__reddot" />}
       </button>
 
@@ -1340,7 +1340,7 @@ export default custom;
         aria-label="物品收藏"
         title="物品收藏"
       >
-        <img src={ICONS.COLLECTION} alt="" className="scene__icon" />
+        <span className="scene__icon-text">📦</span>
         {redDots.collection && <span className="scene__reddot" />}
       </button>
 

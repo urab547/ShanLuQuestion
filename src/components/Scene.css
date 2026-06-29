@@ -210,12 +210,12 @@
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 12px rgba(212, 165, 116, 0.35));
 }
 
-/* ========== HUD 图标 ========== */
-.scene__icon {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
+/* ========== HUD 图标（文字版） ========== */
+.scene__icon-text {
+  font-size: 26px;
+  line-height: 1;
   pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
 /* ========== 红点提示 ========== */

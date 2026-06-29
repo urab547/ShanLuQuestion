@@ -697,7 +697,7 @@ export const DIALOGUES = {
   dlg_renqing_photo_give: {
     id: 'dlg_renqing_photo_give',
     title: '仁青',
-    image: '/images/tangka_photo_hand_placeholder.png',
+    image: null,
     lines: [
       '仁青从文件夹里抽出一张照片，递了过来。',
       '「这是我在村里拍到的——一尊度母的手势特写。你看这个角度，光线刚好打在指尖上。」',
@@ -708,7 +708,7 @@ export const DIALOGUES = {
   dlg_renqing_photo_compare: {
     id: 'dlg_renqing_photo_compare',
     title: '仁青',
-    image: '/images/tangka_photo_mountain_placeholder.png',
+    image: null,
     lines: [
       '仁青从文件夹里又抽出一张照片。',
       '「对了，我还拍了一张雪山的。你看这个角度——」',
@@ -722,7 +722,7 @@ export const DIALOGUES = {
   dlg_memory_fragment_1: {
     id: 'dlg_memory_fragment_1',
     title: '记忆画布·度母手势',
-    image: '/images/tangka_photo_hand_placeholder.png',
+    image: null,
     lines: [
       '【度母手势】',
       '拇指与中指轻捻，其余三指微展——这是施愿印（Varada Mudra）。',
@@ -733,7 +733,7 @@ export const DIALOGUES = {
   dlg_memory_fragment_2: {
     id: 'dlg_memory_fragment_2',
     title: '记忆画布·背景山形',
-    image: '/images/tangka_photo_mountain_placeholder.png',
+    image: null,
     lines: [
       '【背景山形】',
       '唐卡背景中的山脉轮廓，与窗外雪山的剪影惊人地吻合。',
@@ -744,7 +744,7 @@ export const DIALOGUES = {
   dlg_memory_fragment_3: {
     id: 'dlg_memory_fragment_3',
     title: '记忆画布·度母左眼',
-    image: '/images/tangka_photo_eye_placeholder.png',
+    image: null,
     lines: [
       '【度母左眼】',
       '你将目光聚焦在度母的左眼上。',
@@ -756,7 +756,7 @@ export const DIALOGUES = {
   dlg_memory_fragment_4: {
     id: 'dlg_memory_fragment_4',
     title: '记忆画布·角落藏文',
-    image: '/images/tangka_photo_script_placeholder.png',
+    image: null,
     lines: [
       '【角落藏文】',
       '唐卡右下角有一行细小的藏文，笔画工整但墨色较淡。',

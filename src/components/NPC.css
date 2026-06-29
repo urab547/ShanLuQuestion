@@ -29,10 +29,18 @@
 
 /* ─── emoji 回退 ─── */
 .npc__emoji {
-  font-size: 64px;
+  font-size: 36px;
   line-height: 1;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
-  transition: filter 0.35s ease;
+  transition: filter 0.35s ease, border-color 0.35s ease;
 }
 
 /* ─── hover：整组件放大 + 柔光 ─── */

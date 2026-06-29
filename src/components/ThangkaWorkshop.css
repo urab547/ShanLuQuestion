@@ -966,10 +966,44 @@
   animation: revealRefinedFadeIn 4.8s ease forwards;
 }
 
-.thangka-workshop__reveal-refined-img {
+.thangka-workshop__refined-css {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  position: relative;
+  overflow: hidden;
+}
+
+.thangka-workshop__refined-css .refined-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #1a3a5c 0%, #2d5a3a 40%, #4a3a2a 100%);
+}
+
+.thangka-workshop__refined-css .refined-figure {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  width: 50%;
+  height: 70%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom,
+    rgba(212, 165, 116, 0.3) 0%,
+    rgba(192, 57, 43, 0.2) 50%,
+    rgba(212, 165, 116, 0.15) 100%
+  );
+  border-radius: 50% 50% 5% 5%;
+  border: 1px solid rgba(212, 165, 116, 0.2);
+}
+
+.thangka-workshop__refined-css .refined-lotus {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  width: 45%;
+  height: 15%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(192, 57, 43, 0.3), transparent);
+  border-radius: 50%;
 }
 
 @keyframes revealRefinedFadeIn {

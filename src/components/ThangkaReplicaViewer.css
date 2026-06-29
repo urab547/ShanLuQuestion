@@ -96,12 +96,58 @@
   font-size: 14px;
 }
 
-/* 精制唐卡成品 PNG */
-.replica-viewer__refined-img {
+/* 精制唐卡成品（CSS 版） */
+.replica-viewer__refined-css {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  display: block;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.refined-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #1a3a5c 0%, #2d5a3a 40%, #4a3a2a 100%);
+}
+
+.refined-figure {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  width: 50%;
+  height: 70%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom,
+    rgba(212, 165, 116, 0.3) 0%,
+    rgba(192, 57, 43, 0.2) 50%,
+    rgba(212, 165, 116, 0.15) 100%
+  );
+  border-radius: 50% 50% 5% 5%;
+  border: 1px solid rgba(212, 165, 116, 0.2);
+}
+
+.refined-lotus {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  width: 45%;
+  height: 15%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(192, 57, 43, 0.3), transparent);
+  border-radius: 50%;
+}
+
+.refined-label {
+  position: relative;
+  z-index: 1;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(212, 165, 116, 0.8);
+  letter-spacing: 0.3em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .replica-viewer__info {

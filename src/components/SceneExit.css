@@ -60,6 +60,14 @@
   color: #fff8e7;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
   pointer-events: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1.5px solid rgba(255, 248, 231, 0.2);
+  border-radius: 50%;
 }
 
 /* ── 标签文字 ── */

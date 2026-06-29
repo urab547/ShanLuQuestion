@@ -6,7 +6,7 @@ export const ITEMS = {
     label: '玛尼堆',
     emoji: '🪨',
     dialogueId: 'dlg_mani_pile',
-    position: { top: '56%', left: '65%' },
+    position: { top: '60%', left: '35%' },
   },
   road_sign: {
     id: 'road_sign',
@@ -14,7 +14,7 @@ export const ITEMS = {
     label: '路标',
     emoji: '🪧',
     dialogueId: 'dlg_road_sign',
-    position: { top: '48%', left: '80%' },
+    position: { top: '50%', left: '55%' },
   },
   blue_ore_a: {
     id: 'blue_ore_a',
@@ -22,7 +22,7 @@ export const ITEMS = {
     label: '蓝色矿石',
     emoji: '🔵',
     dialogueId: 'dlg_blue_ore_a_correct',
-    position: { top: '70%', left: '22%' },
+    position: { top: '72%', left: '25%' },
   },
   blue_ore_b: {
     id: 'blue_ore_b',
@@ -30,7 +30,7 @@ export const ITEMS = {
     label: '蓝色矿石',
     emoji: '🔵',
     dialogueId: 'dlg_blue_ore_b_wrong',
-    position: { top: '74%', left: '35%' },
+    position: { top: '72%', left: '70%' },
   },
 
   // ========== 广场 ==========
@@ -40,7 +40,7 @@ export const ITEMS = {
     label: '经幡',
     emoji: '🎏',
     dialogueId: 'dlg_prayer_flags',
-    position: { top: '25%', left: '45%' },
+    position: { top: '35%', left: '50%' },
   },
   stone_well: {
     id: 'stone_well',
@@ -48,7 +48,7 @@ export const ITEMS = {
     label: '老水井',
     emoji: '🕳️',
     dialogueId: 'dlg_stone_well',
-    position: { top: '72%', left: '15%' },
+    position: { top: '72%', left: '50%' },
   },
 
   // ========== 旦增家院子 ==========
@@ -58,7 +58,7 @@ export const ITEMS = {
     label: '帐篷门口',
     emoji: '⛺',
     dialogueId: 'dlg_tent_entrance',
-    position: { top: '48%', left: '50%' },
+    position: { top: '45%', left: '50%' },
   },
   hearth: {
     id: 'hearth',
@@ -66,7 +66,7 @@ export const ITEMS = {
     label: '火塘',
     emoji: '🔥',
     dialogueId: 'dlg_hearth',
-    position: { top: '78%', left: '30%' },
+    position: { top: '75%', left: '40%' },
   },
   danzeng_stone: {
     id: 'danzeng_stone',
@@ -74,7 +74,7 @@ export const ITEMS = {
     label: '院中石',
     emoji: '🪨',
     dialogueId: 'dlg_danzeng_stone_view',
-    position: { top: '72%', left: '78%' },
+    position: { top: '68%', left: '70%' },
   },
   hematite: {
     id: 'hematite',
@@ -82,7 +82,7 @@ export const ITEMS = {
     label: '赤铁矿',
     emoji: '🔴',
     dialogueId: 'dlg_hematite_found',
-    position: { top: '35%', left: '18%' },
+    position: { top: '45%', left: '25%' },
   },
   furnace: {
     id: 'furnace',
@@ -90,7 +90,7 @@ export const ITEMS = {
     label: '铜炉',
     emoji: '🪔',
     dialogueId: 'dlg_furnace_rust',
-    position: { top: '62%', left: '58%' },
+    position: { top: '68%', left: '25%' },
   },
   baima_corner: {
     id: 'baima_corner',
@@ -98,7 +98,7 @@ export const ITEMS = {
     label: '白玛的角落',
     emoji: '🧣',
     dialogueId: 'dlg_baima_corner_view',
-    position: { top: '72%', left: '18%' },
+    position: { top: '70%', left: '20%' },
   },
   green_plant: {
     id: 'green_plant',
@@ -106,7 +106,7 @@ export const ITEMS = {
     label: '松石草',
     emoji: '🌿',
     dialogueId: 'dlg_green_plant_found',
-    position: { top: '60%', left: '72%' },
+    position: { top: '55%', left: '55%' },
   },
   old_prescription: {
     id: 'old_prescription',
@@ -114,7 +114,7 @@ export const ITEMS = {
     label: '老药方',
     emoji: '📄',
     dialogueId: 'dlg_old_prescription',
-    position: { top: '74%', left: '55%' },
+    position: { top: '70%', left: '55%' },
   },
   golden_herb: {
     id: 'golden_herb',
@@ -122,7 +122,7 @@ export const ITEMS = {
     label: '金颜草',
     emoji: '🌺',
     dialogueId: 'dlg_golden_herb_found',
-    position: { top: '48%', left: '78%' },
+    position: { top: '45%', left: '70%' },
   },
   baima_cloth: {
     id: 'baima_cloth',
@@ -130,9 +130,8 @@ export const ITEMS = {
     label: '氆氇碎片',
     emoji: '🧵',
     dialogueId: 'dlg_baima_gubai_cloth',
-    position: { top: '65%', left: '22%' },
+    position: { top: '70%', left: '35%' },
   },
-  // 背包中使用的别名（onCollectScroll 存入的是 pulu_fragment）
   pulu_fragment: {
     id: 'pulu_fragment',
     label: '氆氇碎片',
@@ -144,7 +143,7 @@ export const ITEMS = {
     label: '格桑的画夹',
     emoji: '🎨',
     dialogueId: 'dlg_gesang_portfolio_view',
-    position: { top: '75%', left: '30%' },
+    position: { top: '68%', left: '35%' },
   },
 
   // ========== 经堂外（植物） ==========
@@ -154,7 +153,7 @@ export const ITEMS = {
     label: '松柏',
     emoji: '🌲',
     dialogueId: 'dlg_song_bai_found',
-    position: { top: '58%', left: '38%' },
+    position: { top: '45%', left: '50%' },
   },
 
   // ========== 旦增家院子（植物） ==========
@@ -164,7 +163,7 @@ export const ITEMS = {
     label: '杜松',
     emoji: '🌿',
     dialogueId: 'dlg_du_song_found',
-    position: { top: '50%', left: '12%' },
+    position: { top: '45%', left: '75%' },
   },
 
   // ========== 煨桑台 ==========
@@ -174,7 +173,7 @@ export const ITEMS = {
     label: '高原野草',
     emoji: '🌾',
     dialogueId: 'dlg_ye_cao_found',
-    position: { top: '72%', left: '22%' },
+    position: { top: '65%', left: '30%' },
   },
   sang_stove: {
     id: 'sang_stove',
@@ -182,7 +181,7 @@ export const ITEMS = {
     label: '煨桑炉',
     emoji: '🔥',
     dialogueId: 'dlg_sang_stove_intro',
-    position: { top: '55%', left: '50%' },
+    position: { top: '55%', left: '55%' },
   },
 
   // ========== 经堂内部 ==========
@@ -192,7 +191,7 @@ export const ITEMS = {
     label: '空画框',
     emoji: '🖼️',
     dialogueId: 'dlg_empty_frame',
-    position: { top: '18%', left: '50%' },
+    position: { top: '30%', left: '50%' },
   },
   faded_mural: {
     id: 'faded_mural',
@@ -200,7 +199,7 @@ export const ITEMS = {
     label: '褪色壁画',
     emoji: '🖌️',
     dialogueId: 'dlg_faded_mural',
-    position: { top: '52%', left: '82%' },
+    position: { top: '50%', left: '75%' },
   },
   torn_cloth: {
     id: 'torn_cloth',
@@ -208,7 +207,7 @@ export const ITEMS = {
     label: '碎布',
     emoji: '🧶',
     dialogueId: 'dlg_torn_cloth',
-    position: { top: '68%', left: '38%' },
+    position: { top: '65%', left: '30%' },
   },
 
   // ========== 旦增卧室 ==========
@@ -218,6 +217,6 @@ export const ITEMS = {
     label: '旧木盒',
     emoji: '📦',
     dialogueId: 'dlg_old_wood_box',
-    position: { top: '58%', left: '48%' },
+    position: { top: '55%', left: '50%' },
   },
 };

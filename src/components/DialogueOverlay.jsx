@@ -3,7 +3,6 @@ import { addKeyLine, recordTalkedTo } from '../data/dialogueHistory';
 import { streamChat, buildMessages, isAiConfigured } from '../ai/apiClient';
 import { getNpcPrompt } from '../ai/npcPrompts';
 import { audioManager, SOUNDS } from '../utils/audioManager';
-import DialoguePortrait from './DialoguePortrait';
 import './DialogueOverlay.css';
 
 /** 从 dialogueId 中提取 NPC ID（如 dlg_danzeng_listener → 'danzeng'） */
@@ -316,8 +315,6 @@ export default function DialogueOverlay({ dialogue, itemLabel, isNpc, startInAi,
 
   return (
     <div className="dialogue-overlay" onClick={handleAdvance}>
-      {/* NPC 立绘 —— 场景上方，对话框之下（z-index 低于对话框） */}
-      {npcId && <DialoguePortrait npcId={npcId} />}
 
       {/* 玩家选项面板（对话框上方） */}
       {hasOptions && (

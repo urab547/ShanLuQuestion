@@ -1,6 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { PIGMENTS } from '../data/pigments';
-import { TANGKA_IMAGES } from '../data/assets';
 import { createStuckTimer, checkStuckErrors } from '../utils/stuckDetector';
 import './ThangkaWorkshop.css';
 
@@ -460,13 +459,13 @@ export default function ThangkaWorkshop({ pigments, inventory, onClose, onComple
                 );
               })}
             </div>
-            {/* 精制 PNG（顶层，渐显） */}
+            {/* 精制唐卡（CSS 渐显） */}
             <div className="thangka-workshop__reveal-refined">
-              <img
-                src={TANGKA_IMAGES.THANGKA_REFINED}
-                alt="精制度母唐卡"
-                className="thangka-workshop__reveal-refined-img"
-              />
+              <div className="thangka-workshop__refined-css">
+                <div className="refined-bg" />
+                <div className="refined-figure" />
+                <div className="refined-lotus" />
+              </div>
             </div>
             {/* 仪式文字 + 点击提示 */}
             <div className="thangka-workshop__reveal-text">

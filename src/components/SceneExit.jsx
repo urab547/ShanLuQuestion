@@ -1,5 +1,4 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { ICONS } from '../data/assets';
 import './SceneExit.css';
 
 /** 右键不做拖拽时的最小位移阈值 —— 低于此值视为"点击"触发缩放模式切换 */
@@ -33,8 +32,6 @@ export default function SceneExit({
   customPosition,
   customRotation = 0,
 }) {
-  const [imgError, setImgError] = useState(false);
-
   // ── 缩放模式 ──
   const resizeModeRef = useRef(false);
   const [isResizeMode, setIsResizeMode] = useState(false);
@@ -241,26 +238,12 @@ export default function SceneExit({
         className="scene-exit__arrow"
         style={{ transform: `rotate(${displayRotation}deg)` }}
       >
-        {!imgError ? (
-          <img
-            src={ICONS.ARROW_UP}
-            alt=""
-            className="scene-exit__arrow-img"
-            style={{
-              width: `${40 * displayScale}px`,
-              height: `${40 * displayScale}px`,
-            }}
-            onError={() => setImgError(true)}
-            draggable={false}
-          />
-        ) : (
-          <span
-            className="scene-exit__arrow-char"
-            style={{ fontSize: `${36 * displayScale}px` }}
-          >
-            ↑
-          </span>
-        )}
+        <span
+          className="scene-exit__arrow-char"
+          style={{ fontSize: `${36 * displayScale}px` }}
+        >
+          ↑
+        </span>
       </div>
 
       {/* 文字标签 */}
