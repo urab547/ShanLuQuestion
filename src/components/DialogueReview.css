@@ -1,0 +1,155 @@
+/* ========== 对话回顾浮层 ========== */
+.dialogue-review__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+.dialogue-review__panel {
+  width: 460px;
+  max-width: 92vw;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(26, 26, 26, 0.97);
+  border: 1px solid rgba(212, 165, 116, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ========== 标题栏 ========== */
+.dialogue-review__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(212, 165, 116, 0.12);
+}
+
+.dialogue-review__title {
+  color: var(--color-earth-yellow, #D4AC0D);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dialogue-review__close {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.dialogue-review__close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ========== NPC 标签页 ========== */
+.dialogue-review__tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(212, 165, 116, 0.1);
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+
+.dialogue-review__tab {
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.dialogue-review__tab:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.dialogue-review__tab--active {
+  color: var(--color-earth-yellow, #D4AC0D);
+  border-bottom-color: var(--color-earth-yellow, #D4AC0D);
+}
+
+.dialogue-review__tab--inactive {
+  color: rgba(255, 255, 255, 0.2);
+  cursor: default;
+}
+
+.dialogue-review__tab--inactive:hover {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* ========== 台词列表 ========== */
+.dialogue-review__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 18px;
+}
+
+/* 占位文本 */
+.dialogue-review__empty {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 13px;
+  text-align: center;
+  padding: 32px 0;
+  margin: 0;
+}
+
+/* ========== 台词卡片 ========== */
+.dialogue-review__card {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(212, 165, 116, 0.08);
+}
+
+.dialogue-review__card:last-child {
+  border-bottom: none;
+}
+
+.dialogue-review__card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.dialogue-review__card-npc {
+  color: var(--color-earth-yellow, #D4AC0D);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.dialogue-review__card-stage {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 11px;
+  padding: 1px 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+.dialogue-review__card-text {
+  color: rgba(255, 248, 231, 0.85);
+  font-size: 13px;
+  line-height: 1.75;
+  margin: 0;
+  letter-spacing: 0.02em;
+}

@@ -1,0 +1,165 @@
+.trust-debug {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(4px);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.trust-debug__label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.trust-debug__stage {
+  color: var(--color-earth-yellow);
+  font-weight: 600;
+  min-width: 48px;
+  text-align: center;
+}
+
+.trust-debug__actions {
+  display: flex;
+  gap: 4px;
+  margin-left: 4px;
+}
+
+.trust-debug__btn {
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.trust-debug__btn--sub {
+  background: rgba(220, 60, 60, 0.3);
+  color: #ff8888;
+}
+
+.trust-debug__btn--sub:hover {
+  background: rgba(220, 60, 60, 0.5);
+}
+
+.trust-debug__btn--add {
+  background: rgba(60, 180, 80, 0.3);
+  color: #88ff88;
+}
+
+.trust-debug__btn--add:hover {
+  background: rgba(60, 180, 80, 0.5);
+}
+.trust-debug {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(4px);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.trust-debug__label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.trust-debug__stage {
+  color: var(--color-earth-yellow);
+  font-weight: 600;
+  min-width: 48px;
+  text-align: center;
+}
+
+.trust-debug__actions {
+  display: flex;
+  gap: 4px;
+  margin-left: 4px;
+}
+
+.trust-debug__btn {
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.trust-debug__btn--sub {
+  background: rgba(220, 60, 60, 0.3);
+  color: #ff8888;
+}
+
+.trust-debug__btn--sub:hover {
+  background: rgba(220, 60, 60, 0.5);
+}
+
+.trust-debug__btn--add {
+  background: rgba(60, 180, 80, 0.3);
+  color: #88ff88;
+}
+
+.trust-debug__btn--add:hover {
+  background: rgba(60, 180, 80, 0.5);
+}
+.trust-debug {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(4px);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.trust-debug__label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.trust-debug__stage {
+  color: var(--color-earth-yellow);
+  font-weight: 600;
+  min-width: 48px;
+  text-align: center;
+}
+
+.trust-debug__actions {
+  display: flex;
+  gap: 4px;
+  margin-left: 4px;
+}
+
+.trust-debug__btn {
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.trust-debug__btn--sub {
+  background: rgba(220, 60, 60, 0.3);
+  color: #ff8888;
+}
+
+.trust-debug__btn--sub:hover {
+  background: rgba(220, 60, 60, 0.5);
+}
+
+.trust-debug__btn--add {
+  background: rgba(60, 180, 80, 0.3);
+  color: #88ff88;
+}
+
+.trust-debug__btn--add:hover {
+  background: rgba(60, 180, 80, 0.5);
+}

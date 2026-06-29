@@ -1,0 +1,285 @@
+/* ========== 收藏面板浮层 ========== */
+.collection-panel__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.collection-panel {
+  width: 400px;
+  max-width: 94vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: rgba(26, 26, 26, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+}
+
+.collection-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.collection-panel__title {
+  color: var(--color-earth-yellow, #D4AC0D);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.collection-panel__close {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.collection-panel__close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ========== 标签页 ========== */
+.collection-panel__tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0 16px;
+}
+
+.collection-panel__tab {
+  flex: 1;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.collection-panel__tab:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.collection-panel__tab--active {
+  color: var(--color-earth-yellow, #D4AC0D);
+  border-bottom-color: var(--color-earth-yellow, #D4AC0D);
+}
+
+/* ========== 内容区 ========== */
+.collection-panel__body {
+  padding: 16px;
+}
+
+.collection-panel__empty {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 13px;
+  padding: 32px 0;
+  margin: 0;
+}
+
+/* ========== 残卷标签页：卡片横排 ========== */
+.collection-panel__scrolls {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.collection-panel__scroll-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.collection-panel__scroll-card:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.collection-panel__scroll-card--collected:hover:not(:disabled) {
+  background: rgba(212, 172, 13, 0.1);
+  border-color: rgba(212, 172, 13, 0.3);
+}
+
+.collection-panel__scroll-emoji {
+  font-size: 22px;
+}
+
+.collection-panel__scroll-name {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.collection-panel__scroll-sub {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+/* ========== 颜料标签页 ========== */
+.collection-panel__pigments-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.collection-panel__pigment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.collection-panel__pigment:disabled {
+  cursor: default;
+}
+
+.collection-panel__pigment:hover:not(:disabled) {
+  background: rgba(212, 172, 13, 0.08);
+  border-color: rgba(212, 172, 13, 0.25);
+}
+
+.collection-panel__pigment--locked {
+  opacity: 0.45;
+}
+
+.collection-panel__pigment-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.collection-panel__pigment-label {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.collection-panel__pigment-status {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.collection-panel__pigment-status--found {
+  color: rgba(212, 172, 13, 0.7);
+}
+
+.collection-panel__pigment-status--recipe {
+  color: rgba(100, 160, 220, 0.7);
+}
+
+.collection-panel__pigment-status--craftable {
+  color: #4caf50;
+}
+
+/* ========== 唐卡绘制按钮 ========== */
+.collection-panel__footer {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.collection-panel__thangka-btn {
+  width: 100%;
+  padding: 10px 16px;
+  background: rgba(139, 26, 26, 0.3);
+  border: 1px solid rgba(212, 165, 116, 0.4);
+  border-radius: 6px;
+  color: rgba(255, 248, 231, 0.9);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.collection-panel__thangka-btn:hover {
+  background: rgba(139, 26, 26, 0.6);
+  border-color: var(--color-earth-yellow);
+  box-shadow: 0 0 12px rgba(212, 165, 116, 0.4);
+}
+
+/* ========== 特殊物品标签页 ========== */
+.collection-panel__special {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.collection-panel__special-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.collection-panel__special-item:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.collection-panel__special-item:hover:not(:disabled) {
+  background: rgba(212, 172, 13, 0.08);
+  border-color: rgba(212, 172, 13, 0.25);
+}
+
+.collection-panel__special-icon {
+  font-size: 22px;
+}
+
+.collection-panel__special-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.collection-panel__special-name {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.collection-panel__special-desc {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 11px;
+}

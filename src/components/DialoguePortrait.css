@@ -1,0 +1,123 @@
+/* ================================================================
+   DialoguePortrait —— 对话中 NPC 立绘
+   - 绝对定位于 .dialogue-overlay 内（参照场景尺寸），z-index 低于对话框
+   - hover 微放大 + 柔光
+   - 右键拖拽移动 / 缩放
+   ================================================================ */
+
+.dialogue-portrait {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  user-select: none;
+  cursor: grab;
+  transition: filter 0.2s ease;
+  animation: portrait-enter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes portrait-enter {
+  from { opacity: 0; filter: blur(4px); }
+  to   { opacity: 1; filter: blur(0); }
+}
+
+.dialogue-portrait--dragging {
+  opacity: 0.85;
+  cursor: grabbing;
+  filter: drop-shadow(0 0 14px rgba(255, 215, 0, 0.5));
+}
+
+.dialogue-portrait--resizing {
+  cursor: col-resize;
+  outline: 2px dashed rgba(255, 215, 0, 0.7);
+  outline-offset: 4px;
+  border-radius: 4px;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+}
+
+/* ─── NPC 立绘图片 ─── */
+.dialogue-portrait__img {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+  transition: filter 0.35s ease;
+  pointer-events: none;
+}
+
+/* ─── 回退 emoji（无图片时） ─── */
+.dialogue-portrait__fallback {
+  font-size: 72px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+}
+
+/* ─── hover：微放大 + 柔光（非拖拽/缩放时） ─── */
+.dialogue-portrait:not(.dialogue-portrait--dragging):not(.dialogue-portrait--resizing):hover {
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.2))
+          drop-shadow(0 6px 18px rgba(0, 0, 0, 0.55));
+}
+
+.dialogue-portrait:not(.dialogue-portrait--dragging):not(.dialogue-portrait--resizing):hover .dialogue-portrait__img,
+.dialogue-portrait:not(.dialogue-portrait--dragging):not(.dialogue-portrait--resizing):hover .dialogue-portrait__fallback {
+  filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.3))
+          drop-shadow(0 6px 20px rgba(0, 0, 0, 0.6));
+}
+
+/* ─── 缩放控制 UI ─── */
+.dialogue-portrait__scale-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.dialogue-portrait__hint {
+  font-size: 11px;
+  color: rgba(255, 215, 0, 0.9);
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.dialogue-portrait__scale-input {
+  width: 60px;
+  padding: 2px 4px;
+  font-size: 12px;
+  font-family: monospace;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(26, 26, 26, 0.85);
+  border: 1px solid rgba(212, 165, 116, 0.5);
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.dialogue-portrait__scale-input:focus {
+  border-color: rgba(255, 215, 0, 0.9);
+}
+
+.dialogue-portrait__scale-input::-webkit-inner-spin-button,
+.dialogue-portrait__scale-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ─── 拖拽中提示（立绘上方） ─── */
+.dialogue-portrait__drag-hint {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 6px;
+  font-size: 11px;
+  color: rgba(255, 215, 0, 0.9);
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}

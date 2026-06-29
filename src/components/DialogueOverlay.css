@@ -1,0 +1,344 @@
+.dialogue-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 对话框 */
+.dialogue-overlay__box {
+  position: relative;
+  z-index: 5;
+  width: 85%;
+  max-width: 640px;
+  margin-bottom: 5%;
+  background: var(--color-rice-white);
+  background-image: url('/images/ui/dialogue_box.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  animation: dialogue-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 标题栏 */
+.dialogue-overlay__title-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.6em 16px 4px 64px;
+  color: var(--color-text-dark);
+}
+
+.dialogue-overlay__deco {
+  width: 10px;
+  height: 10px;
+  background: var(--color-earth-yellow);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.dialogue-overlay__title {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dialogue-overlay__close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--color-text-light);
+  /* PNG 底板 */
+  background-image: url('/images/ui/btn_close.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 0;
+  transition: transform 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.dialogue-overlay__close:hover {
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 正文 */
+.dialogue-overlay__body {
+  padding: 2px 64px 16px;
+  min-height: 60px;
+}
+
+.dialogue-overlay__image {
+  width: 100%;
+  height: 240px;
+  max-width: 400px;
+  margin: 0 auto 14px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+
+.dialogue-overlay__image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 4px;
+}
+
+.dialogue-overlay__line {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--color-text-dark);
+  animation: dialogue-fade-in 0.3s ease;
+}
+
+/* 提示 */
+.dialogue-overlay__hint {
+  padding: 0 64px 14px;
+  text-align: right;
+  font-size: 12px;
+  color: var(--color-stone);
+  animation: dialogue-pulse 2s ease-in-out infinite;
+}
+
+/* 隐性引导：对话框首次使用占位文字 */
+.dialogue-overlay__first-placeholder {
+  margin-top: 14px;
+  font-size: 14px;
+  color: rgba(139, 26, 26, 0.15);
+  text-align: center;
+  font-style: italic;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ========== 动画 ========== */
+@keyframes dialogue-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes dialogue-slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dialogue-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+
+/* ========== AI 模式切换按钮（黄色） ========== */
+.dialogue-overlay__ai-toggle {
+  flex-shrink: 0;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5a3e1b;
+  /* 黄色 PNG 底板 */
+  background-image: url('/images/ui/btn_yellow.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+}
+
+.dialogue-overlay__ai-toggle:hover {
+  transform: scale(1.06);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* ========== AI 聊天模式 ========== */
+
+/* AI 模式下取消 box 的 cursor: pointer */
+.dialogue-overlay__box--ai {
+  cursor: default;
+}
+
+/* 聊天正文区域 */
+.dialogue-overlay__ai-body {
+  padding: 16px 36px;
+  min-height: 120px;
+  max-height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: default;
+}
+
+/* 滚动条样式 */
+.dialogue-overlay__ai-body::-webkit-scrollbar {
+  width: 5px;
+}
+.dialogue-overlay__ai-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dialogue-overlay__ai-body::-webkit-scrollbar-thumb {
+  background: rgba(139, 26, 26, 0.2);
+  border-radius: 3px;
+}
+
+/* 消息气泡 */
+.dialogue-overlay__ai-bubble {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.7;
+  word-break: break-word;
+  animation: dialogue-fade-in 0.2s ease;
+}
+
+/* 玩家消息（右侧） */
+.dialogue-overlay__ai-bubble--user {
+  align-self: flex-end;
+  background: var(--color-tibetan-red);
+  color: var(--color-text-light);
+  border-bottom-right-radius: 4px;
+}
+
+/* NPC 消息（左侧） */
+.dialogue-overlay__ai-bubble--assistant {
+  align-self: flex-start;
+  background: #f5ede0;
+  color: var(--color-text-dark);
+  border-bottom-left-radius: 4px;
+  border: 1px solid rgba(139, 26, 26, 0.1);
+}
+
+/* 流式光标 */
+.dialogue-overlay__ai-cursor {
+  display: inline-block;
+  animation: dialogue-pulse 0.8s ease-in-out infinite;
+  color: var(--color-tibetan-red);
+  margin-left: 2px;
+}
+
+/* 错误提示 */
+.dialogue-overlay__ai-error {
+  align-self: center;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: #c0392b;
+  background: rgba(192, 57, 43, 0.08);
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* 输入栏 */
+.dialogue-overlay__ai-input-bar {
+  display: flex;
+  gap: 8px;
+  padding: 10px 36px 14px;
+  border-top: 1px solid rgba(139, 26, 26, 0.1);
+  cursor: default;
+}
+
+.dialogue-overlay__ai-input {
+  flex: 1;
+  padding: 8px 14px;
+  font-size: 15px;
+  border: 2px solid rgba(139, 26, 26, 0.2);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--color-text-dark);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.dialogue-overlay__ai-input:focus {
+  border-color: var(--color-tibetan-red);
+}
+
+.dialogue-overlay__ai-input:disabled {
+  opacity: 0.6;
+  background: #f5f0e8;
+}
+
+.dialogue-overlay__ai-send {
+  flex-shrink: 0;
+  padding: 8px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  /* 红色 PNG 底板 */
+  background-image: url('/images/ui/btn_red.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.dialogue-overlay__ai-send:hover:not(:disabled) {
+  transform: scale(1.06);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dialogue-overlay__ai-send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========== 玩家选项面板（对话框上方） ========== */
+.dialogue-overlay__options-panel {
+  position: relative;
+  z-index: 6;
+  width: 85%;
+  max-width: 640px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: default;
+  animation: options-slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dialogue-overlay__option-btn {
+  padding: 12px 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: left;
+  color: var(--color-text-dark);
+  /* 蓝色 PNG 底板 */
+  background-image: url('/images/ui/btn_blue.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  animation: dialogue-fade-in 0.3s ease;
+}
+
+.dialogue-overlay__option-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes options-slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

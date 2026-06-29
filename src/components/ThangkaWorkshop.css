@@ -1,0 +1,1019 @@
+.thangka-workshop {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thangka-workshop__mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.thangka-workshop__panel {
+  position: relative;
+  width: 92%;
+  max-width: 720px;
+  min-height: 500px;
+  max-height: 92%;
+  background: #2a2a2a;
+  border: 2px solid var(--color-tibetan-red);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ===== 顶部工具栏 ===== */
+.thangka-workshop__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: rgba(139, 26, 26, 0.3);
+  border-bottom: 1px solid rgba(139, 26, 26, 0.4);
+  flex-shrink: 0;
+}
+
+.thangka-workshop__btn-back,
+.thangka-workshop__btn-save {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.thangka-workshop__btn-back {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.thangka-workshop__btn-back:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.thangka-workshop__btn-save {
+  background: var(--color-tibetan-red);
+  color: var(--color-rice-white);
+  border: none;
+}
+
+.thangka-workshop__btn-save:hover {
+  background: #6d1515;
+}
+
+.thangka-workshop__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-earth-yellow);
+}
+
+/* ===== 主体 ===== */
+.thangka-workshop__body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ===== 构图区 ===== */
+.thangka-workshop__canvas {
+  flex: 1;
+  flex-shrink: 0;
+  min-height: 380px;
+  padding: 8px;
+  background: #1a1a1a;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Step1: flex 布局（16行 × 16列），Step2 也使用相同布局 */
+.thangka-workshop__canvas--flex {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+/* 底层网格格子 */
+.thangka-workshop__row {
+  display: flex;
+  flex: 1;
+  gap: 1px;
+  min-height: 0;
+}
+
+.thangka-workshop__cell {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1px;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* 区域叠加层 */
+.thangka-workshop__region {
+  background: transparent;
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 0;
+  cursor: default;
+  transition: border-color 0.15s, box-shadow 0.15s, opacity 0.15s;
+  padding: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 绝对定位模式（Step2 使用） */
+.thangka-workshop__region--abs {
+  position: absolute;
+}
+
+.thangka-workshop__region--hoverable {
+  cursor: pointer;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.thangka-workshop__region--hoverable:hover {
+  border-color: var(--color-earth-yellow);
+  border-style: solid;
+  box-shadow: inset 0 0 0 1px rgba(212, 165, 116, 0.5),
+    0 0 8px rgba(212, 165, 116, 0.2);
+}
+
+.thangka-workshop__region--filled {
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.08);
+  border-width: 1px;
+}
+
+.thangka-workshop__region--filled:hover {
+  border-color: rgba(255, 100, 100, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(255, 100, 100, 0.3);
+}
+
+/* 背景区域 — 铺满底层，无虚线边框 */
+.thangka-workshop__region--bg {
+  border: none;
+  border-radius: 0;
+  pointer-events: auto;
+}
+
+.thangka-workshop__region--bg.thangka-workshop__region--filled {
+  border: none;
+}
+
+.thangka-workshop__region--bg:hover {
+  border: none;
+  box-shadow: none;
+}
+
+/* 背景区域 hoverable 状态 — 用微亮光晕代替边框 */
+.thangka-workshop__region--bg.thangka-workshop__region--hoverable:hover {
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+/* 错误波动动画 */
+.thangka-workshop__region--error {
+  border-color: rgba(255, 80, 80, 0.7) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 80, 80, 0.4) !important;
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-3px); }
+  30% { transform: translateX(3px); }
+  45% { transform: translateX(-2px); }
+  60% { transform: translateX(2px); }
+  75% { transform: translateX(-1px); }
+  90% { transform: translateX(1px); }
+}
+
+/* ===== 区域标签 ===== */
+.thangka-workshop__region-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+
+.thangka-workshop__region--filled .thangka-workshop__region-label {
+  opacity: 0;
+}
+
+.thangka-workshop__region-label--filled {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-top: 0;
+  opacity: 1 !important;
+}
+
+/* 背景标签始终在左上角 */
+.thangka-workshop__region-label--bg {
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  margin-top: 0;
+}
+
+.thangka-workshop__region--filled .thangka-workshop__region-label--bg {
+  top: 4px;
+  left: 6px;
+  right: auto;
+  opacity: 1 !important;
+}
+
+/* ===== 颜料盘 ===== */
+.thangka-workshop__palette {
+  width: 140px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+.thangka-workshop__palette-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-earth-yellow);
+  margin: 0 0 4px;
+  text-align: center;
+}
+
+.thangka-workshop__palette-empty {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+}
+
+.thangka-workshop__pigments {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.thangka-workshop__pigment {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+}
+
+.thangka-workshop__pigment:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.thangka-workshop__pigment--selected {
+  border-color: var(--color-earth-yellow);
+  background: rgba(212, 165, 116, 0.15);
+  box-shadow: 0 0 6px rgba(212, 165, 116, 0.3);
+}
+
+.thangka-workshop__swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.thangka-workshop__pigment-label {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.thangka-workshop__hint {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--color-earth-yellow);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ===== Step2: 完成上色按钮 ===== */
+.thangka-workshop__submit {
+  margin-top: auto;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-rice-white);
+  background: var(--color-tibetan-red);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.thangka-workshop__submit:hover:not(:disabled) {
+  background: #6d1515;
+}
+
+.thangka-workshop__submit--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.thangka-workshop__done-hint {
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4CAF50;
+  text-align: center;
+}
+
+/* ===== Step2: 错误反馈旁白 ===== */
+.thangka-workshop__feedback {
+  padding: 10px 16px;
+  background: rgba(212, 165, 116, 0.12);
+  border-top: 1px solid rgba(212, 165, 116, 0.3);
+  flex-shrink: 0;
+  animation: feedbackFadeIn 0.4s ease;
+}
+
+.thangka-workshop__feedback p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-earth-yellow);
+  text-align: center;
+  line-height: 1.5;
+}
+
+@keyframes feedbackFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 状态栏提示 */
+.thangka-workshop__status-hint {
+  display: block;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 2px;
+}
+
+/* ===== Step1: 锁定状态（未收集残卷） ===== */
+.thangka-workshop__canvas--locked {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thangka-workshop__locked-hint {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.thangka-workshop__locked-icon {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.thangka-workshop__locked-hint p {
+  font-size: 15px;
+  margin: 0 0 6px;
+}
+
+.thangka-workshop__locked-sub {
+  font-size: 12px !important;
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ===== Step1: 已放置格子 ===== */
+.thangka-workshop__cell--placed {
+  cursor: default;
+}
+
+/* ===== Step1: 待放置区 ===== */
+.thangka-workshop__tray {
+  padding: 10px 16px 8px;
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.thangka-workshop__tray-parts {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* 部位元素卡片 */
+.thangka-workshop__part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  cursor: grab;
+  transition: all 0.2s;
+  min-width: 72px;
+  user-select: none;
+}
+
+.thangka-workshop__part:hover:not(.thangka-workshop__part--placed) {
+  background: rgba(212, 165, 116, 0.15);
+  border-color: var(--color-earth-yellow);
+  box-shadow: 0 0 10px rgba(212, 165, 116, 0.25);
+}
+
+.thangka-workshop__part:active:not(.thangka-workshop__part--placed) {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+.thangka-workshop__part--placed {
+  cursor: default;
+  opacity: 0.5;
+  border-color: rgba(76, 175, 80, 0.4);
+  background: rgba(76, 175, 80, 0.08);
+}
+
+/* 迷你网格预览 */
+.thangka-workshop__part-grid {
+  display: grid;
+  gap: 1px;
+  width: 100%;
+  max-width: 60px;
+}
+
+.thangka-workshop__part-cell {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1px;
+  aspect-ratio: 1;
+}
+
+.thangka-workshop__part--placed .thangka-workshop__part-cell {
+  background: rgba(76, 175, 80, 0.2);
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.thangka-workshop__part-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.thangka-workshop__part-size {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.thangka-workshop__part-check {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 12px;
+  color: #4CAF50;
+}
+
+/* ===== Step1: 错误提示 ===== */
+.thangka-workshop__hint-error {
+  text-align: center;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--color-earth-yellow);
+  opacity: 0.85;
+  animation: hintFadeIn 0.3s ease;
+}
+
+@keyframes hintFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 0.85; transform: translateY(0); }
+}
+
+/* ===== Step1: 颜料盘锁定 ===== */
+.thangka-workshop__palette--locked {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.4;
+}
+
+.thangka-workshop__palette-lock {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.thangka-workshop__palette-lock-icon {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.thangka-workshop__palette-lock p {
+  font-size: 12px;
+  margin: 0;
+}
+
+/* ===== Step1: 完成旁白 ===== */
+.thangka-workshop__narration {
+  padding: 10px 16px;
+  background: rgba(76, 175, 80, 0.15);
+  border-top: 1px solid rgba(76, 175, 80, 0.3);
+  flex-shrink: 0;
+  animation: narrationSlideUp 0.5s ease;
+}
+
+.thangka-workshop__narration p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4CAF50;
+  text-align: center;
+}
+
+@keyframes narrationSlideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 底部状态栏 ===== */
+.thangka-workshop__status {
+  padding: 6px 16px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+/* ===== Step3: 度母左眼谜题 ===== */
+
+.thangka-workshop__body--step3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  overflow-y: auto;
+}
+
+/* ===== 仪式感引文 ===== */
+.thangka-workshop__ritual-quote {
+  width: 100%;
+  padding: 24px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.thangka-workshop__ritual-quote::before,
+.thangka-workshop__ritual-quote::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 165, 116, 0.25) 20%,
+    rgba(212, 165, 116, 0.5) 50%,
+    rgba(212, 165, 116, 0.25) 80%,
+    transparent 100%
+  );
+}
+
+.thangka-workshop__ritual-quote::before {
+  top: 0;
+}
+
+.thangka-workshop__ritual-quote::after {
+  bottom: 0;
+}
+
+.thangka-workshop__ritual-quote-text {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  letter-spacing: 0.25em;
+  margin: 0;
+  font-style: italic;
+}
+
+/* ===== 落笔确认按钮 ===== */
+.thangka-workshop__confirm-brush {
+  display: block;
+  width: 120px;
+  margin: 8px auto 0;
+  padding: 14px 0;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.5em;
+  color: rgba(255, 255, 255, 0.92);
+  background: transparent;
+  border: 1px solid rgba(212, 165, 116, 0.4);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.thangka-workshop__confirm-brush::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 1px solid rgba(212, 165, 116, 0.15);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.thangka-workshop__confirm-brush:hover:not(:disabled) {
+  color: #fff;
+  border-color: rgba(212, 165, 116, 0.8);
+  box-shadow: 0 0 20px rgba(212, 165, 116, 0.2), inset 0 0 20px rgba(212, 165, 116, 0.06);
+  letter-spacing: 0.6em;
+}
+
+.thangka-workshop__confirm-brush:active:not(:disabled) {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+
+.thangka-workshop__confirm-brush--disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.thangka-workshop__confirm-brush--disabled::before {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* 残卷文字区 */
+.thangka-workshop__scroll-text {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(212, 165, 116, 0.08);
+  border: 1px solid rgba(212, 165, 116, 0.2);
+  border-radius: var(--radius-md);
+}
+
+.thangka-workshop__scroll-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-earth-yellow);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.thangka-workshop__scroll-body {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+  margin: 0 0 4px;
+}
+
+.thangka-workshop__scroll-hint {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-earth-yellow);
+  text-align: center;
+}
+
+/* 选项按钮区 */
+.thangka-workshop__choices {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.thangka-workshop__choice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.thangka-workshop__choice:hover:not(:disabled) {
+  background: rgba(212, 165, 116, 0.12);
+  border-color: var(--color-earth-yellow);
+}
+
+.thangka-workshop__choice--selected {
+  border-color: var(--color-earth-yellow);
+  background: rgba(212, 165, 116, 0.15);
+}
+
+.thangka-workshop__choice--disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.thangka-workshop__choice-letter {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-earth-yellow);
+  flex-shrink: 0;
+}
+
+.thangka-workshop__choice--selected .thangka-workshop__choice-letter {
+  background: var(--color-tibetan-red);
+  color: var(--color-rice-white);
+}
+
+.thangka-workshop__choice-text {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.thangka-workshop__narration--step3 {
+  padding: 14px 20px;
+  background: rgba(76, 175, 80, 0.12);
+  border-top: 1px solid rgba(76, 175, 80, 0.3);
+  flex-shrink: 0;
+  animation: narrationSlideUp 0.5s ease;
+  cursor: pointer;
+}
+
+.thangka-workshop__narration--step3:hover {
+  background: rgba(76, 175, 80, 0.18);
+}
+
+.thangka-workshop__narration--step3 p {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.thangka-workshop__narration--step3 p:last-child {
+  margin-bottom: 0;
+}
+
+.thangka-workshop__narration-hint {
+  margin-top: 8px !important;
+  font-size: 11px !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+  font-style: italic;
+}
+
+.thangka-workshop__narration--step3 p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== 保存提示 Toast ===== */
+.thangka-workshop__toast {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 24px;
+  font-size: 14px;
+  color: var(--color-earth-yellow);
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(212, 165, 116, 0.35);
+  border-radius: 4px;
+  z-index: 100;
+  pointer-events: none;
+  animation: toastFadeInOut 2s ease;
+}
+
+@keyframes toastFadeInOut {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  15%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  75%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+}
+
+/* ===== 返回确认弹窗 ===== */
+.thangka-workshop__confirm-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  animation: confirmFadeIn 0.25s ease;
+}
+
+@keyframes confirmFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.thangka-workshop__confirm-box {
+  background: rgba(30, 25, 20, 0.95);
+  border: 1px solid rgba(212, 165, 116, 0.4);
+  border-radius: 6px;
+  padding: 28px 32px 20px;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  animation: confirmBoxIn 0.3s ease;
+}
+
+@keyframes confirmBoxIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.thangka-workshop__confirm-text {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.thangka-workshop__confirm-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.thangka-workshop__confirm-btn {
+  padding: 8px 24px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  font-family: inherit;
+}
+
+.thangka-workshop__confirm-btn--cancel {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.thangka-workshop__confirm-btn--cancel:hover {
+  color: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.thangka-workshop__confirm-btn--ok {
+  background: rgba(212, 165, 116, 0.15);
+  color: var(--color-earth-yellow);
+  border-color: rgba(212, 165, 116, 0.35);
+}
+
+.thangka-workshop__confirm-btn--ok:hover {
+  background: rgba(212, 165, 116, 0.25);
+  border-color: rgba(212, 165, 116, 0.55);
+  box-shadow: 0 0 12px rgba(212, 165, 116, 0.15);
+}
+
+/* ===== Reveal 过渡动画：粗糙色块 → 精制 PNG ===== */
+.thangka-workshop--reveal {
+  /* 加深整体遮罩 */
+}
+
+.thangka-workshop__mask--dim {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.thangka-workshop__panel--reveal {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+}
+
+.thangka-workshop__panel--reveal-ready {
+  cursor: pointer;
+}
+
+.thangka-workshop__reveal-container {
+  position: relative;
+  width: 560px;
+  height: 740px;
+}
+
+/* 粗糙色块层 — 向核心收缩后渐隐 */
+.thangka-workshop__reveal-rough {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  animation: revealRoughFadeOut 4.8s ease forwards;
+}
+
+@keyframes revealRoughFadeOut {
+  0%   { opacity: 1; filter: blur(0px); }
+  50%  { opacity: 0.6; filter: blur(2px); }
+  85%  { opacity: 0.1; filter: blur(6px); }
+  100% { opacity: 0; filter: blur(8px); }
+}
+
+/* 精制 PNG 层 — 从虚影中浮现 */
+.thangka-workshop__reveal-refined {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: revealRefinedFadeIn 4.8s ease forwards;
+}
+
+.thangka-workshop__reveal-refined-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes revealRefinedFadeIn {
+  0%   { opacity: 0; filter: blur(8px) brightness(1.6); }
+  30%  { opacity: 0.3; filter: blur(4px) brightness(1.4); }
+  60%  { opacity: 0.75; filter: blur(1px) brightness(1.1); }
+  100% { opacity: 1; filter: blur(0px) brightness(1); }
+}
+
+/* 仪式文字 */
+.thangka-workshop__reveal-text {
+  position: absolute;
+  bottom: -42px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  animation: revealTextFade 4.8s ease forwards;
+}
+
+@keyframes revealTextFade {
+  0%   { opacity: 0; transform: translateY(8px); }
+  15%  { opacity: 0; transform: translateY(8px); }
+  35%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.thangka-workshop__reveal-text-line {
+  font-size: 15px;
+  color: rgba(212, 165, 116, 0.85);
+  letter-spacing: 0.35em;
+  line-height: 1.8;
+  margin: 0;
+  text-shadow: 0 0 12px rgba(212, 165, 116, 0.3);
+}
+
+.thangka-workshop__reveal-click-hint {
+  margin-top: 18px;
+  font-size: 13px;
+  color: rgba(212, 165, 116, 0.55);
+  letter-spacing: 0.5em;
+  animation: clickHintPulse 2s ease-in-out infinite;
+}
+
+@keyframes clickHintPulse {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 0.75; }
+}

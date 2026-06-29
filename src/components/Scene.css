@@ -1,0 +1,907 @@
+.scene {
+  position: relative;
+  width: var(--scene-width);
+  height: var(--scene-height);
+  margin: 0 auto;
+  overflow: hidden;
+  user-select: none;
+  animation: scene-enter 1s ease;
+}
+
+@keyframes scene-enter {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ========== 对话遮罩层 ========== */
+.dialogue-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* ========== 场景交互物件容器 —— 对话时隐藏 ========== */
+.scene-interactables {
+  /* 默认可见，无额外样式 */
+}
+
+.scene.dialogue-active .scene-interactables {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+/* ========== 天空 / 地面 ========== */
+.scene__sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+}
+
+.scene__ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+}
+
+/* ========== 场景背景图 ========== */
+.scene__bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+  animation: scene-img-fadein 0.3s ease-out;
+}
+
+@keyframes scene-img-fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ========== 场景名 ========== */
+.scene__name {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  background: rgba(255, 248, 231, 0.85);
+  padding: 4px 16px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ========== 信任调试面板（折叠浮层） ========== */
+.scene__trust-toggle {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 7;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.scene__trust-toggle:hover {
+  background: rgba(26, 26, 26, 0.75);
+  color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ========== 设置按钮 ========== */
+.scene__settings-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 7;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.scene__settings-toggle:hover {
+  transform: scale(1.18);
+  color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+/* ========== 对话回顾按钮 ========== */
+.scene__notebook-toggle {
+  position: absolute;
+  top: 10px;
+  right: 68px;
+  z-index: 7;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.scene__notebook-toggle:hover {
+  transform: scale(1.18);
+  color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+/* ========== 记忆画布按钮 ========== */
+.scene__canvas-toggle {
+  position: absolute;
+  top: 10px;
+  right: 126px;
+  z-index: 7;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.scene__canvas-toggle:hover {
+  transform: scale(1.18);
+  color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+/* ========== 物品收藏按钮 ========== */
+.scene__collection-toggle {
+  position: absolute;
+  top: 10px;
+  right: 184px;
+  z-index: 7;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: rgba(255, 248, 231, 0.7);
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+.scene__collection-toggle:hover {
+  transform: scale(1.18);
+  color: rgba(255, 248, 231, 0.95);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 12px rgba(212, 165, 116, 0.35));
+}
+
+/* ========== HUD 图标 ========== */
+.scene__icon {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* ========== 红点提示 ========== */
+.scene__reddot {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 7px;
+  height: 7px;
+  background: #e74c3c;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+.scene__trust-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 48px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.scene__trust-panel {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px 14px;
+  background: rgba(26, 26, 26, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== 场景装饰 ========== */
+.scene__decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* --- 远山（三角形） --- */
+.decor-mountain {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 120px solid transparent;
+  border-right: 120px solid transparent;
+}
+
+.decor-mountain--far {
+  border-bottom: 140px solid var(--color-tibetan-blue);
+  bottom: -40px;
+  left: 80px;
+  opacity: 0.7;
+}
+
+.decor-mountain--near {
+  border-bottom: 120px solid #2A6C9B;
+  bottom: -30px;
+  left: 380px;
+  opacity: 0.6;
+}
+
+/* --- 玛尼堆 --- */
+.decor-mani {
+  position: absolute;
+  bottom: 20px;
+  right: 150px;
+}
+
+.decor-mani__stone {
+  position: absolute;
+  background: var(--color-stone);
+  border-radius: 4px;
+}
+
+.decor-mani__stone--1 {
+  width: 70px; height: 22px;
+  bottom: 0; left: 0;
+}
+
+.decor-mani__stone--2 {
+  width: 50px; height: 20px;
+  bottom: 22px; left: 10px;
+}
+
+.decor-mani__stone--3 {
+  width: 24px; height: 18px;
+  bottom: 42px; left: 23px;
+}
+
+/* --- 路标 --- */
+.decor-signpost {
+  position: absolute;
+  bottom: 20px;
+  right: 50px;
+  width: 6px;
+  height: 70px;
+  background: #6B5644;
+}
+
+.decor-signpost::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 46px;
+  height: 16px;
+  background: #8B7355;
+  border-radius: 2px;
+}
+
+/* --- 经幡线 --- */
+.decor-flags-line {
+  position: absolute;
+  height: 3px;
+  transform-origin: left center;
+}
+
+.decor-flags-line--1 {
+  top: 80px;
+  left: 200px;
+  width: 300px;
+  background: var(--color-tibetan-red);
+  transform: rotate(12deg);
+}
+
+.decor-flags-line--2 {
+  top: 100px;
+  left: 200px;
+  width: 300px;
+  background: var(--color-tibetan-blue);
+  transform: rotate(10deg);
+}
+
+.decor-flags-line--3 {
+  top: 120px;
+  left: 200px;
+  width: 300px;
+  background: var(--color-deep-purple);
+  transform: rotate(8deg);
+}
+
+/* --- 经幡旗（小三角） --- */
+.decor-flag {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 18px solid;
+}
+
+.decor-flag--1 { top: 90px; left: 320px; border-bottom-color: var(--color-tibetan-red); }
+.decor-flag--2 { top: 108px; left: 420px; border-bottom-color: var(--color-earth-yellow); }
+.decor-flag--3 { top: 126px; left: 520px; border-bottom-color: var(--color-tibetan-blue); }
+
+/* --- 水井 --- */
+.decor-well {
+  position: absolute;
+  bottom: 22px;
+  left: 65px;
+  width: 50px;
+  height: 40px;
+  border: 4px solid var(--color-stone);
+  border-radius: 50%;
+  background: rgba(160, 130, 109, 0.3);
+}
+
+.decor-well::after {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 16px;
+  background: #6B5644;
+}
+
+/* --- 帐篷 --- */
+.decor-tent {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 180px solid var(--color-deep-purple);
+}
+
+.decor-tent-door {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 50px;
+  background: var(--color-tibetan-red);
+  border-radius: 30px 30px 0 0;
+}
+
+/* --- 围墙 --- */
+.decor-wall {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: var(--color-stone);
+}
+
+/* --- 火塘 --- */
+.decor-hearth {
+  position: absolute;
+  bottom: 30px;
+  left: 180px;
+}
+
+.decor-hearth__stone {
+  position: absolute;
+  width: 20px;
+  height: 16px;
+  background: #3A3A3A;
+  border-radius: 50%;
+}
+
+.decor-hearth__stone--1 { bottom: 0; left: 8px; }
+.decor-hearth__stone--2 { bottom: 0; left: 30px; }
+.decor-hearth__stone--3 { bottom: 0; left: 52px; }
+
+.decor-hearth__glow {
+  position: absolute;
+  bottom: 4px;
+  left: 10px;
+  width: 60px;
+  height: 14px;
+  background: radial-gradient(ellipse, rgba(255, 140, 0, 0.5), transparent);
+  border-radius: 50%;
+}
+
+/* ========== temple_exterior 装饰 ========== */
+.decor-temple {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 160px;
+  background: var(--color-deep-purple);
+  border-radius: 6px 6px 0 0;
+}
+.decor-temple-roof {
+  position: absolute;
+  bottom: 168px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 130px solid transparent;
+  border-right: 130px solid transparent;
+  border-bottom: 60px solid #D4AF37;
+}
+.decor-temple-door {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 64px;
+  background: var(--color-tibetan-red);
+  border-radius: 22px 22px 0 0;
+}
+.decor-flags-line--temple {
+  top: 70px;
+  left: 60px;
+  width: 200px;
+  background: #D4AF37;
+  transform: rotate(-8deg);
+}
+.decor-flag--temple-1 { top: 80px;  left: 120px; border-bottom-color: var(--color-tibetan-red); }
+.decor-flag--temple-2 { top: 92px;  left: 200px; border-bottom-color: var(--color-tibetan-blue); }
+
+/* ========== temple_interior 装饰 ========== */
+.decor-temple-int-wall {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #1a1410 0%, #2A1F14 30%, #3D2E1F 100%);
+}
+.decor-temple-int-frame {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 120px;
+  border: 5px solid #5C3D2E;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+}
+.decor-temple-int-frame::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(184,160,136,0.3);
+}
+.decor-temple-int-mural {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  bottom: 0;
+  width: 60px;
+  background:
+    linear-gradient(180deg, rgba(30,50,80,0.4) 0%, rgba(30,50,80,0.2) 40%, transparent 100%);
+  border-left: 1px solid rgba(255,255,255,0.05);
+}
+.decor-temple-int-lamp {
+  position: absolute;
+  bottom: 22%;
+  left: 30%;
+  width: 20px;
+  height: 14px;
+  background: linear-gradient(135deg, #B8860B 0%, #8B6914 100%);
+  border-radius: 4px 4px 10px 10px;
+  transform: rotate(-25deg);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+}
+.decor-temple-int-lamp::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: -2px;
+  width: 24px;
+  height: 4px;
+  background: rgba(200,170,100,0.3);
+  border-radius: 50%;
+}
+
+/* ========== mountain_peak 装饰 ========== */
+.decor-peak {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 180px solid transparent;
+  border-right: 180px solid transparent;
+}
+.decor-peak--main {
+  border-bottom: 260px solid #9FB3C8;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.decor-peak--side {
+  border-left: 120px solid transparent;
+  border-right: 120px solid transparent;
+  border-bottom: 180px solid #B8C8D8;
+  bottom: -50px;
+  left: 40px;
+  opacity: 0.85;
+}
+.decor-snowcap {
+  position: absolute;
+  bottom: 180px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-bottom: 70px solid #FFFFFF;
+  opacity: 0.9;
+}
+.decor-flags-line--peak-1 { top: 50px;  left: 40px;  width: 280px; background: var(--color-tibetan-red);  transform: rotate(6deg); }
+.decor-flags-line--peak-2 { top: 70px;  left: 80px;  width: 280px; background: var(--color-tibetan-blue); transform: rotate(4deg); }
+.decor-flag--peak-1 { top: 60px;  left: 150px; border-bottom-color: var(--color-earth-yellow); }
+.decor-flag--peak-2 { top: 80px;  left: 250px; border-bottom-color: var(--color-tibetan-red); }
+.decor-flag--peak-3 { top: 100px; left: 340px; border-bottom-color: var(--color-deep-purple); }
+
+/* 五色经幡线 —— 与底部拼图颜色对应 */
+.decor-flags-line--blue   { top: 40px;  left: 30px;  width: 300px; height: 3px; background: #1A5C8B; transform: rotate(5deg); }
+.decor-flags-line--white  { top: 56px;  left: 50px;  width: 300px; height: 3px; background: #F0EDE5; transform: rotate(5deg); }
+.decor-flags-line--red    { top: 72px;  left: 70px;  width: 300px; height: 3px; background: #8B1A1A; transform: rotate(5deg); }
+.decor-flags-line--green  { top: 88px;  left: 90px;  width: 300px; height: 3px; background: #3A7D5A; transform: rotate(5deg); }
+.decor-flags-line--yellow { top: 104px; left: 110px; width: 300px; height: 3px; background: #D4A574; transform: rotate(5deg); }
+
+/* ========== sangtai 装饰 ========== */
+.decor-sang {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 60px;
+}
+.decor-sang__stone {
+  position: absolute;
+  background: var(--color-stone);
+  border-radius: 6px;
+}
+.decor-sang__stone--1 { width: 90px; height: 26px; bottom: 0;  left: 5px; }
+.decor-sang__stone--2 { width: 64px; height: 22px; bottom: 26px; left: 18px; }
+.decor-sang__stone--3 { width: 34px; height: 18px; bottom: 48px; left: 33px; }
+.decor-smoke {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(220, 220, 220, 0.6), transparent 70%);
+}
+.decor-smoke--1 { bottom: 95px;  width: 50px; height: 50px; opacity: 0.7; }
+.decor-smoke--2 { bottom: 130px; width: 64px; height: 64px; opacity: 0.5; }
+.decor-smoke--3 { bottom: 170px; width: 80px; height: 80px; opacity: 0.3; }
+
+/* ========== gesang_corner 装饰 ========== */
+.decor-easel {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-bottom: 90px solid #6B5644;
+}
+.decor-canvas {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 70px;
+  background: #F5F0E8;
+  border: 3px solid #6B5644;
+  border-radius: 2px;
+}
+.decor-painting {
+  position: absolute;
+  bottom: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 30px solid var(--color-tibetan-blue);
+}
+.decor-paper {
+  position: absolute;
+  width: 26px;
+  height: 34px;
+  background: #FFFDF7;
+  border: 1px solid #C9B89A;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+.decor-paper--1 { bottom: 14px; left: 120px;  transform: rotate(-12deg); }
+.decor-paper--2 { bottom: 10px; left: 580px;  transform: rotate(15deg); }
+.decor-paper--3 { bottom: 22px; left: 660px;  transform: rotate(-6deg); }
+
+/* ========== 白玛经幡内联提示（非遮挡浮层） ========== */
+.scene__hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  max-width: 90%;
+  padding: 6px 16px;
+  background: rgba(26, 26, 26, 0.85);
+  color: rgba(255, 248, 231, 0.92);
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  animation: hint-lifecycle 5s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes hint-lifecycle {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(6px); }
+  8%   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  88%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+}
+
+/* ========== 藏獒装饰 ========== */
+.decor-mastiff {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --- 状态1：院子角落，警戒 --- */
+.decor-mastiff--state1 {
+  bottom: 50px;
+  right: 60px;
+  animation: mastiff-enter-bark 0.8s ease-out;
+}
+.decor-mastiff--state1 .decor-mastiff__body {
+  width: 48px; height: 32px;
+  background: #2A1A0A;
+  border-radius: 50%;
+  animation: mastiff-bark-strong 0.3s ease-in-out 3;
+}
+.decor-mastiff--state1 .decor-mastiff__head {
+  width: 22px; height: 22px;
+  background: #1A0E04;
+  border-radius: 50%;
+  position: absolute; top: -10px; left: 13px;
+  animation: mastiff-bark-strong 0.3s ease-in-out 3;
+}
+
+/* --- 状态2：院子角落，警戒减弱 --- */
+.decor-mastiff--state2 {
+  bottom: 50px;
+  right: 60px;
+}
+.decor-mastiff--state2 .decor-mastiff__body {
+  width: 48px; height: 32px;
+  background: #2A1A0A;
+  border-radius: 50%;
+  animation: mastiff-bark-weak 0.5s ease-in-out 1;
+}
+.decor-mastiff--state2 .decor-mastiff__head {
+  width: 22px; height: 22px;
+  background: #1A0E04;
+  border-radius: 50%;
+  position: absolute; top: -10px; left: 13px;
+  animation: mastiff-bark-weak 0.5s ease-in-out 1;
+}
+
+/* --- 状态3：安静坐着，眼看玩家 --- */
+.decor-mastiff--state3 {
+  bottom: 50px;
+  right: 60px;
+}
+.decor-mastiff--state3 .decor-mastiff__body {
+  width: 48px; height: 32px;
+  background: #2A1A0A;
+  border-radius: 50%;
+}
+.decor-mastiff--state3 .decor-mastiff__head {
+  width: 22px; height: 22px;
+  background: #1A0E04;
+  border-radius: 50%;
+  position: absolute; top: -10px; left: 13px;
+}
+.decor-mastiff--state3 .decor-mastiff__head::after {
+  content: '';
+  position: absolute; top: 6px; left: 8px;
+  width: 6px; height: 4px;
+  background: #FFF8E7; border-radius: 2px;
+  box-shadow: 10px 0 0 #FFF8E7;
+}
+
+/* --- 状态4：走近玩家，蹲脚边，摇尾 --- */
+.decor-mastiff--state4 {
+  bottom: 40px;
+  right: 120px;
+}
+.decor-mastiff--state4 .decor-mastiff__body {
+  width: 48px; height: 32px;
+  background: #2A1A0A;
+  border-radius: 50%;
+}
+.decor-mastiff--state4 .decor-mastiff__head {
+  width: 22px; height: 22px;
+  background: #1A0E04;
+  border-radius: 50%;
+  position: absolute; top: -8px; left: 13px;
+}
+.decor-mastiff--state4 .decor-mastiff__head::after {
+  content: '';
+  position: absolute; top: 6px; left: 8px;
+  width: 6px; height: 4px;
+  background: #FFF8E7; border-radius: 2px;
+  box-shadow: 10px 0 0 #FFF8E7;
+}
+.decor-mastiff__tail {
+  position: absolute; top: 6px; right: -14px;
+  width: 16px; height: 6px;
+  background: #1A0E04; border-radius: 3px;
+  transform-origin: left center;
+  animation: mastiff-wag 0.4s ease-in-out infinite alternate;
+}
+
+/* --- 状态5：村口结局，面朝玩家 --- */
+.decor-mastiff--state5 {
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(-1);
+}
+.decor-mastiff--state5 .decor-mastiff__body {
+  width: 48px; height: 32px;
+  background: #2A1A0A;
+  border-radius: 50%;
+}
+.decor-mastiff--state5 .decor-mastiff__head {
+  width: 22px; height: 22px;
+  background: #1A0E04;
+  border-radius: 50%;
+  position: absolute; top: -8px; left: 13px;
+}
+.decor-mastiff--state5 .decor-mastiff__head::after {
+  content: '';
+  position: absolute; top: 6px; left: 8px;
+  width: 6px; height: 4px;
+  background: #FFF8E7; border-radius: 2px;
+  box-shadow: 10px 0 0 #FFF8E7;
+}
+
+/* ========== 藏獒动画 ========== */
+@keyframes mastiff-bark-strong {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+@keyframes mastiff-bark-weak {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+@keyframes mastiff-enter-bark {
+  0% { transform: scale(1); }
+  10% { transform: scale(1.08); }
+  20% { transform: scale(0.96); }
+  30% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+@keyframes mastiff-wag {
+  0% { transform: rotate(-15deg); }
+  100% { transform: rotate(15deg); }
+}
+
+/* ========== 保存布局按钮 ========== */
+.scene__save-layout-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  z-index: 12;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-family: var(--font-ui);
+  color: var(--color-text-subtle);
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+
+.scene__save-layout-btn:hover {
+  opacity: 1;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.scene__save-layout-toast {
+  position: absolute;
+  bottom: 42px;
+  right: 8px;
+  z-index: 13;
+  max-width: 360px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-family: var(--font-ui);
+  color: #f0e68c;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(240, 230, 140, 0.4);
+  border-radius: 4px;
+  animation: layout-toast-in 0.3s ease;
+}
+
+@keyframes layout-toast-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

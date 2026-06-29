@@ -1,0 +1,119 @@
+/* ================================================================
+   SceneExit —— 场景出口导航按钮
+
+   箭头图标在上 + 文字标签在下，无背景无边框。
+   支持拖拽移动、共享缩放、长按旋转箭头。
+   ================================================================ */
+
+.scene-exit {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  user-select: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.18s ease;
+}
+
+/* ── hover：微微放大 + 柔白发光（非拖拽/非缩放模式）── */
+.scene-exit:not(.scene-exit--dragging):not(.scene-exit--resizing):hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.35))
+          drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+/* ── 拖拽中 ── */
+.scene-exit--dragging {
+  opacity: 0.75;
+  filter: drop-shadow(0 0 16px rgba(255, 215, 0, 0.5));
+  cursor: grabbing;
+  z-index: 5;
+}
+
+/* ── 缩放模式 ── */
+.scene-exit--resizing {
+  outline: 2px dashed rgba(255, 215, 0, 0.7);
+  outline-offset: 6px;
+  border-radius: 4px;
+  z-index: 5;
+}
+
+/* ── 箭头容器 ── */
+.scene-exit__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scene-exit__arrow-img {
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+.scene-exit__arrow-char {
+  line-height: 1;
+  color: #fff8e7;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+/* ── 标签文字 ── */
+.scene-exit__label {
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  white-space: nowrap;
+  pointer-events: none;
+  font-weight: 500;
+}
+
+/* ================================================================
+   缩放控制 UI
+   ================================================================ */
+
+.scene-exit__scale-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.scene-exit__scale-input {
+  width: 56px;
+  height: 20px;
+  padding: 0 4px;
+  font-size: 11px;
+  color: rgba(255, 248, 231, 0.95);
+  background: rgba(26, 26, 26, 0.85);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 3px;
+  text-align: center;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.scene-exit__scale-input::-webkit-outer-spin-button,
+.scene-exit__scale-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.scene-exit__scale-input:focus {
+  border-color: rgba(255, 215, 0, 0.8);
+}
+
+/* ── 提示文字 ── */
+.scene-exit__hint {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.scene-exit__hint--resize {
+  color: rgba(255, 215, 0, 0.85);
+}

@@ -1,0 +1,1913 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>山麓之问 · 全部对话</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#1a1a2e;color:#e0d5c1;padding:20px}
+h1{text-align:center;color:#d4a574;margin-bottom:4px;font-size:22px}
+.sub{text-align:center;color:#888;font-size:13px;margin-bottom:24px}
+.toolbar{position:sticky;top:12px;z-index:10;display:flex;justify-content:center;gap:8px;margin-bottom:20px}
+.btn{padding:6px 16px;border:1px solid #5b2c6e;border-radius:4px;background:rgba(91,44,110,.2);color:#d4a574;cursor:pointer;font-size:13px;transition:.15s}
+.btn:hover{background:rgba(91,44,110,.4)}
+.btn--active{background:#5b2c6e;color:#fff}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{position:sticky;top:56px;z-index:5;background:#2d2d44;color:#d4a574;padding:10px 14px;text-align:left;border-bottom:2px solid #5b2c6e}
+.col-id{width:260px;padding:10px 14px;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.06)}
+.col-title{width:100px;padding:10px 14px;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.06);color:#d4a574;font-weight:600}
+.col-lines{padding:10px 14px;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.06);line-height:1.9}
+.line{display:block}
+.line--key{color:#d4a574;font-weight:600}
+code{background:rgba(91,44,110,.25);padding:1px 6px;border-radius:3px;font-size:12px;color:#cba6f7}
+.tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:11px;margin-left:4px}
+.tag--trust{background:rgba(139,26,26,.3);color:#d4a574}
+.img-box{margin-top:8px}
+.img-box img{max-width:200px;border-radius:4px;border:1px solid rgba(255,255,255,.1)}
+.count{color:#d4a574;font-weight:600}
+</style>
+</head>
+<body>
+<h1>山麓之问 · 全部对话</h1>
+<p class="sub">共 <span class="count">231</span> 条对话 · 2026-06-25 导出</p>
+<div class="toolbar">
+  <button class="btn btn--active" onclick="showAll()">全部</button>
+  <button class="btn" id="btnStory" onclick="showStory()">仅剧情</button>
+  <button class="btn" id="btnTrust" onclick="showTrust()">仅信任阶段</button>
+</div>
+<table id="table">
+  <thead><tr><th>ID</th><th>标题</th><th>对话内容</th></tr></thead>
+  <tbody><tr>
+      <td class="col-id"><code>dlg_mani_pile</code></td>
+      <td class="col-title">玛尼堆</td>
+      <td class="col-lines"><span class="line">一堆刻着经文的石块，垒得整整齐齐。</span>
+<span class="line">风吹过，石上的&quot;嗡嘛呢叭咪吽&quot;仿佛在低语。</span>
+<span class="line">村里人说，每加一块石头，就许下一个愿望。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_road_sign</code></td>
+      <td class="col-title">路标</td>
+      <td class="col-lines"><span class="line">木牌上字迹斑驳：「前方·村子」。</span>
+<span class="line">箭头指向右侧的小路，通向村子中央。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_prayer_flags</code></td>
+      <td class="col-title">经幡</td>
+      <td class="col-lines"><span class="line">五色经幡在风中猎猎作响：蓝、白、红、绿、黄。</span>
+<span class="line">蓝是天，白是云，红是火，绿是水，黄是土。</span>
+<span class="line">每一次飘动，都是一次祈福。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_stone_well</code></td>
+      <td class="col-title">老水井</td>
+      <td class="col-lines"><span class="line">井沿磨得发亮，不知被多少双手抚摸过。</span>
+<span class="line">探头下去，能看见水面映出自己的脸。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_tent_entrance</code></td>
+      <td class="col-title">帐篷门口</td>
+      <td class="col-lines"><span class="line">黑氆氇帐篷的门帘半卷着，里面飘出酥油茶的香气。</span>
+<span class="line">没有人应声。旦增似乎不在家。</span>
+<span class="line">也许该在院子里找找线索。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_hearth</code></td>
+      <td class="col-title">火塘</td>
+      <td class="col-lines"><span class="line">火塘里的灰还是温的，说明不久前还有人在。</span>
+<span class="line">三块支锅的石头，被烟熏得漆黑。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_1</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">一位面容沧桑的老人从帐篷里探出身来。</span>
+<span class="line">&quot;远方的客人，你终于来了。&quot;</span>
+<span class="line">旦增微笑着，眼神里藏着一丝难以察觉的忧虑。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_stranger</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增看了你一眼，摆了摆手。</span>
+<span class="line">&quot;没什么好说的，走吧。&quot;</span>
+<span class="line">他转身走进了帐篷深处，不再理会你。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_listener</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">&quot;你问那座山？&quot;</span>
+<span class="line">旦增指了指远方的雪山，眼神柔和了一些。</span>
+<span class="line">&quot;我年轻时喜欢画它。每一笔都像在描自己的心。&quot;</span>
+<span class="line">他从怀里摸出一张泛黄的残卷，让你看了一眼又收了回去。</span>
+<span class="line line--key">&quot;你和你祖父长得不像，但问问题的方式一样。他懂得先听，再问。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_acknowledged</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">&quot;你和他很像……&quot;</span>
+<span class="line">旦增沉默了许久，声音有些沙哑。</span>
+<span class="line">&quot;你祖父当年，也曾经像你这样追问过我。&quot;</span>
+<span class="line">&quot;后来他去了经堂，再也没有回来。&quot;</span>
+<span class="line">旦增看着你，似乎在等待什么。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_confidant</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增主动从帐篷里走出来，神色郑重。</span>
+<span class="line">&quot;孩子，我一直在等你。&quot;</span>
+<span class="line">&quot;有些事我藏了太久，是时候说出来了。&quot;</span>
+<span class="line">&quot;山里有答案，但你需要先去经堂。&quot;</span>
+<span class="line">旦增的目光投向远方，仿佛下了一个很大的决心。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_stranger</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">卓玛正对着手机皱眉，抬头看了你一眼。</span>
+<span class="line">&quot;游客？村里没什么好看的，广场那边拍拍照就行。&quot;</span>
+<span class="line">她又低下头，手指在屏幕上快速滑动。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_listener</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">卓玛把手机收进冲锋衣口袋，叹了口气。</span>
+<span class="line">&quot;你一直在村里转，不是普通游客吧。&quot;</span>
+<span class="line">&quot;我爸……旦增他跟你说了什么吗？&quot;</span>
+<span class="line">她顿了顿，又摆摆手：&quot;算了，当我没问。村子的事比一幅画复杂得多。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_acknowledged</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">&quot;唐卡的事，我知道一些。&quot;</span>
+<span class="line">卓玛靠在广场的石墙上，语气很平。</span>
+<span class="line">&quot;但我不打算追究。你明白吗？这个村子需要的不是真相，是未来。&quot;</span>
+<span class="line">&quot;经堂的钥匙我有。但那个门……不是一把钥匙就能让你进去的。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_confidant</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">卓玛难得地笑了，是一种很疲惫的笑。</span>
+<span class="line">&quot;你知道吗，我有时候也想去经堂看一眼。但我爸不肯去，白玛又不肯说。&quot;</span>
+<span class="line">&quot;这样吧——找个时间，我带你去看一眼。&quot;</span>
+<span class="line">&quot;只一眼。剩下的，得靠你自己问。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_stranger</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑坐在广场角落，膝上摊着画夹，手里的转经筒有一搭没一搭地转着。</span>
+<span class="line">&quot;你是来找我爷爷的？&quot;</span>
+<span class="line">他没等你回答，低下头继续画，炭笔在纸上用力地刮。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_listener</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line line--key">&quot;爷爷从来不教我画画。&quot;</span>
+<span class="line">格桑把画夹翻过来给你看——是一幅未完成的雪山，笔触有力但构图混乱。</span>
+<span class="line line--key">&quot;他说我没那个天赋。但我觉得，他是怕我看到什么。&quot;</span>
+<span class="line">&quot;你知道吗，我爸在我五岁那年就走了。爷爷从那以后就不怎么说话了。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_acknowledged</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑收起画夹，眼神突然认真起来。</span>
+<span class="line">&quot;我在经堂外面画过很多次。有一次，我听见白玛在里面念经。&quot;</span>
+<span class="line">&quot;声音很低，听不清念的是什么。但那个调子……不像平时祈福的调子。&quot;</span>
+<span class="line">他盯着你：&quot;我问他供的是什么，他不说。只是把门关得更紧了。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_confidant</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑把一张折好的画塞进你手里。</span>
+<span class="line">&quot;这是我能画的全部了。爷爷不肯教我的那些，我偷着学的。&quot;</span>
+<span class="line">&quot;如果你能让他开口……让他把那些年的事说出来……&quot;</span>
+<span class="line">他咬住嘴唇，没有说下去。转经筒掉在地上，他没有捡。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_stranger</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛坐在广场的经幡下，嘴唇微动，正捻着一串旧念珠。</span>
+<span class="line">他看了你一眼，没有停下念诵。</span>
+<span class="line">&quot;风在动，幡在动，你的心也在动。坐。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_listener</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛收起念珠，指了指身后的经堂方向。</span>
+<span class="line line--key">&quot;那扇门关着，不是锁坏了，是有人把它关上的。&quot;</span>
+<span class="line">&quot;业报这件事，不是谁做错了什么，是时候还没到。&quot;</span>
+<span class="line">&quot;你来，是时候的一部分。但不是全部。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_acknowledged</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛从怀里取出一盏酥油灯，点燃，放在脚边。</span>
+<span class="line">&quot;有人觉得一幅画比一个村子值钱。那是贪。&quot;</span>
+<span class="line">&quot;有人觉得一个村子的未来比真相重要。那是执。&quot;</span>
+<span class="line line--key">&quot;贪和执，都是苦。门打不开，是因为外面的人不知道该问什么。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_confidant</code> <span class="tag tag--trust">信任</span></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛站起身，酥油灯的火苗在风中晃了一下，没有灭。</span>
+<span class="line">&quot;灯不灭，是因为有人添油。经堂还在，是因为有人记得。&quot;</span>
+<span class="line">&quot;钥匙，卓玛有，我也有。但钥匙从来不是问题。&quot;</span>
+<span class="line">&quot;问题是——我们两个里，谁愿意为你推开那扇门。&quot;</span>
+<span class="line">他捻动一颗念珠：&quot;你祖父问过我同样的问题。我给了他同样的回答。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_bedroom_locked</code></td>
+      <td class="col-title">帐篷深处</td>
+      <td class="col-lines"><span class="line">门帘虚掩着，隐约能看见里面的被褥和旧木箱。</span>
+<span class="line">空气里有一股淡淡的酥油味。</span>
+<span class="line">这里似乎很久没人进来过了。也许旦增不希望别人进去。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_temple_locked</code></td>
+      <td class="col-title">经堂门</td>
+      <td class="col-lines"><span class="line">厚重的木门上绘着褪色的莲花纹，门缝里透出一丝酥油灯的气息。</span>
+<span class="line">门没有锁，但推开时纹丝不动。</span>
+<span class="line">仿佛有什么东西在里面顶着。也许是时候问问白玛了。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_mani_stones_solved</code></td>
+      <td class="col-title">六字真言石</td>
+      <td class="col-lines"><span class="line">六块石头在门前的石板地上排成了正确顺序。</span>
+<span class="line">唵嘛呢叭咪吽——门缝里透出的酥油灯光似乎亮了一些。</span>
+<span class="line">但经堂的门，依然纹丝不动。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_flags_hint</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛望向山顶猎猎作响的经幡，停下捻动的念珠。</span>
+<span class="line">&quot;风把颜色吹乱了——蓝天、白云、火焰、绿水、大地。&quot;</span>
+<span class="line">&quot;谁还记得它们该在哪里。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_flags_solved</code></td>
+      <td class="col-title">经幡</td>
+      <td class="col-lines"><span class="line">五色经幡在风中依次排开：蓝、白、红、绿、黄。</span>
+<span class="line">白玛从远处望了一眼，微微点头。</span>
+<span class="line">&quot;色归其位，心才安。&quot;</span>
+<span class="line">&quot;这经堂的门，比这经幡乱得更久。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_mani_scroll_found</code></td>
+      <td class="col-title">玛尼堆</td>
+      <td class="col-lines"><span class="line">你弯下腰，在玛尼堆的石缝中摸索。</span>
+<span class="line">指尖触到一张泛黄的纸卷——边角已被虫蛀，但字迹尚可辨认。</span>
+<span class="line">（残卷已收入道具栏，点击右上角 📜 查看）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_mani_scroll_collected</code></td>
+      <td class="col-title">玛尼堆</td>
+      <td class="col-lines"><span class="line">残卷已经在你手上了。</span>
+<span class="line">石缝里只剩下几片枯叶和细沙，再无他物。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_corner_locked</code></td>
+      <td class="col-title">白玛的角落</td>
+      <td class="col-lines"><span class="line">白玛常坐的角落，地上压着一条素白的哈达。</span>
+<span class="line">哈达边缘露出一角泛黄的纸——似乎压着什么，但看不真切。</span>
+<span class="line">白玛还在旁边念经，不便细翻。或许等他更信任你一些再说。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_corner_view</code></td>
+      <td class="col-title">白玛的角落</td>
+      <td class="col-lines"><span class="line">你蹲下身，轻轻掀开哈达。</span>
+<span class="line">下面是一页手抄的经文——但仔细看去，经文之间夹着一页残卷。</span>
+<span class="line">白玛停下念珠看了你一眼，没有阻止。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_corner_found</code></td>
+      <td class="col-title">白玛的角落</td>
+      <td class="col-lines"><span class="line">你小心地抽出那张泛黄的纸页，拂去灰尘。</span>
+<span class="line">白玛微微点头：「那是你该找到的东西。」</span>
+<span class="line">（残卷第二页已收入道具栏，点击右上角 📜 查看）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_corner_collected</code></td>
+      <td class="col-title">白玛的角落</td>
+      <td class="col-lines"><span class="line">哈达下面已经空了。</span>
+<span class="line">白玛捻着念珠，仿佛什么都没发生过。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_portfolio_locked</code></td>
+      <td class="col-title">格桑的画夹</td>
+      <td class="col-lines"><span class="line">格桑正专注地画着画，炭笔在纸上沙沙作响。</span>
+<span class="line">画夹合在一旁，不便打扰。</span>
+<span class="line">画夹里隐约夹着什么，边角泛黄，看不真切。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_portfolio_view</code></td>
+      <td class="col-title">格桑的画夹</td>
+      <td class="col-lines"><span class="line">趁格桑抬头看雪山的间隙，你轻轻翻开画夹。</span>
+<span class="line">夹层里有一张折好的纸——不是画，是一页残卷，纸色比画纸旧得多。</span>
+<span class="line">格桑回过头，看见了，却没有阻止，只是低下声：&quot;那是……我偷偷藏的。&quot;</span>
+<span class="line">他顿了顿：&quot;爷爷说画那东西的人都不在了。但你既然看到了，就拿走吧。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_portfolio_found</code></td>
+      <td class="col-title">格桑的画夹</td>
+      <td class="col-lines"><span class="line">你小心地抽出那页残卷，展开。纸面字迹尚可辨认，记的是一种植物的形貌。</span>
+<span class="line">格桑看了一眼，轻声说：&quot;这是金颜草。我见过它开花，就在经堂北边的石缝里。&quot;</span>
+<span class="line">（残卷第三页已收入道具栏，点击右上角 📜 查看）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_portfolio_collected</code></td>
+      <td class="col-title">格桑的画夹</td>
+      <td class="col-lines"><span class="line">画夹里已经空了，只剩下几张未完成的画稿。</span>
+<span class="line">格桑继续低头画他的雪山，炭笔声又沙沙响了起来。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_stone_locked</code></td>
+      <td class="col-title">院中石</td>
+      <td class="col-lines"><span class="line">院子右侧的空地上，有一块孤零零的石头，比拳头大些。</span>
+<span class="line">石头下面似乎压着什么东西，边角泛黄——像是纸。</span>
+<span class="line">但旦增就在不远处，正看着这边。现在翻动，怕是不便。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_stone_view</code></td>
+      <td class="col-title">院中石</td>
+      <td class="col-lines"><span class="line">趁旦增转身的间隙，你快步走到石头旁，用力搬开。</span>
+<span class="line">石头下面压着一页残卷，纸色比泥土还黄，边角已被虫蛀，但字迹尚可辨认。</span>
+<span class="line">你匆匆记下位置，将残卷留在原处——一会儿再来取，免得被旦增看见。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_stone_found</code></td>
+      <td class="col-title">院中石</td>
+      <td class="col-lines"><span class="line">你再次来到石头旁，确认旦增没有注意，迅速取出那页残卷，拂去泥土。</span>
+<span class="line">纸上的字迹依稀可辨——记的是一种白色颜料的制法，语焉不详。</span>
+<span class="line">（残卷第四页已收入道具栏，点击右上角 📜 查看）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_stone_collected</code></td>
+      <td class="col-title">院中石</td>
+      <td class="col-lines"><span class="line">石头已经被你搬回原处。</span>
+<span class="line">下面的土坑空空如也，只剩几片枯叶。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_hematite_found</code></td>
+      <td class="col-title">赤铁矿</td>
+      <td class="col-lines"><span class="line">院子左角的柴堆旁，散落着几块暗红色的石头。</span>
+<span class="line">你拾起一块——沉重，断面呈赭红，指尖被染上淡淡锈色。</span>
+<span class="line">是赤铁矿。唐卡朱砂红的原料，正是此物。</span>
+<span class="line">（朱砂红·原材料已采集）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_hematite_collected</code></td>
+      <td class="col-title">赤铁矿</td>
+      <td class="col-lines"><span class="line">赤铁矿已在囊中。柴堆旁只剩几片碎屑。</span>
+<span class="line">该想想如何将它制成颜料了——或许院子里那座旧铜炉藏着答案。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_furnace_rust</code></td>
+      <td class="col-title">铜炉</td>
+      <td class="col-lines"><span class="line">一座半人高的铜炉静置院中，炉身蒙着厚厚的锈迹。</span>
+<span class="line">你伸手触摸——锈层下似乎有刻痕，但被氧化层盖得严严实实。</span>
+<span class="line">或许擦去锈迹，能看清上面的字。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_furnace_inscription</code></td>
+      <td class="col-title">铜炉·刻字</td>
+      <td class="col-lines"><span class="line">你用袖口用力擦拭炉身，锈迹簌簌落下，露出一片清晰的刻字：</span>
+<span class="line">「赤石三分，研至尘微；牛胶一钱，化于温水。」</span>
+<span class="line">「七研七浣，方成朱泥。火候过则色焦，胶重则色黯。」</span>
+<span class="line">「——此乃朱砂古法，画师秘不示人。」</span>
+<span class="line">你将刻字默记于心。朱砂红的制法，原来藏在这座炉上。</span>
+<span class="line">（朱砂红·制法已理解）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_furnace_done</code></td>
+      <td class="col-title">铜炉</td>
+      <td class="col-lines"><span class="line">铜炉上的刻字已被你抄录在心。</span>
+<span class="line">炉身依旧静默，仿佛千年来从未有人读懂过它。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_blue_ore_generic</code></td>
+      <td class="col-title">蓝色矿石</td>
+      <td class="col-lines"><span class="line">路边的碎石堆里，散落着两块蓝色的矿石。</span>
+<span class="line">看起来和寻常石青差不多，说不上有什么特别。</span>
+<span class="line">或许该先弄清楚什么是真正的「佛青」再说。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_blue_ore_a_correct</code></td>
+      <td class="col-title">蓝色矿石</td>
+      <td class="col-lines"><span class="line">你凑近端详这块矿石——断面色泽湛蓝，深沉通透，边缘泛着一层幽光。</span>
+<span class="line">残卷所言不虚：「其色湛然，历千载不褪。」这块正是苍穹之蓝，佛青的真料。</span>
+<span class="line">你小心地将矿石敲下一角，收入囊中。</span>
+<span class="line">（佛青·原材料已采集）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_blue_ore_a_collected</code></td>
+      <td class="col-title">蓝色矿石</td>
+      <td class="col-lines"><span class="line">佛青矿石已在囊中。这块石头的秘密，已被你识破。</span>
+<span class="line">碎石堆里只剩几片寻常的石青，再无可取之物。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_blue_ore_b_wrong</code></td>
+      <td class="col-title">蓝色矿石</td>
+      <td class="col-lines"><span class="line">你端详这块矿石——颜色虽蓝，却浅而浊，带着一丝灰调，断面黯淡无光。</span>
+<span class="line">颜色不太对。这不是残卷所说的「苍穹之蓝」。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_green_plant_found</code></td>
+      <td class="col-title">松石草</td>
+      <td class="col-lines"><span class="line">经堂外的石阶旁，生着一簇低矮的草本植物，叶片圆润，泛着淡淡的青绿色。</span>
+<span class="line">你认出这是松石——唐卡中松石绿颜料的来源。</span>
+<span class="line">你小心地连根拔起，抖落泥土。</span>
+<span class="line">（松石绿·原材料已采集）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_green_plant_collected</code></td>
+      <td class="col-title">松石草</td>
+      <td class="col-lines"><span class="line">松石已在囊中。石阶旁只留下一个小小的土坑。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_old_prescription</code></td>
+      <td class="col-title">老药方</td>
+      <td class="col-lines"><span class="line">石阶的缝隙里，塞着一张泛黄的纸片——是一页老药方。</span>
+<span class="line">字迹潦草，但依稀可辨：「松石研粉，醋浸三日，去其浊气；以羊胶调之，色如翠玉。」</span>
+<span class="line">药方末尾另有一行小字：「此法与古法有异，需对照实物方能定夺。」</span>
+<span class="line">你将药方的内容默记于心。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_songshi_compare</code></td>
+      <td class="col-title">松石绿·对照药方</td>
+      <td class="col-lines"><span class="line">你取出松石，又摊开老药方，逐条对照。</span>
+<span class="line">「研粉」——松石质地细腻，确实可研。</span>
+<span class="line">「醋浸去浊」——新鲜松石略带土气，醋浸或可去之。</span>
+<span class="line">「羊胶调之」——与朱砂用的牛胶不同，羊胶更清，不掩青色。</span>
+<span class="line">你心中豁然：这药方虽非古法，却暗合松石之性。松石绿的制法，原来藏在这张旧纸里。</span>
+<span class="line">（松石绿·制法已理解）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_golden_herb_found</code></td>
+      <td class="col-title">金颜草</td>
+      <td class="col-lines"><span class="line">经堂北侧的石缝间，伏地生着一丛不起眼的草。</span>
+<span class="line">叶片狭长如柳眉，背面覆着一层白绒；花朵五瓣，色作暗红——正是残卷所记的「金颜草」。</span>
+<span class="line">你掐断茎秆，断处渗出蜜色汁液，沾在指尖，半日方褪。</span>
+<span class="line">（藏金·原材料已采集）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_golden_herb_collected</code></td>
+      <td class="col-title">金颜草</td>
+      <td class="col-lines"><span class="line">金颜草已在囊中。石缝间只剩几片残叶。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_zangjin_recipe</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑瞥见你手中的金颜草，眼睛一亮。</span>
+<span class="line">「这个……我认得。爷爷以前画唐卡用过。」</span>
+<span class="line">他压低声音：「爷爷说，这草的汁液不能直接用，得在粗陶上研。研到一半会变金色，那时候才能入胶。」</span>
+<span class="line">「他说这法子是祖上传下来的，不许外人说。但你……你都找到这草了，不告诉你可惜了。」</span>
+<span class="line">格桑顿了顿，又补一句：「研的时候要耐住性子，急了色就灰。」</span>
+<span class="line">（藏金·制法已理解）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_gubai_secret</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增沉默了许久，目光落在地上。</span>
+<span class="line">&quot;你问骨白……&quot;</span>
+<span class="line">&quot;那是我妻子的氆氇。她走后，我将她最后穿的那件白色氆氇磨成了粉。&quot;</span>
+<span class="line">&quot;这颜色里，有她。&quot;</span>
+<span class="line">旦增的声音越来越低，最后几个字几乎听不见。</span>
+<span class="line">（骨白·来历已解）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_gubai_cloth</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛从怀里取出一小块折叠整齐的白色氆氇。</span>
+<span class="line">&quot;旦增托我保管的。他说，将来会有人来取。&quot;</span>
+<span class="line">&quot;你既然问到了，就是时候了。&quot;</span>
+<span class="line">他递给你，手指在布面上轻轻拂过。</span>
+<span class="line">（氆氇碎片已收入道具栏）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_cloth_collected</code></td>
+      <td class="col-title">氆氇碎片</td>
+      <td class="col-lines"><span class="line">氆氇碎片已在你手中。白玛微微点头，不再多言。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_cloth_locked</code></td>
+      <td class="col-title">氆氇碎片</td>
+      <td class="col-lines"><span class="line">白玛的念珠旁放着一小块白色织物，叠得整整齐齐。</span>
+<span class="line">看起来是有人托他保管的——但现在还不便碰它。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_pulu_grind_done</code></td>
+      <td class="col-title">氆氇碎片</td>
+      <td class="col-lines"><span class="line">你将氆氇碎片放在粗陶上，一点点研开。</span>
+<span class="line">白色的纤维渐渐化为细粉——这便是骨白。</span>
+<span class="line">旦增说过的，这颜色里，有她。</span>
+<span class="line">（骨白·已可制作）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_thangka_deep</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增接过你递来的唐卡，目光落在画布上，久久没有移开。</span>
+<span class="line">他的手轻轻拂过骨白的部分——那是他妻子的氆氇磨成的颜色。</span>
+<span class="line">&quot;你……真的看到了。&quot;</span>
+<span class="line">他的眼眶有些发红，但嘴角带着笑。</span>
+<span class="line">&quot;孩子，跟我来。&quot;</span>
+<span class="line">旦增转身走向帐篷深处，掀开了那扇一直紧闭的门帘。</span>
+<span class="line">（旦增卧室已解锁）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_thangka_basic</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增接过唐卡，仔细端详了片刻，点了点头。</span>
+<span class="line">&quot;画得不错。颜色的位置都对。&quot;</span>
+<span class="line">他顿了顿，目光在度母的左眼处停留了一瞬，但没有多说什么。</span>
+<span class="line">&quot;好好收着吧。这是一幅好唐卡。&quot;</span>
+<span class="line">旦增将唐卡还给你，转身走进了帐篷深处。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_thangka</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑接过唐卡，眼睛一下子亮了。</span>
+<span class="line">&quot;这是……爷爷画的那幅？不对，这是你画的？&quot;</span>
+<span class="line">他凑近了看比例，忽然从画夹里翻出几张旧纸。</span>
+<span class="line">&quot;你看，我以前也试着画过。但比例总是对不上。&quot;</span>
+<span class="line">纸上画着歪歪扭扭的度母轮廓，比例混乱，和唐卡上的精准构图形成鲜明对比。</span>
+<span class="line">&quot;爷爷从来不教我这些……他说我画得不对，但又不肯说哪里不对。&quot;</span>
+<span class="line">格桑的声音低了下去：&quot;你做到了我做不到的事。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_thangka</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛接过唐卡，捻动念珠的手停了下来。</span>
+<span class="line">&quot;你画完了。&quot;</span>
+<span class="line">他不再用隐喻说话，语气前所未有的直白。</span>
+<span class="line">&quot;这五种颜色，各有所属。你选对了。&quot;</span>
+<span class="line">&quot;度母的左眼……&quot;他微微一顿，&quot;你看到了画师的心。&quot;</span>
+<span class="line">&quot;这就是唐卡。不是画佛，是画人。&quot;</span>
+<span class="line">白玛将唐卡还给你，重新捻动念珠。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_thangka_already_given</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line">他已经收下了你的唐卡。</span>
+<span class="line">不必再给他看一次了。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_stage1</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">一位穿着藏青色商务夹克的中年男人站在广场边，手里拿着文件夹。</span>
+<span class="line">「你好，我是仁青，从成都来的。我们公司在做一个文旅项目……你知道这个村子的故事吗？」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_stage2</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青翻开文件夹，里面是几张打印的卫星地图和一份项目策划书。</span>
+<span class="line">「这里风景很好，但缺一点……包装。我们可以把村子打造成一个旅游目的地。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_stage3</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青收起文件夹，换了一副更随意的表情。</span>
+<span class="line">「对了，听说这个村子里有人画唐卡？那种老派的……矿物颜料的那种？」</span>
+<span class="line">他的目光在广场上扫了一圈，似乎在找什么人。「你见过吗？」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_photo_give</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青从文件夹里抽出一张照片，递了过来。</span>
+<span class="line">「这是我在村里拍到的——一尊度母的手势特写。你看这个角度，光线刚好打在指尖上。」</span>
+<span class="line">「我不太懂这些，但拍的时候总觉得……这手势像是在说什么。」</span>
+<span class="line">（唐卡照片碎片·度母手势已收入记忆画布）</span><div class="img-box"><img src="/images/tangka_photo_hand_placeholder.png" alt="" onerror="this.style.display='none'"></div></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_photo_compare</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青从文件夹里又抽出一张照片。</span>
+<span class="line">「对了，我还拍了一张雪山的。你看这个角度——」</span>
+<span class="line">他把照片递给你，上面是村子背后的雪山，晨光刚好照亮了山脊。</span>
+<span class="line">「我觉得这座山很特别。说不上来为什么。」</span>
+<span class="line">（唐卡照片碎片·背景山形已收入记忆画布）</span><div class="img-box"><img src="/images/tangka_photo_mountain_placeholder.png" alt="" onerror="this.style.display='none'"></div></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_memory_fragment_1</code></td>
+      <td class="col-title">记忆画布·度母手势</td>
+      <td class="col-lines"><span class="line">【度母手势】</span>
+<span class="line">拇指与中指轻捻，其余三指微展——这是施愿印（Varada Mudra）。</span>
+<span class="line">度母以右手结此印，垂向膝侧，掌心朝外。</span>
+<span class="line">在唐卡传统中，这一手势象征&quot;给予&quot;与&quot;满足&quot;——给予众生所愿，满足一切祈求。</span><div class="img-box"><img src="/images/tangka_photo_hand_placeholder.png" alt="" onerror="this.style.display='none'"></div></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_memory_fragment_2</code></td>
+      <td class="col-title">记忆画布·背景山形</td>
+      <td class="col-lines"><span class="line">【背景山形】</span>
+<span class="line">唐卡背景中的山脉轮廓，与窗外雪山的剪影惊人地吻合。</span>
+<span class="line">画师并非凭空想象——他将眼前的山，一笔一画搬进了唐卡。</span>
+<span class="line">山的比例、雪线的位置、山脊的起伏……每一个细节都与实景对应。</span><div class="img-box"><img src="/images/tangka_photo_mountain_placeholder.png" alt="" onerror="this.style.display='none'"></div></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_memory_fragment_3</code></td>
+      <td class="col-title">记忆画布·度母左眼</td>
+      <td class="col-lines"><span class="line">【度母左眼】</span>
+<span class="line">你将目光聚焦在度母的左眼上。</span>
+<span class="line">与其他部分工整的笔触不同，左眼的线条格外细腻。</span>
+<span class="line">瞳孔深处似有一层极薄的罩染，像是画师反复涂抹了无数次。</span>
+<span class="line">那不是技术——那是执念。画师把最多的心力留在了这只眼睛里。</span><div class="img-box"><img src="/images/tangka_photo_eye_placeholder.png" alt="" onerror="this.style.display='none'"></div></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_memory_fragment_4</code></td>
+      <td class="col-title">记忆画布·角落藏文</td>
+      <td class="col-lines"><span class="line">【角落藏文】</span>
+<span class="line">唐卡右下角有一行细小的藏文，笔画工整但墨色较淡。</span>
+<span class="line">白玛曾辨认过——「嗡 达咧 度达咧 度咧 梭哈」。</span>
+<span class="line">这是绿度母的心咒。画师将它藏在不起眼的角落，仿佛一个只有自己能听见的祈祷。</span><div class="img-box"><img src="/images/tangka_photo_script_placeholder.png" alt="" onerror="this.style.display='none'"></div></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_memory_fragment_5</code></td>
+      <td class="col-title">记忆画布·空白</td>
+      <td class="col-lines"><span class="line">【画面的空白】</span>
+<span class="line">你将五块碎片全部拼合——唐卡的完整面貌终于呈现。</span>
+<span class="line">但在所有色彩与线条之外，画面中央有一片留白。</span>
+<span class="line">那不是未完成，那是刻意留下的。</span>
+<span class="line">画师用尽一生绘制这尊度母，却留下了一片空白。</span>
+<span class="line">也许他画的不是佛。他画的是自己。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_memory_canvas_hint_area4</code></td>
+      <td class="col-title">记忆画布</td>
+      <td class="col-lines"><span class="line">唐卡右下角有一行细小的藏文，笔画工整但墨色较淡。</span>
+<span class="line">你不认识藏文，读不懂上面写的是什么。</span>
+<span class="line">也许需要找人帮忙辨认。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_identify_script</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛接过照片，凑近端详那行小字。</span>
+<span class="line">「嗡 达咧 度达咧 度咧 梭哈——这是绿度母的心咒。」</span>
+<span class="line">他捻动念珠，声音放得很低。</span>
+<span class="line">「画师把这咒语写在最不起眼的角落，像是怕人看见，又怕人看不见。」</span>
+<span class="line">「度母的咒语是祈愿，也是告别。画师画完这一笔，也许就再也没有拿起过画笔。」</span>
+<span class="line">（碎片四·角落藏文已解锁）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_memory_canvas_hint_area5</code></td>
+      <td class="col-title">记忆画布</td>
+      <td class="col-lines"><span class="line">画面中央似乎有一片空白区域。</span>
+<span class="line">但在其他碎片都解读完毕之前，你无法看清这里隐藏了什么。</span>
+<span class="line">解锁其他所有的碎片来揭示最后的秘密。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_song_bai_found</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line">经堂外墙角边，一丛松柏贴着石墙生长，枝上挂着细小的褐色球果。</span>
+<span class="line">这是煨桑用的——白玛说过，松柏先入炉，用它的烟净身净心。</span>
+<span class="line">（松柏已收入行囊）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_du_song_found</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line">旦增院子旁的山坡边，一株杜松从碎石缝里探出来，针叶带着淡淡的松脂香。</span>
+<span class="line">杜松是煨桑仪式中祈福用的——烟往上走，祈福的话也跟着上去。</span>
+<span class="line">（杜松已收入行囊）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ye_cao_found</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line">煨桑台边散落着几丛干枯的高原野草，看起来和松柏、杜松有些相似。</span>
+<span class="line">但气味不同——没有松脂的清香，反而带着一股淡淡的涩味。</span>
+<span class="line">（高原野草已收入行囊）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_song_bai_collected</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line">松柏枝还在那里，贴墙立着，球果在风中轻轻摇晃。</span>
+<span class="line">你已经取下了一些，够了。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_du_song_collected</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line">杜松还在山坡边，针叶上凝着露珠。</span>
+<span class="line">你已经取过一枝了。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ye_cao_collected</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line">高原野草还在台边随风摆动。</span>
+<span class="line">你已经采了一小捆，不必再取了。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_sang_stove_intro</code></td>
+      <td class="col-title">煨桑炉</td>
+      <td class="col-lines"><span class="line">一座石砌的煨桑炉立在台中央，炉壁被经年累月的烟火熏得漆黑。</span>
+<span class="line">炉边散落着几枝干枯的松柏和杜松——村里人煨桑时常用的两种植物。</span>
+<span class="line">白玛说过，煨桑是人与天地沟通的方式。烟往上走，话也跟着上去。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_sang_order</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛停下捻动的念珠，望向远方的煨桑台。</span>
+<span class="line">「煨桑的时候，先放什么，后放什么，是有讲究的。」</span>
+<span class="line">「松柏先入——烟净其身，也净其心。杜松后入——烟往上走，祈福的话才能跟着上去。」</span>
+<span class="line">「先净后请。顺序错了，烟不是那个烟，话也不是那个话了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_sang_chant</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛捻动念珠，低声念了一句——</span>
+<span class="line">「嗡啊吽，班扎咕噜贝玛悉地吽。」</span>
+<span class="line">「这是莲师心咒。煨桑的时候念这个，烟会把你的心愿带上去。」</span>
+<span class="line">他顿了顿，补充道：「记住这句话。煨桑的时候用得上。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_sang_wrong_plant</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line">烟的味道不对——浓烈呛人，笔直往下降。</span>
+<span class="line">白玛站在不远处，微微皱了皱眉，但没有说话。</span>
+<span class="line">你意识到，植物放错了。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_sang_wrong_order</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line">你按照自己的理解投放植物，但烟雾散乱，四处飘荡。</span>
+<span class="line">白玛轻轻摇头：「先请后净，顺序有误。」</span>
+<span class="line">烟雾不是往上走，而是在炉口徘徊——那不是祈福的烟。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_sang_wrong_chant</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line">你念出诵词，白玛停了下来。</span>
+<span class="line">「不是这句。」他走近煨桑炉，捻动念珠。</span>
+<span class="line">「煨桑时念的不是随便什么经文——每座山有每座山的咒。」</span>
+<span class="line">「莲师心咒。嗡啊吽，班扎咕噜贝玛悉地吽。记住了吗？」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_sang_success</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line">烟雾笔直升起，在煨桑台上空聚成一道细细的白柱。</span>
+<span class="line">风渐渐停了。整个村子似乎都安静了下来。</span>
+<span class="line">卓玛从广场走来，站在煨桑台边，望着上升的烟。</span>
+<span class="line">格桑放下画笔，从角落里探出头。</span>
+<span class="line">白玛捻动念珠，嘴唇微动——他在诵经。</span>
+<span class="line">最后是旦增。他拄着拐杖，一步一步从院子里走出来。</span>
+<span class="line">这是他第一次走出那个院子。</span>
+<span class="line">烟雾散尽。煨桑台上只剩下灰烬和沉默。</span>
+<span class="line">旦增轻声说：「你做到了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_sang_timing_easter_egg</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line">你在这个村子里停留了很久。久到山风都变了几轮方向，久到日头从东边山头转到西边山头。</span>
+<span class="line">煨桑的烟升起来的时候，你觉得这一缕烟，和刚来村口那阵子闻到的，已经不是同一种味道了。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_empty_frame</code></td>
+      <td class="col-title">空画框</td>
+      <td class="col-lines"><span class="line">正面墙上，一副空画框挂在原本供奉唐卡的位置。木框边缘磨得发亮，是被无数次合掌触碰留下的痕迹。</span>
+<span class="line">你翻过画框，背面刻着一行细小的字——藏文谚语，手写的痕迹很深，像是一刀一刀凿上去的：</span>
+<span class="line">「画唐卡的人，笔尖走的不是颜料，是自己的心。」</span>
+<span class="line">旦增说过类似的话。他说他年轻时画雪山，「每一笔都像在描自己的心」。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_faded_mural</code></td>
+      <td class="col-title">褪色壁画</td>
+      <td class="col-lines"><span class="line">四周墙壁残留着褪色的壁画。藏青的底色上，莲花和云纹的轮廓依稀可辨。</span>
+<span class="line">你在角落发现一块被刻意涂抹过的区域——不是自然褪色，是有人用湿布用力擦过的痕迹。</span>
+<span class="line">凑近了看，涂抹层下面透出一个轮廓：一个蹲着的少年，面前支着一块画板，手里握着笔。</span>
+<span class="line">笔尖的方向，正对着画框的位置——那是画唐卡的姿势。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_torn_cloth</code></td>
+      <td class="col-title">碎布</td>
+      <td class="col-lines"><span class="line">地上翻倒着一盏铜质酥油灯，灯油早已干涸，凝固成一圈深黄色的蜡痕。</span>
+<span class="line">灯旁的地砖缝隙里夹着一小片碎布——深蓝紫色，质地细密，像是从一整块布上扯下来的。</span>
+<span class="line">你把它翻过来，颜色和唐卡复刻品的背衬一模一样。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_temple_visit_1</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line line--key">你推开经堂的门，里面有人。</span>
+<span class="line">格桑站在画框前，背着手，身子微微前倾，像一个在辨认字迹的人。</span>
+<span class="line">你停在门口，没有出声。他也没有回头。</span>
+<span class="line">过了很久——久到你以为他忘了时间——他放下手，用指尖在画框边缘轻轻叩了两下。</span>
+<span class="line">然后转身，和你擦肩而过，走出了经堂。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_temple_visit_2</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line line--key">经堂里点着一盏酥油灯。灯光很弱，只够照亮画框前一小片空地。</span>
+<span class="line">白玛跪在画前，双手合十。她念了一段经文——声音很轻，像风吹过经幡时发出的细响。</span>
+<span class="line">念完后，她伏下身，额头触地，停了三息。</span>
+<span class="line">然后站起来，把酥油灯往画框的方向推近了一寸，转身离开了。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_temple_visit_3</code></td>
+      <td class="col-title">—</td>
+      <td class="col-lines"><span class="line line--key">旦增站在画框前。这是你第一次在这间经堂里看见他。</span>
+<span class="line">他背对着门，背影把画框遮住了一大半。你看不见他的表情。</span>
+<span class="line">他的右手抬在半空，指尖离画布大约一拳——没有碰到，就那么悬着。</span>
+<span class="line">你听见他吸了一口气，像是要说什么，但最终没有开口。</span>
+<span class="line">他放下手，没有回头，继续站在画前，像一尊被遗忘在这里的雕像。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ch1_s1_entry</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line">（画面：清晨。山口处，远处有雪峰。玩家从山口小路走入村子。）</span>
+<span class="line">（音效持续：风声、低沉的经幡布料声、远处奶牛叫）</span>
+<span class="line line--key">……这就是祖父笔记里提到的措钦村。</span>
+<span class="line">村口堆着很多刻了字的石头，看不懂，但能感觉到它们在这里很久了。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ch1_s1_manistone</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line">石块层层垒起，比我想象的要高。</span>
+<span class="line">每块石头上面都刻着字——笔画很深，像是用凿子一锤一锤敲出来的。</span>
+<span class="line">有些字已经磨损了，边缘被风磨圆了；有些还很清晰，像刚刻的。</span>
+<span class="line">……祖父笔记里写过这些石头。他说这里的人每许一个愿，就往上面加一块。</span>
+<span class="line line--key">「措钦村的玛尼堆，每一块石头都是一个人一辈子的心愿。」——他是这么写的。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ch1_s1_crevice</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line">我弯下腰，在两块石头的缝隙里看到了一样东西。</span>
+<span class="line">——纸。</span>
+<span class="line">不是风吹进来的垃圾。纸面泛黄，边缘被虫蛀过。上面有字，虽然被石头的阴影遮住了大半，但笔画很深。</span>
+<span class="line">……藏文？和石头上的字是同一种。</span>
+<span class="line line--key">祖父的笔记里提过——「措钦村有些东西是散落在村子各处的，得自己去找。」会是这个吗？</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ch1_s1_crevice_pick</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line">我小心地把手指伸进石缝，捏住纸角，一点点往外抽。</span>
+<span class="line">纸比我想象的薄——像被翻过很多次。</span>
+<span class="line">展开。是一页手抄的经文——不对，不是经文。是颜料的配方。</span>
+<span class="line">笔迹很眼熟。……是祖父的字。</span>
+<span class="line">「佛青：取山石之魂，研至无声，水飞九遍，方得苍穹之色。」</span>
+<span class="line">下面还有几行被水渍晕开的字，看不清了。</span>
+<span class="line line--key">他来过这里。他真的来过这里。</span>
+<span class="line">（残卷第一页已收入道具栏，点击右上角 📜 查看）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ch1_s1_crevice_done</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line">石缝已经空了。</span>
+<span class="line">那张纸现在在我手里——祖父的字，从一道石缝里，隔了这么多年，递到了我手上。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ch1_s1_villager_pass</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line">一个老人从村口小路经过。肩上扛着一捆干柴，走得很慢。</span>
+<span class="line">他看到我了。停下。看了一眼。然后转开目光，继续走。</span>
+<span class="line">没有打招呼。没有点头。就像我是一块多出来的石头。</span>
+<span class="line line--key">……这个村子对外人，好像不太习惯。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ch1_s1_stonewords</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line">我蹲下来，仔细看其中一块石头上的字。</span>
+<span class="line">……看不懂。不是汉字，也不是我能认出的任何文字。</span>
+<span class="line">笔画弯曲，有些像是在画什么——一个字母？一个图案？</span>
+<span class="line">石头表面被风打磨得很光滑，但字痕很深。刻这些字的人，手一定很稳。</span>
+<span class="line">祖父笔记里画过这种字。他说是藏文——六字真言，每个字一块石头，刻满了就堆上去。</span>
+<span class="line">……我不信佛，但站在这些石头面前，总觉得它们在看着我。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ch1_s1_village</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line">村子里很安静。</span>
+<span class="line">几缕炊烟从几间石屋里升起来，薄薄的，被风一吹就散了。</span>
+<span class="line">远处传来几声牛叫。除此以外——什么都没有。</span>
+<span class="line">一条小路从村口通到深处，两边是石头垒的矮墙。墙缝里长着草。</span>
+<span class="line line--key">……整个村子，像是被山和雪围住了。安静得不太真实。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ch1_s1_north</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line">北边山坡上有一座老房子，比别的房子都大。</span>
+<span class="line">石墙很厚，木头门框上有褪色的彩绘——看不清画的是什么了。</span>
+<span class="line">像是……寺院？或者某种经堂？</span>
+<span class="line">旁边还有一个小石台，长满了草，看不出做什么用的。</span>
+<span class="line line--key">……祖父的笔记上画过这座房子。他说——</span>
+<span class="line line--key">「有一天，你要替我回去看看。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ch1_s1_peak</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line">远处是雪峰。</span>
+<span class="line">山顶的白和天上的云混在一起，分不清哪是雪哪是云。</span>
+<span class="line">风从山口吹进来，带着经幡的布料声和一种干燥的冷。</span>
+<span class="line">……祖父笔记里写过这里的风。他写：</span>
+<span class="line">「措钦村的风，是从山顶吹下来的。它经过了所有的地方——经堂、煨桑台、玛尼堆。它什么都记得。」</span>
+<span class="line">我不确定他说的「记得」是什么意思。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_scene2_opening</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑从村口小路走过来，肩上背着一捆柴，看见你，停下来，歪着头打量了一会儿。</span>
+<span class="line">手里还拿着半根牦牛酥油饼，边嚼边打量。</span>
+<span class="line line--key">&quot;……你是哪来的？背包不像本地人。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_scene2_warn</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑把酥油饼一口塞进嘴里，嚼得两腮鼓鼓的，含糊地说：</span>
+<span class="line line--key">&quot;……你如果是来这儿写生、拍照、问东问西的，那你找错地方了。这儿没什么好画的，也没什么好问的。&quot;</span>
+<span class="line">（停顿 3 秒，把酥油饼咽下去）</span>
+<span class="line">&quot;——不过你要是来找人的，或者找东西的，那我劝你一句。&quot;</span>
+<span class="line">（看着你）</span>
+<span class="line line--key">&quot;村东头那个院子，别去。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_scene2_guide</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑把柴往肩上颠了颠，看着你。</span>
+<span class="line line--key">&quot;那个老人叫旦增——是我阿古。&quot;</span>
+<span class="line">（停顿一下，移开目光）</span>
+<span class="line">&quot;他不喜欢外人，你别去招他。&quot;</span>
+<span class="line">（忽然低声）……算了，我说什么你都别当真。</span>
+<span class="line">（恢复少年神情，往村口一指）</span>
+<span class="line line--key">&quot;你要是想走走，可以去村口那边的玛尼堆看看，那儿有一些老石头，上面刻了字。村里老一辈的人说，那些字念了有福气。&quot;</span>
+<span class="line">（往回走两步又回头）</span>
+<span class="line line--key">&quot;——对了——经堂那边，你也别过去。村里人不去的。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_scene3_look</code></td>
+      <td class="col-title">旦增家院墙外</td>
+      <td class="col-lines"><span class="line">院墙内，一头黑色藏獒忽然站起来，铜铃般的眼睛死死盯着你。</span>
+<span class="line">念经声停了。</span>
+<span class="line">旦增从地上缓缓抬起头，浑浊的目光落在你身上——像是在辨认什么。</span>
+<span class="line line--key">「你走路的样子。」</span>
+<span class="line line--key">「——你走路的样子，和他一样。」</span>
+<span class="line">旦增说完，又低下头，念经声重新响起。</span>
+<span class="line">藏獒也慢慢趴了回去。院墙外只剩下风声。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_scene4_opening</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑看见你从村东头方向走来，愣住，把酥油饼往口袋里一塞，小跑过来。</span>
+<span class="line line--key">&quot;你——你去过那个院子了？&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_scene4_foreshadow</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">（格桑突然把声音压得很低）</span>
+<span class="line line--key">&quot;那个老人——我阿古——他十二年没跟外人说过一句话。&quot;</span>
+<span class="line">（咽了咽口水）</span>
+<span class="line line--key">&quot;上一次是姑妈硬去的。姑妈跟他吵了一架，他才开口说了一句话。&quot;</span>
+<span class="line">（看着你）</span>
+<span class="line">&quot;——你别说你祖父的名字。他不想听。&quot;</span>
+<span class="line">（沉默片刻）</span>
+<span class="line line--key">&quot;……我那时候才两岁。姑妈说他最后一次来，是二十年前。整整四十九天，他一步都没离开过。陪着那个奶奶走完最后一程。&quot;</span>
+<span class="line">（抬头认真看着你）</span>
+<span class="line line--key">&quot;你祖父留下的那本笔记——你带来了吗？&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_scene4_close</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">（格桑站起来，拍拍裤子上的土）</span>
+<span class="line line--key">&quot;姑妈说……你阿爷那本笔记里，有没写完的话。&quot;</span>
+<span class="line">（停顿，有点不好意思）</span>
+<span class="line line--key">&quot;但她说……让我告诉你，让你去问她。她说的事，她不让我说。&quot;</span>
+<span class="line">（转身走了两步，又回头）</span>
+<span class="line line--key">&quot;你去找到我姑妈卓玛——她应该在村子中央广场那边。&quot;</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_r1_opening</code></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">你推门进去。卓玛没有抬头，继续翻文件。</span>
+<span class="line">（停顿约3秒。）</span>
+<span class="line line--key">「你就是那个人的孙子。」</span>
+<span class="line">卓玛终于抬头，看玩家一眼，再低下去继续看文件：</span>
+<span class="line">「你祖父的字我认得——他留下的那本笔记，格桑说你带来了。」</span>
+<span class="line">卓玛停顿2秒，合上手里的文件：</span>
+<span class="line line--key">「坐吧。站在门口显得你不自在，也显得我难做。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_r2_topic</code></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line line--key">「你祖父来这里，不止是研究。你应该知道。」</span>
+<span class="line">卓玛停顿，看一眼玩家手里或包里：</span>
+<span class="line">「笔记带了？好。你带着它，来这里，不是来旅游的。」</span>
+<span class="line">卓玛把杯子推到一边，双手叠放在桌上：</span>
+<span class="line line--key">「你祖父留在笔记里的东西——你看完了多少？」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_r3_residue</code></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">「笔记里应该提到一些残页——记载了唐卡颜料的古法，我爸当年制颜料用的。」</span>
+<span class="line">卓玛停顿，很轻地说：</span>
+<span class="line line--key">「我没见过那些残页。你祖父说它们应该还在村子里，但他最后一次来的时候……有很多东西都乱了。」</span>
+<span class="line">卓玛停顿3秒，换了话题的口气：</span>
+<span class="line">「也可能还在，也可能早就不见了。你要是能找到，就找找。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_r4_close</code></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">卓玛站起来拿回文件，像是要继续工作：</span>
+<span class="line line--key">「好了。你去吧——去找找白玛，她在村子西北那边，石头堆旁边。」</span>
+<span class="line">卓玛看玩家：</span>
+<span class="line">「她念经的。你去听一听。」</span>
+<span class="line">卓玛停顿，补一句：</span>
+<span class="line">「还有一个人，仁青。你遇到他了吗？他不是本地人，来这里有一段时间了，说是做民族文化研究的。」</span>
+<span class="line">卓玛轻描淡写地：</span>
+<span class="line">「你们可以聊聊。他知道一些……关于那幅画的事。」</span>
+<span class="line">卓玛转身：</span>
+<span class="line line--key">「如果你想见我爸——你得让他觉得，你不是来挖故事的。你祖父当年用了三个月。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_r1_open</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">藏獒站起来，走到旦增身边，蹲下。</span>
+<span class="line">旦增没有抬头，继续做手里的事。</span>
+<span class="line">旦增没有转身，声音很低：</span>
+<span class="line line--key">「你在这里站着，是有话要问。」</span>
+<span class="line">（停顿约4秒。）</span>
+<span class="line line--key">「问吧。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_r2</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增依然没有抬头，但手里的动作停了一下。</span>
+<span class="line">旦增声音比第一轮稍清晰一点：</span>
+<span class="line line--key">「你跟卓玛说了什么。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_r3_final</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增第一次抬了一下头，但依然没有正对玩家。</span>
+<span class="line line--key">「你祖父当年，也是这样。」</span>
+<span class="line">（停顿3秒。）</span>
+<span class="line line--key">「他懂得先听，再问。」</span>
+<span class="line">旦增停顿，重新低头：</span>
+<span class="line line--key">「……你走吧。明天再来。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_scene_end</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增重新低头做事，不再回应。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_r1_open</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">玩家走近岩石区域。白玛眼睛闭着，轻声念经（听不清内容，只有气息）。</span>
+<span class="line">（停顿约5秒。）</span>
+<span class="line">白玛眼睛没有睁开，声音很轻：</span>
+<span class="line line--key">「……你来了。」</span>
+<span class="line">（停顿约3秒。）</span>
+<span class="line">白玛这才睁开眼：</span>
+<span class="line line--key">「坐。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_r1_grandfather</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line line--key">「你祖父的孙子，来了。我一直等着这一天。」</span>
+<span class="line">白玛停顿，看着远处的山：</span>
+<span class="line">「你祖父走的时候，说有一天，他家里的孩子会回来看看。」</span>
+<span class="line">白玛很轻：</span>
+<span class="line line--key">「我信他说的话。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_r2_hall</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛主动转话题，语气仍然轻缓：</span>
+<span class="line">「你去过经堂门口了？」</span>
+<span class="line">白玛不等玩家回答：</span>
+<span class="line">「去过。你站在那里，草动了。」</span>
+<span class="line line--key">「那六块石头，你看见了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_r3_deep</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛停顿一会儿，看着玩家，像是在判断什么：</span>
+<span class="line">「你想知道那幅画的事。」</span>
+<span class="line">白玛不等回答：</span>
+<span class="line line--key">「不是问句。」</span>
+<span class="line line--key">「那幅画，我哥哥画了四十九天。你祖父就坐在旁边，一笔一笔地看着。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_r4_scripture</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛停顿一会儿，拨动念珠，闭上眼睛：</span>
+<span class="line">「你坐一会儿。我念一段。」</span>
+<span class="line">白玛念经：</span>
+<span class="line">「……唵嘛呢叭咪吽……」</span>
+<span class="line line--key">「……如夜空之色，取自山石之魂，经春之雨水、夏之烈日、秋之霜露，方得一二。」</span>
+<span class="line line--key">「此色不为饰美，只为映智……」</span>
+<span class="line">「……唵嘛呢叭咪吽……」</span>
+<span class="line">白玛念完，睁开眼：</span>
+<span class="line">「你祖父当年听这段，听了很多次。」</span>
+<span class="line line--key">「他说，他记下来了。说有一天用得上。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_r1_open</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青走来，语速较快，手里的记事本合起来夹在腋下：</span>
+<span class="line line--key">「你好你好——你是新来的那个，对吧？」</span>
+<span class="line">仁青不等玩家回答：</span>
+<span class="line">「我是仁青，你叫什么？」</span>
+<span class="line">仁青停顿1秒——比其他NPC短得多：</span>
+<span class="line">「……你祖父，是沈默之吧？」</span>
+<span class="line">仁青眼神变了一下：</span>
+<span class="line">「你祖父我见过——差不多二十年前的事了，我那时候还小。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_r2_tangka</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line line--key">「你现在也在找那幅画？——那幅《度母护法图》？」</span>
+<span class="line">仁青观察玩家反应：</span>
+<span class="line">「……不，你还不一定知道那幅画。」</span>
+<span class="line">仁青停顿，换了一种口气：</span>
+<span class="line line--key">「那幅画不在这里了，你知道吗？」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_r3_photo</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青从记事本内页夹着的一个信封里，取出一张照片，递给玩家：</span>
+<span class="line">「我在成都的时候，拍了一些照片。」</span>
+<span class="line line--key">「这是其中一张——只拍到了局部。度母的右手，持莲花的那个手势。」</span>
+<span class="line">仁青看着玩家接过照片：</span>
+<span class="line">「你学艺术的，你看看——这个手势，有什么特别的？」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_r4_response</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">「我一共拍了五张，但现在只有这一张在身上。」</span>
+<span class="line line--key">「其他的在城里，我去取来。但你得让我看看你到底懂不懂唐卡——不然我觉得给你看也没用。」</span>
+<span class="line">仁青停顿，认真地看玩家：</span>
+<span class="line line--key">「你想看完整的照片，你就跟这里的人多聊聊。等我回来，你能告诉我：那幅画的度母，最重要的颜色是什么，用什么做的。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_r5_mantra</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青像是想起了什么，又随口说：</span>
+<span class="line">「对了，我昨天去经堂门口转了一圈——那六块石头。」</span>
+<span class="line">仁青皱眉：</span>
+<span class="line">「我也不认识藏文，但我拍了照片，让朋友认了一下。」</span>
+<span class="line">仁青停顿：</span>
+<span class="line line--key">「说是六字真言。唵嘛呢叭咪吽——就这六个字，但顺序打乱了。」</span>
+<span class="line">仁青有点不解：</span>
+<span class="line">「为什么要打乱？」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_r6_close</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青收起记事本：</span>
+<span class="line line--key">「等我回来。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_hall_e_monologue</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line line--key">「……我又来了。这次，我认识这六个字了。」</span>
+<span class="line">「唵。嘛。呢。叭。咪。吽。」</span>
+<span class="line">「白玛念过的，就这个顺序。」</span>
+<span class="line">「六块石头，六个字，散放着，顺序是乱的。」</span>
+<span class="line line--key">「……如果要把它们排对，应该是这样的：唵——嘛——呢——叭——咪——吽。」</span>
+<span class="line">「门还是锁着。但我感觉这六块石头，和那把锁，是有关系的。」</span>
+<span class="line">「等我弄明白怎么用。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_ch3_meeting_open</code></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">办公室里坐了约十个村民，表情各异——有的好奇，有的警惕，有的漠不关心。</span>
+<span class="line">卓玛坐在主位，面前放着一份打印的「旅游开发方案」。白玛坐在角落，闭着眼，手持念珠。</span>
+<span class="line">卓玛对着村民，声音干练：</span>
+<span class="line line--key">「——上面的意思，是把咱们村打造成一个『藏族文化体验村』。经堂可以开放，唐卡可以展览，游客可以来看作画过程。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_ch3_meeting_mid</code></td>
+      <td class="col-title">村民讨论</td>
+      <td class="col-lines"><span class="line">村民甲（中年男性，犹豫）：「卓玛，那个……旦增大师那边，他同意吗？」</span>
+<span class="line">卓玛（停顿1秒）：</span>
+<span class="line line--key">「我叔他……（改口）旦增他，我不强求。但村子要发展，不能一直这样。」</span>
+<span class="line">村民乙（老年女性）：「经堂开了，那天葬台是不是也要修一修？外面的人来了，看了不好看。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_ch3_meeting_renqing</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青（在场，坐在侧面，一直记笔记）：</span>
+<span class="line line--key">「如果能找回那幅度母唐卡，这个村子的文化价值会完全不同。——它不是一幅画，它是一个故事。」</span>
+<span class="line">村民的反应：「哪幅唐卡？」「早没了」「别提了。」</span>
+<span class="line">有人提到「经堂」二字时——白玛轻声念了一句：</span>
+<span class="line">「……唵嘛呢叭咪吽……」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_ch3_meeting_ask</code></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">卓玛看向玩家，会议快结束时：</span>
+<span class="line line--key">「你……有什么想法？外来人的想法。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_ch3_meeting_close</code></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">卓玛（无论玩家如何回应）：</span>
+<span class="line line--key">「……我叔那个脾气，我晓得。但村子不能一直停在十二年以前。」</span>
+<span class="line">会议散场。村民陆续离开。</span>
+<span class="line">白玛是最后一个离开的——她走到门口时停顿了一下，但没有回头。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch3_hunter_open</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛在路边叫住了玩家。她没有闭眼念经——这次，她看着远方，像是在回忆。</span>
+<span class="line">白玛（声音很轻）：</span>
+<span class="line line--key">「会议上的事，你听到了。」</span>
+<span class="line">白玛（停顿）：</span>
+<span class="line">「发展，保护——这些词，我都听过。最后留下来的，不是词，是石头。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch3_hunter_r1</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line line--key">「我给你讲个故事。」</span>
+<span class="line">白玛（停顿，像是在组织语言）：</span>
+<span class="line">「山里有猎人，一世都在追一只鹿。」</span>
+<span class="line">「那鹿不是普通的鹿——它走到哪里，哪里的草就绿得早，花就开得先。」</span>
+<span class="line line--key">「猎人追了一辈子，最后追到山口，鹿回头看了他一眼——」</span>
+<span class="line">「然后跳下去了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch3_hunter_r2</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛（停顿很长）：</span>
+<span class="line">「猎人回到家，把弓折了，再也不打猎了。」</span>
+<span class="line">「村里人都说他疯了——追了一辈子，连一根鹿毛都没带回来。」</span>
+<span class="line line--key">「但猎人的孙子后来跟我说，爷爷折弓那天，笑了一下。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch3_hunter_r3</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛（看着玩家的眼睛）：</span>
+<span class="line line--key">「因为他终于看清了鹿的眼睛。」</span>
+<span class="line">「鹿的眼睛里，没有害怕，没有跑——只有&quot;你追了这么久，现在你看到我了，你打算怎么办&quot;。」</span>
+<span class="line line--key">「猎人那时候才明白：他追的不是鹿，是自己心里那个&quot;要追到‘的念头。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch3_hunter_close</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛（回到现实，看着玩家）：</span>
+<span class="line line--key">「你来到这个村子，追的是什么？」</span>
+<span class="line">白玛（不等回答）：</span>
+<span class="line line--key">「不急。鹿会停下来的，只要你追的方向是对的。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_ch3_hands_open</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增走出院门倒水。他穿着旧藏袍，手里拿着铜碗。</span>
+<span class="line">他的手在倒水时微微颤抖——藏獒抬头看了他的手一眼，然后低头。</span>
+<span class="line">旦增看到玩家，停顿了一下——但没有立刻回院子。</span>
+<span class="line">（沉默约3秒。）</span>
+<span class="line line--key">「手老了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_ch3_hands_grandfather</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增（看着自己倒水的手）：</span>
+<span class="line line--key">「你祖父的手，最后也这样。」</span>
+<span class="line">旦增（停顿）：</span>
+<span class="line line--key">「他画到最后一张画的时候，手已经握不住笔了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_ch3_hands_close</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增倒完水，转身要回院子：</span>
+<span class="line line--key">「……别站在门口。风大。」</span>
+<span class="line">旦增走进院子，关上门。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_ch3_sketch_open</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑坐在石头上，面前放着画夹，手里拿着炭笔，但一直在拧笔帽，不画。</span>
+<span class="line">格桑看到玩家，有点不好意思地把画夹翻过去：</span>
+<span class="line">「……你别看。」</span>
+<span class="line line--key">「我画不对。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_ch3_sketch_show</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑翻画夹时，画夹里滑出一张旧纸——泛黄，边角磨损，上面写着密密的汉字和藏文，还有几幅小图（颜料名称与制法简图）。</span>
+<span class="line">格桑赶紧塞回去：</span>
+<span class="line">「这个不是我的画，别看。」</span>
+<span class="line">格桑（停顿，挠头）：</span>
+<span class="line">「……我也不知道这纸怎么夹在里面的。好像是很久以前就在这儿的。」</span>
+<span class="line line--key">「上面写的什么我不认识，字太多了。你……你认字多，你看一下？」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_ch3_sketch_close</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑（无论之前如何回应）：</span>
+<span class="line line--key">「……我不知道那些字是什么意思。你去问我姑妈卓玛吧，她应该知道。」</span>
+<span class="line">格桑收拾画夹，站起来：</span>
+<span class="line">「对了——你去找过我阿古了？他说什么了吗？」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_ch3_sketch_end</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑收拾完画夹：</span>
+<span class="line">「你去吧。我去找我姑妈问问那张纸的事。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_ch3_return_open</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青刚从外面回来，手里拿着一个牛皮纸信封。桌上摊着照片、笔记本、地图。</span>
+<span class="line line--key">「你来了！我刚回去了一趟——拿资料去了！」</span>
+<span class="line">仁青把信封放在桌上：</span>
+<span class="line">「你看——」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_ch3_photo2</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青取出第二张照片——度母的背景山形。</span>
+<span class="line">「这是第二张，度母的背景山形。你看出什么了？」</span>
+<span class="line line--key">（照片中的山轮廓与措钦村背后的山完全一致。）</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_ch3_photo3</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青递出第三张照片——度母的左眼。</span>
+<span class="line line--key">「这是第三张。度母的左眼。」</span>
+<span class="line">仁青（压低声音）：</span>
+<span class="line line--key">「你看这个眼睛——微睁。不像是&quot;看&quot;，更像是&quot;知道&quot;。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_ch3_photo_hint</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青（收拾照片）：</span>
+<span class="line">「剩下两张，一张是角落的藏文，一张是……（犹豫）算了，你先去把这三张弄明白。」</span>
+<span class="line">仁青（看着玩家）：</span>
+<span class="line line--key">「你有没有觉得——这些照片拼起来，不只是&quot;一幅画&quot;，而是一个人？」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch3_weisang_open</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛蹲在煨桑台旁边，手里拿着几根松柏枝，小心地摆在台子边缘。</span>
+<span class="line">白玛感知到玩家来了，但没有回头：</span>
+<span class="line">「……你来了。」</span>
+<span class="line">白玛（继续摆松柏枝）：</span>
+<span class="line line--key">「松柏净化，杜松祈福……顺序不能乱。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch3_weisang_time</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛（回头看了玩家一眼）：</span>
+<span class="line line--key">「你要是想做……还得知道什么时候点。藏历的时辰，不是你想点就点。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch3_weisang_chant</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛（停顿，看着玩家的眼睛）：</span>
+<span class="line line--key">「还有，念什么也得对。」</span>
+<span class="line">白玛（很轻）：</span>
+<span class="line line--key">「……我以前念过的，你应该听过。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch3_weisang_close</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛站起来，拍拍手上的灰：</span>
+<span class="line line--key">「这四个——植物、顺序、时辰、念的——少了哪一个，烟都起不来。」</span>
+<span class="line line--key">「烟起不来，就通不了天。」</span>
+<span class="line">白玛离开煨桑台：</span>
+<span class="line">「我再去备些松柏。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_ch4_key_open</code></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">卓玛站在窗前，看着外面的经堂方向。</span>
+<span class="line line--key">「经堂关了十二年了。」</span>
+<span class="line">卓玛转身：</span>
+<span class="line">「你……想进去？」</span>
+<span class="line">卓玛停顿3秒，从抽屉里拿出一把生锈的铁钥匙，攥在手里：</span>
+<span class="line line--key">「……你确定你想看？进去之后，有些事你就没法装作不知道了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_ch4_key_close</code></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">卓玛起身，手里攥着钥匙，示意玩家跟上。</span>
+<span class="line">两人沿着村道走向经堂。卓玛走得很快，没有说话。</span>
+<span class="line">走到经堂门口，卓玛停下，低头看了一会儿门上的铁锁。</span>
+<span class="line line--key">「……十二年了。我都没想过我还会来开这扇门。」</span>
+<span class="line">卓玛把钥匙插进锁孔。转了两圈。锁开了。</span>
+<span class="line">卓玛没有推门，退后一步：</span>
+<span class="line line--key">「门我开了。……进去是你自己的事。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch4_key_open</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛坐在石头上，手里捻着一串旧佛珠。</span>
+<span class="line">「……你又来了。」</span>
+<span class="line line--key">「你想进去。」</span>
+<span class="line">白玛停顿约5秒，从氆氇下面拿出一把更小的铜钥匙，攥在掌心：</span>
+<span class="line">「经堂已经关了十二年了。……走吧，我陪你过去。」</span>
+<span class="line line--key">「这把钥匙，是他交给我保管的。他没给卓玛，给了我。……因为他知道，我不会随便拿去开门。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch4_key_close</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛起身，攥着铜钥匙，领着玩家沿村道走。</span>
+<span class="line">她走得很慢，每一步都很稳。路上没有说话。</span>
+<span class="line">走到经堂门口，白玛停下来，回头看了玩家一眼：</span>
+<span class="line line--key">「……进去之后，看到什么都别怕。他只是不说话，他的心没坏。」</span>
+<span class="line">白玛把铜钥匙插进锁孔。转了三圈。锁开了。</span>
+<span class="line">白玛把手收回来，合在胸口，闭眼念了一句经。</span>
+<span class="line line--key">「门开了。……你去吧。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_mantra_puzzle_open</code></td>
+      <td class="col-title">系统提示</td>
+      <td class="col-lines"><span class="line">经堂门前地面：六块刻字石头散乱摆放。</span>
+<span class="line">石台上：六个凹槽，等待石头被放入正确位置。</span>
+<span class="line line--key">将六块石头按正确顺序排列：唵→嘛→呢→叭→咪→吽。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_mantra_help</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑从旁边走过来，蹲下看着石头：</span>
+<span class="line line--key">「你画得那么好……怎么这几个字的顺序记不住？」</span>
+<span class="line">格桑笑了笑，开始帮忙排列石头：</span>
+<span class="line">「唵嘛呢叭咪吽——我从小听到大，闭着眼睛都会背。白玛每天都念。」</span>
+<span class="line">「第一个是&quot;唵&quot;，然后&quot;嘛&quot;……你看，这样。」</span>
+<span class="line">格桑排好后退一步：</span>
+<span class="line line--key">「……好了。你进去吧。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_mantra_puzzle_complete</code></td>
+      <td class="col-title">演出</td>
+      <td class="col-lines"><span class="line">所有声音突然消失。</span>
+<span class="line">六块石头发出微弱的金光——佛青、朱砂、藏金、松石、骨白，五种颜色逐一闪现。</span>
+<span class="line line--key">经堂的门缓缓推开一条缝。里面很暗。只有酥油灯的微光。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_hall_enter</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line">你推开门。所有环境音消失——没有风声，没有奶牛叫，没有经幡声。</span>
+<span class="line">只有极远的、类似念经的声音（白玛在远处的角落念经，声音穿过墙壁传来）。</span>
+<span class="line">酥油灯：三盏，只有一盏还在微弱燃烧。</span>
+<span class="line">陈旧的酥油味和淡淡的颜料味——十二年前留下的。</span>
+<span class="line line--key">「……经堂。十二年没有打开过。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_hall_empty_frame</code></td>
+      <td class="col-title">系统提示</td>
+      <td class="col-lines"><span class="line">墙上挂着一个空的画框。画框很大。</span>
+<span class="line">木质边框雕刻着度母像的轮廓花纹，但画框内是空的——没有画。</span>
+<span class="line">画框下方墙壁上：被涂抹的壁画。依稀可辨度母像局部——手指、莲花、衣褶——但面部被故意涂毁。</span>
+<span class="line line--key">「画框里应该有一幅画。……但画不在了。壁画的面部被故意抹去了——不是自然褪色，是有人用颜料盖住了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_hall_oil_lamp</code></td>
+      <td class="col-title">系统提示</td>
+      <td class="col-lines"><span class="line">左侧地面：一个翻倒的酥油灯，灯油已经干涸。</span>
+<span class="line">酥油灯旁：一块白色碎布（氆氇碎片）——与旦增院子里石头下压着的那块碎布颜色和材质一样。</span>
+<span class="line line--key">「院子里的碎布，经堂里的碎布——同一件氆氇被故意撕成两半。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_hall_residue_4</code></td>
+      <td class="col-title">系统提示</td>
+      <td class="col-lines"><span class="line">地面石缝里：隐约可以看见一张纸角。可点击拾取——残卷第四页。</span>
+<span class="line">残卷第四页内容（可读部分）：</span>
+<span class="line">——几行藏文（颜料配方中骨白的用法说明）</span>
+<span class="line">——一行汉字：「此眼需画师以心中所念入笔」——后半句被撕去，只剩「不可度量」三个字</span>
+<span class="line line--key">「残卷第四页。……后半句被撕掉了，只剩&quot;不可度量&quot;三个字看得清。旦增就在门口……也许他知道后半句是什么？」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_ch4_truth_open</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增不知何时已经站在经堂门口。他没有走进来，只是站在门口，逆光。</span>
+<span class="line">旦增的轮廓在门口的光线中显得很大——但玩家看不清他的表情。只有他的声音。</span>
+<span class="line">（沉默约5秒。）</span>
+<span class="line line--key">「……那幅画，是我儿子拿走的。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_ch4_truth_r2</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增（无论玩家如何回应）：</span>
+<span class="line">「十二年了。我关了经堂，折了画笔，烧了……」</span>
+<span class="line">旦增停顿——没有说&quot;烧了什么&quot;，只说了&quot;烧了&quot;两个字就停住了。</span>
+<span class="line line--key">「如果画能留住人，我早就留住她了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_ch4_truth_end</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增转身，准备离开。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch4_memory_intro</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">旦增转身要走。白玛从经堂外的转角处出现——她没有走进经堂，只是站在门外。</span>
+<span class="line line--key">「他不会告诉你的。……有些事，他十二年没对人说过了。」</span>
+<span class="line">白玛停顿2秒：</span>
+<span class="line line--key">「你来。」</span>
+<span class="line">白玛带着玩家走到白玛念经的角落——远离经堂，旦增听不到的地方。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch4_memory_1</code></td>
+      <td class="col-title">白玛·画外音</td>
+      <td class="col-lines"><span class="line">【回忆滤镜·二十年前·秋天】</span>
+<span class="line">旦增的妻子（次仁拉姆，35岁）卧病在床，脸色苍白但安详。</span>
+<span class="line">旦增坐在床边，握着她的手，没有哭，只是沉默。</span>
+<span class="line">年轻的格桑（约2岁）站在门口，不敢进来。白玛在屋外念经。</span>
+<span class="line">沈默之（玩家祖父）坐在旦增旁边，一只手搭在旦增肩上。</span>
+<span class="line line--key">「阿姐走的那年，格桑还小。她病了三个月，旦增每天画一幅唐卡，说要把她画进度母的眷属里。……但阿姐说，不用画了。她说，她不怕死。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch4_memory_2</code></td>
+      <td class="col-title">白玛·画外音</td>
+      <td class="col-lines"><span class="line">【回忆滤镜·次仁拉姆去世后第三天·天葬台】</span>
+<span class="line">天葬师在清晨开始工作（象征性呈现：只展示念经、准备仪式的动作，不展示具体过程）。</span>
+<span class="line">旦增站在远处，没有走近，只是看着。白玛在旁边念经。</span>
+<span class="line">秃鹫从四面八方飞来，停在周围的山坡上。天葬师完成仪式后，秃鹫降下。</span>
+<span class="line line--key">「阿姐的身体，还给了天地。这是她最后一次布施——把能舍的都舍了。天葬不是结束，是她这一世最后的善行。她的灵魂已经走了，下一世会在别处继续。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch4_memory_3</code></td>
+      <td class="col-title">白玛·画外音</td>
+      <td class="col-lines"><span class="line">【回忆滤镜·天葬后第七天·经堂】</span>
+<span class="line">旦增坐在经堂里，面前是一块空白画布。</span>
+<span class="line">他拿起妻子留下的白色氆氇，用刀裁下一小块，放入研钵研磨——骨白颜料的制作过程。</span>
+<span class="line">沈默之坐在旦增旁边，拿着笔记本，记录每一步。</span>
+<span class="line">旦增开始画——历时49天，从构图到细节。</span>
+<span class="line">最后一天：旦增画左眼时停了很久，然后闭了一下眼，睁开，一笔画成——他没有看任何参照。</span>
+<span class="line line--key">「他画了四十九天。你祖父一步都没离开过。最后一天，他画度母的左眼——停了很久。然后他闭了一下眼，睁开，一笔画成。……没有人教他画那只眼睛。他自己知道该画什么。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch4_memory_4</code></td>
+      <td class="col-title">白玛·画外音</td>
+      <td class="col-lines"><span class="line">【回忆滤镜·十二年前·唐卡失踪后】</span>
+<span class="line">旦增一个人坐在经堂里，看着空了的画框。</span>
+<span class="line">他把所有的唐卡取下来——但没有烧。只是收了起来。他折断了画笔。</span>
+<span class="line">从那天起，他再也没有走出过这个院子。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch4_memory_close</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛（回到现实，看着玩家）：</span>
+<span class="line line--key">「他不是恨谁。他只是……不知道怎么面对一个没有阿姐的村子。十二年了，他第一次今天让你进了经堂。……你明白吗？他不是在考验你，他是在考验他自己。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_ch4_decision_open</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增站在院子里。藏獒蹲在他脚边。</span>
+<span class="line">他看见你走过来，没有动。但也没有转身进屋——这在之前是没有过的。</span>
+<span class="line line--key">「你知道了煨桑的四样东西。」</span>
+<span class="line">旦增看了一眼院子角落里那堆蒙了灰的画具：</span>
+<span class="line line--key">「……你想画那幅画。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_ch4_decision_r2</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增看着玩家。阳光把他的影子投在石头院墙上——很长。</span>
+<span class="line line--key">「你想画，就画吧。但我要看你有没有那个心。」</span>
+<span class="line">旦增：</span>
+<span class="line">「残页如果还在村里，你应该能找到。颜料的做法……有些在我这儿，有些在别人那儿。你去问。」</span>
+<span class="line">旦增：</span>
+<span class="line">「还有……那幅画原来的样子，仁青应该有些照片。你要找他。」</span>
+<span class="line">旦增：</span>
+<span class="line">「如果你想好好做这件事……经堂旁边的煨桑台，很久没人用了。你得自己想办法。」</span>
+<span class="line line--key">「……你祖父说，&quot;不是因为你欠了我什么&quot;。那你现在做这件事——也不是因为你欠了我什么。是你自己想做。」</span>
+<span class="line">旦增转身走进屋里。藏獒跟着他走进去，但走到门口回头看了你一眼——然后也进去了。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_residue_all_complete</code></td>
+      <td class="col-title">系统提示</td>
+      <td class="col-lines"><span class="line line--key">四页残卷全部集齐。记载的内容：五种唐卡颜料的古法，以及度母左眼的秘密——「此眼需画师以心中所念入笔，不可度量，不可模仿」。</span>
+<span class="line">残卷第四页的后半句被撕掉了——空白的撕痕还在纸上。被撕掉的那两个字，也许留着它们的人知道是什么。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_ch4_photo45</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">「你要的照片，我全带来了。第四张是度母胸前——这个有点模糊，拍照的时候手抖了。第五张是角落的藏文，很小，但你仔细看应该能看到。」</span>
+<span class="line">仁青停顿：</span>
+<span class="line">「五张局部照片，拼起来应该能看出整幅画的样子。……但我拼不出来，我试过了。可能你比我更懂唐卡。」</span>
+<span class="line line--key">「对了——模糊的那个部分……如果你搞清楚了，告诉我。我一直想知道那块到底是什么。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_photo_1_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line">【度母右手持莲到位】</span>
+<span class="line">「度母右手持莲花——慈悲之花。左手施无畏印——护佑之手。一手持，一手护。持者不紧，护者不惧。」</span>
+<span class="line line--key">「……旦增画这只手的时候，他在想什么？他一辈子都在画&quot;保护&quot;——但他保护不了她。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_photo_2_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line">【度母背景山形到位】</span>
+<span class="line line--key">「度母身后的山……这是措钦村背后那座山。走出村口就能看到——轮廓一模一样。旦增画的是&quot;这个村子&quot;。他画的度母不是天上的女神，是脚下这片土地的守护者。」</span>
+<span class="line">「如果你还有疑问，可以去问白玛或旦增。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_photo_3_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line">【度母左眼到位】</span>
+<span class="line line--key">「度母的左眼——微睁，半开半闭。看见真相，但不开口。你已经从残卷上读到了那句话——&quot;此眼需画师以心中所念入笔，不可度量，不可模仿。&quot;」</span>
+<span class="line">「残卷上的字，后半句被人撕掉了。为什么撕？撕掉的人不想记住什么？这只眼睛不是按规范画的，不是按量度画的——是画师在心中想一个人，然后把那个人的目光画进了度母的眼睛。这是唐卡传统里最深的秘密——真正的唐卡不是模仿，是从心里长出来的。」</span>
+<span class="line">「……旦增当年画这只眼睛时，心中所念是谁？也许有一天他会告诉你。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_photo_4_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line">【度母胸前模糊到位】</span>
+<span class="line line--key">「度母胸前——照片里永远是模糊的。仁青说拍照时手抖了，但……也许是拍照的人心里有什么东西，让这一块永远看不清。度母胸前应有一面镜子——照见自己，照见众生。……但这一面镜子，在这张照片里，永远模糊。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_photo_5_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line">【角落藏文到位】</span>
+<span class="line">「角落的藏文——这是一段祈愿文。最后几个字不是标准的经文，是一个名字。」</span>
+<span class="line line--key">「……白玛能认出这些字。如果你想知道这个名字是谁，去找她。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_photo_assembly_complete</code></td>
+      <td class="col-title">系统提示</td>
+      <td class="col-lines"><span class="line line--key">五张照片全部拼装完成。度母的完整形态已经呈现——右手持莲、背景山形、左眼微睁、胸前模糊、角落藏文。这张拼合图像将成为你绘制唐卡的参照。</span>
+<span class="line">如果你对任何部位的含义还有疑问或好奇，可以询问白玛或旦增——他们是这方面的专家。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_pigment_boneWhite_ask</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">玩家集齐其它四种颜色后，去找旦增询问骨白的来源。</span>
+<span class="line">旦增沉默很久（约10秒）。</span>
+<span class="line line--key">「这是我妻子留下来的。我画那幅画的时候，用的是她的氆氇磨成的粉。……你已经知道该怎么做了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_pigment_buddhaBlue_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line line--key">「佛青——智慧与虚空之色。如夜空，如深秋的最后一抹蓝。这不是装饰的颜色，是&quot;看见真相&quot;的颜色。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_pigment_cinnabar_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line line--key">「朱砂红——生命力与护法之色。火煅三次，研末过筛——从石头变成红色，要经过三次火的淬炼。……旦增在炉底刻下这些字，他自己也经历了三次火的淬炼——妻子去世、唐卡失踪、十二年沉默。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_pigment_gold_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line line--key">「藏金——光明与佛性之色。高原的藏金莲，只在最冷的地方绽放。……格桑记住了爷爷说的&quot;好看的颜色&quot;，但他不知道这颜色叫什么，也不知道它代表什么。他只知道——&quot;好看&quot;。有时候，&quot;好看&quot;就够了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_pigment_turquoise_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line line--key">「松石绿——自然与慈悲之色。杜松叶、绿绒蒿、黄柏皮——三种植物，三个季节。……卓玛留着这张药方，不是为了治病，是为了记住——这个村子还有人需要这些颜色。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_pigment_boneWhite_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line line--key">「骨白——纯洁与涅槃之色。白色氆氇磨成的粉。……旦增的妻子留下的最后一块布，变成了这幅画里最纯净的颜色。世界上只有那一幅画上有这种白色——因为这种白色的来源，是一个人最后的布施。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_pigment_boneWhite_hint</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line">四种颜色已经备齐了——佛青、朱砂红、藏金、松石绿。</span>
+<span class="line">但颜料上还有一处空白。</span>
+<span class="line">那是一种白色。不是石灰的白，不是雪的白，不是云的白。</span>
+<span class="line line--key">「……这种白色，不是从山上来的，不是从水里来的。它从一个人身上来。画这幅画的人，知道它的出处——他亲手磨出来的。如果你想知道这种白色是什么，也许该问问他。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_color_correct_turquoise_mountain</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line">松石绿涂入山脉——度母身后的山缓缓显形。</span>
+<span class="line">那不是天上的山，是脚下这片土地——措钦村背后那座山的轮廓，一笔一笔地浮出来。</span>
+<span class="line line--key">「松石绿——自然与慈悲之色。绿松石藏语称&quot;宇&quot;，是大地的心。藏人把绿松石嵌在额头上，挂在脖子上，缝在衣袍上——不是因为好看，是因为'她活着'。山脉涂松石绿，意为'度母脚踏的这片土地，是有心的土地'。山不动，但山有呼吸——经幡替它呼吸，煨桑替它呼吸，住在山脚下的人替它呼吸。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_color_correct_boneWhite_face</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line">骨白涂入脸庞——度母的面容浮现。</span>
+<span class="line">不是普通的白。不是石灰的白，不是云的白。是氆氇磨成粉的白——一个人的最后的布施，变成了度母的脸。</span>
+<span class="line line--key">「骨白——纯洁与涅槃之色。藏语称&quot;嘎&quot;，是白色中最净的那一层。度母的脸涂骨白，意为'她的面容是最初的善'——未染、未着、未被任何尘世的颜色遮盖。这张脸不是画师凭空画的，是从一个人的氆氇里磨出来的。面容即布施——看度母的脸，就是看一个人最后的善念。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_color_correct_cinnabar_fire</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line">朱砂红涂入火焰——护法之焰在度母身侧燃起来。</span>
+<span class="line">这不是温暖的火。是淬炼的火。朱砂要经过三次火煅才能从石头变成红色——就像一个人要经过三次失去才能从沉默变成开口。</span>
+<span class="line line--key">「朱砂红——生命力与护法之色。藏语称&quot;玛&quot;，是血与火的颜色。护法火焰涂朱砂，意为&quot;她在燃烧——不是烧毁，是护持&quot;。度母身侧的火焰不是地狱之火，是护法之焰：烧掉无知，烧掉恐惧，烧掉'不敢看'。三次火煅——旦增经历了三次：妻子去世、唐卡失踪、十二年沉默。朱砂红就是他走过的那三次火。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_color_correct_buddhaBlue_sky</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line">佛青涂入天空——度母的身色显形。</span>
+<span class="line">不是蓝色的蓝。是虚空之蓝——像高原最深的夜空，像深秋最后一抹蓝。这种蓝不是画上去的，是从空性里长出来的。</span>
+<span class="line line--key">「佛青——智慧与虚空之色。藏语称&quot;纳&quot;，是天空本身。度母身涂佛青，意为&quot;她是虚空——无处不在，无迹可寻，但永远在看&quot;。佛青不是装饰的颜色，是&quot;看见真相&quot;的颜色。天空不说话，但天空什么都看见了——度母的左眼微睁，半开半闭，和佛青的天空是同一种'看见'。不是全看，是看该看的。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_color_correct_gold_lotus</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line">藏金涂入莲台底座——度母脚下绽放金莲。</span>
+<span class="line">高原的藏金莲，只在最冷的地方开花。越冷，越亮。越苦，越金。</span>
+<span class="line line--key">「藏金——光明与佛性之色。藏语称&quot;瑟&quot;，是日月之金。莲台涂藏金，意为&quot;她站的地方是光&quot;。度母不是飘在空中的，她站在一朵莲花上——莲花从泥里长出来，金光从苦里长出来。藏金莲只在最冷的地方绽放：越冷越亮，越苦越金。莲台底座就是'一切修行的地基'——没有这朵莲花，度母没有地方站立。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_color_wrong_mountain</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛看着度母身后的山脉：</span>
+<span class="line">「山脉涂了这个颜色……」</span>
+<span class="line line--key">「度母身后是她的土地。土地是绿色的——松石绿。藏人把绿松石嵌在额头上，因为它是大地的心。山脉该涂松石绿。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_color_wrong_face</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛看着度母的面容：</span>
+<span class="line">「度母的脸……不该是这个颜色。」</span>
+<span class="line line--key">「度母的面容是最净的——骨白。不是石灰白，不是云白，是氆氇磨成粉的白。一个人的最后布施，变成度母的脸。脸庞该涂骨白。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_color_wrong_fire</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛看着度母身侧的火焰纹：</span>
+<span class="line">「护法之焰……不该是这个颜色。」</span>
+<span class="line line--key">「火焰是朱砂红——三次火煅才从石头变成的红。不是温暖的红，是护持的红。护法火焰涂朱砂，意为她在燃烧——烧掉无知、烧掉恐惧。火焰该涂朱砂红。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_color_wrong_sky</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛看着度母的身色区域：</span>
+<span class="line">「度母的身色……天空不该是这个颜色。」</span>
+<span class="line line--key">「天空是佛青——虚空之蓝，看见真相之色。不是普通的蓝，是高原最深夜空的那种蓝。度母身涂佛青，意为她是虚空——无处不在，永远在看。天空该涂佛青。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_color_wrong_lotus</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛看着度母脚下的莲台：</span>
+<span class="line">「莲台底座……不该是这个颜色。」</span>
+<span class="line line--key">「莲台是藏金——苦中之光。藏金莲只在最冷的地方绽放，越冷越亮。度母站在一朵莲花上——莲花从泥里长出来，金光从苦里长出来。莲台该涂藏金。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_weisang_success</code></td>
+      <td class="col-title">演出</td>
+      <td class="col-lines"><span class="line">所有声音突然消失。</span>
+<span class="line">煨桑烟笔直升起，直入天空。</span>
+<span class="line line--key">风停了。措钦村从来不曾这么安静过。</span>
+<span class="line">远处有门轴转动的声音——旦增家的门，开了。旦增从家里走出来，站在院子里，抬头看着煨桑台的烟。</span>
+<span class="line">村民们陆续从各家走出来，远远地站着，没有人说话，没有人靠近。他们只是……看着。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_weisang_success_baima</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛走到煨桑台边，没有看玩家，看着烟，说了一句：</span>
+<span class="line line--key">「……可以了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_ch4_before_paint</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增走到玩家面前——这是他十二年来第一次主动走向任何人。</span>
+<span class="line line--key">「你点了烟。……现在你可以画了。我给你看一样东西。」</span>
+<span class="line">旦增打开卧室里从未开过的木箱——</span>
+<span class="line">里面是：妻子的黑白照片 + 一块白色氆氇的残余。</span>
+<span class="line">旦增看着照片，没有说话——但玩家第一次看到旦增的表情不是&quot;沉默&quot;，是&quot;记得&quot;。</span>
+<span class="line line--key">「……她。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_tangka_composition_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line">度母的轮廓，在画布上显现。她站在这片山之间，右手持莲，左手护佑——和照片上的一样。</span>
+<span class="line line--key">「……你画的是她的形。接下来，你要画的是她的魂。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_tangka_color_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line line--key">「五种颜色，五种意义——佛青是看见，朱砂是淬炼，藏金是光明，松石是慈悲，骨白是涅槃。……旦增当年一笔一笔地涂上去，每一种颜色都是他的一生。你现在做的，和他当年做的一样。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_tangka_leftEye_hint</code></td>
+      <td class="col-title">系统提示</td>
+      <td class="col-lines"><span class="line line--key">度母的左眼——残卷说「此眼需画师以心中所念入笔」。你画这只眼睛的时候，心里想的是什么？</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_tangka_leftEye_narration</code></td>
+      <td class="col-title">旁白</td>
+      <td class="col-lines"><span class="line line--key">「度母的左眼——微睁，半开半闭。看见真相，但不开口。……你画这只眼睛的时候，心里想的是一个人。旦增当年也是这样——他心里只有一个名字，他把那个人的目光画进了度母的眼睛。这只眼睛不是量度出来的，不是模仿出来的——是从心里画出来的。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_tangka_complete</code></td>
+      <td class="col-title">系统提示</td>
+      <td class="col-lines"><span class="line line--key">唐卡绘制完成。度母护法图——你替旦增再画了一次。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_gesang_ch4_show</code></td>
+      <td class="col-title">格桑</td>
+      <td class="col-lines"><span class="line">格桑看着唐卡，嘴巴张开又合上——他不知道该说什么：</span>
+<span class="line">「……你画的。」</span>
+<span class="line">格桑停顿，翻出自己的素描——那张他画了很多次但一直画不对的度母像：</span>
+<span class="line">「我画了好多次……不像。你画的……像。」</span>
+<span class="line line--key">「我阿古能画这种画吗？……他以前能。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_baima_ch4_show</code></td>
+      <td class="col-title">白玛</td>
+      <td class="col-lines"><span class="line">白玛看着唐卡，手指停在骨白区域——她认出了那个颜色：</span>
+<span class="line">「……这个白色。」</span>
+<span class="line">白玛停顿5秒：</span>
+<span class="line line--key">「画它的人，把命画进去了。你替他画了——但这个白色，还是她的。」</span>
+<span class="line">白玛看着玩家：</span>
+<span class="line line--key">「你得把这个交给他。不是给我，不是给格桑——是给他。他等了十二年，就等这一幅画重新出现在他面前。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_zhuoma_ch4_show</code></td>
+      <td class="col-title">卓玛</td>
+      <td class="col-lines"><span class="line">卓玛看着唐卡，没有说话——停顿约10秒：</span>
+<span class="line">「……像。」</span>
+<span class="line">卓玛停顿，看着画框里的度母：</span>
+<span class="line">「和我小时候在经堂里看到的那幅……几乎一模一样。」</span>
+<span class="line">卓玛声音变轻——第一次不是干练的语气：</span>
+<span class="line">「我爸画的那幅……他画了四十九天。你画了多久？」</span>
+<span class="line">卓玛停顿，然后重新恢复干练语气：</span>
+<span class="line line--key">「好了。你该把这个交给他了。他不会来找你的——你得去找他。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_renqing_ch4_show</code></td>
+      <td class="col-title">仁青</td>
+      <td class="col-lines"><span class="line">仁青看着唐卡，很认真地对比自己的照片：</span>
+<span class="line">「……和我拍到的几乎一模一样。除了——」</span>
+<span class="line">仁青指着胸前模糊区域，现在唐卡上那里是空白——一面镜子还没画：</span>
+<span class="line">「这个部分。照片里永远模糊，你画的……你也没画？」</span>
+<span class="line line--key">「也许这一块本来就不该画。度母的镜子——是空的。照见自己，照见众生。……你画空了，可能是对的。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_ch4_give_open</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增站在院子里——煨桑仪式成功后，他开始走出院子了。</span>
+<span class="line">旦增看着玩家手里的唐卡——他没有伸手：</span>
+<span class="line line--key">「……你画完了。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_ch4_give_r2</code></td>
+      <td class="col-title">旦增</td>
+      <td class="col-lines"><span class="line">旦增（无论玩家如何回应，手指都停在骨白区域）：</span>
+<span class="line">旦增看着唐卡上的度母——度母的左眼微睁，半开半闭：</span>
+<span class="line line--key">「……这只眼睛。」</span>
+<span class="line">旦增停顿3秒：</span>
+<span class="line line--key">「你画对了。」</span>
+<span class="line">旦增更轻地——几乎是自言自语：</span>
+<span class="line line--key">「她……还看着我。」</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_danzeng_ch4_finale</code></td>
+      <td class="col-title">演出</td>
+      <td class="col-lines"><span class="line">旦增拿着唐卡，走向经堂——十二年来他第一次自己走进经堂。</span>
+<span class="line">他把唐卡挂在那个空画框里——画框不再空了。</span>
+<span class="line">旦增站在画前，手指停在骨白区域。他不再沉默——他开始念六字真言。</span>
+<span class="line line--key">「唵嘛呢叭咪吽。」</span>
+<span class="line">这是十二年来旦增第一次在经堂里念六字真言。</span>
+<span class="line">藏獒走到经堂门口蹲下——以前它蹲在旦增院子门口，现在它蹲在经堂门口。</span>
+<span class="line">白玛站在经堂外，看着烟，看着旦增，没有说话。</span>
+<span class="line">卓玛站在村委会门口，看着经堂，没有说话。</span>
+<span class="line">格桑站在村口，远远地看着，没有说话。</span>
+<span class="line">村民们在各自的家门口站着——没有人说话，没有人靠近。他们只是看着。</span>
+<span class="line line--key">风声回来了。经幡声回来了。奶牛的声音回来了。措钦村的声音，回来了。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_ch5_transition</code></td>
+      <td class="col-title">内心OS</td>
+      <td class="col-lines"><span class="line">村子安静下来了。</span>
+<span class="line">经堂的门还开着。旦增还在里面。</span>
+<span class="line">我站在院子里。风吹过来——不再是刚来村口时那种陌生的风。它经过了经堂、煨桑台、玛尼堆，经过了旦增的手，经过了祖父的笔记。</span>
+<span class="line line--key">祖父说——「措钦村的风，什么都记得。」</span>
+<span class="line">我现在有点明白他的意思了。</span>
+<span class="line">我不是来找一幅画的。我是来替一个人，把没画完的东西画完。</span>
+<span class="line">也不是替他。</span>
+<span class="line">是替两个人。</span>
+<span class="line line--key">……旦增说「她……还看着我。」那句话里，有两个人。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_end_cinematic_phase1</code></td>
+      <td class="col-title">演出·静止</td>
+      <td class="col-lines"><span class="line">【画面】旦增站在经堂里，面对画框上的唐卡。背影。夕阳从门外照进来，灰尘在光里浮着。</span>
+<span class="line">【镜头】固定，不移动。玩家看着旦增的背影。</span>
+<span class="line line--key">【声音】完全安静。只有经堂里微弱的风声（门开着，风穿过）。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_end_cinematic_phase2</code></td>
+      <td class="col-title">演出·拉远</td>
+      <td class="col-lines"><span class="line">【镜头开始缓慢拉远】</span>
+<span class="line">旦增的背影 → 经堂内部全景（空画框不再空了） → 经堂门口（夕阳照着石阶） → 经堂外面的院子 → 院子门口</span>
+<span class="line line--key">【BGM升起】藏族竹笛独奏从单音开始，不急不缓。不悲伤，不欢快，不激昂——只是「在路上」的感觉。</span>
+<span class="line">20-35秒：竹笛旋律展开 + 极微弦乐铺底。旋律简单，不超过8个音符的变化。</span>
+<span class="line">35-40秒：旋律开始稀薄。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_end_cinematic_phase3</code></td>
+      <td class="col-title">演出·村庄</td>
+      <td class="col-lines"><span class="line">【镜头继续拉远】</span>
+<span class="line">旦增的院子 → 村庄（炊烟、经幡、玛尼堆） → 山坡上的煨桑台 → 村口（格桑坐在石头上） → 远处的山脊线</span>
+<span class="line line--key">【BGM稀薄】笛声渐弱，弦乐也渐弱。环境音层开始接管——风声、远处诵经、偶尔的犬吠。</span>
+<span class="line">45-55秒：环境音层成为主体，BGM几乎听不见了。</span>
+<span class="line">55-60秒：BGM完全消散。只剩风声。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_end_cinematic_phase4</code></td>
+      <td class="col-title">演出·消散</td>
+      <td class="col-lines"><span class="line">【镜头停在山脊线上】夕阳最后的金光落在山顶。画面中没有人，只有山和风。</span>
+<span class="line line--key">【BGM完全消散】只剩风声。</span>
+<span class="line">65-75秒：纯风声。山脊线画面。</span>
+<span class="line">75-80秒：风声渐消。</span></td>
+    </tr>
+<tr>
+      <td class="col-id"><code>dlg_end_cinematic_phase5</code></td>
+      <td class="col-title">演出·黑屏</td>
+      <td class="col-lines"><span class="line">【画面缓缓暗下去】不是&quot;关掉&quot;，而是&quot;日落&quot;般的自然暗化。</span>
+<span class="line">【风声也渐渐消失】</span>
+<span class="line line--key">【完全安静 + 纯黑屏】持续约5秒。</span>
+<span class="line">然后——credits缓缓浮现。</span>
+<span class="line">【没有结语文字。没有&quot;山麓的风还在吹&quot;。没有任何总结性语句。】</span>
+<span class="line">纯黑屏 → credits → 结束。</span></td>
+    </tr></tbody>
+</table>
+<script>
+const rows = document.querySelectorAll('tbody tr');
+const allBtn = document.querySelectorAll('.btn');
+function showAll(){rows.forEach(r=>r.style.display='');setActive(0)}
+function showStory(){rows.forEach(r=>r.style.display=r.querySelector('.tag--trust')?'none':'');setActive(1)}
+function showTrust(){rows.forEach(r=>r.style.display=r.querySelector('.tag--trust')?'':'none');setActive(2)}
+function setActive(i){allBtn.forEach(b=>b.classList.remove('btn--active'));allBtn[i].classList.add('btn--active')}
+</script>
+</body>
+</html>

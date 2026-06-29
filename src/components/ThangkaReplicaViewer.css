@@ -1,0 +1,157 @@
+.replica-viewer {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.replica-viewer__mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.replica-viewer__panel {
+  position: relative;
+  width: 88%;
+  max-width: 720px;
+  max-height: 90%;
+  background: #2a2a2a;
+  border: 2px solid var(--color-tibetan-red);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.replica-viewer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(139, 26, 26, 0.3);
+  border-bottom: 1px solid rgba(139, 26, 26, 0.4);
+  flex-shrink: 0;
+}
+
+.replica-viewer__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-earth-yellow);
+}
+
+.replica-viewer__close {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.replica-viewer__close:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.replica-viewer__canvas {
+  flex: 1;
+  position: relative;
+  padding: 12px;
+  background: #1a1a1a;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+.replica-viewer__region {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: opacity 0.3s;
+}
+
+.replica-viewer__row {
+  display: flex;
+  flex: 1;
+  gap: 1px;
+  min-height: 0;
+}
+
+.replica-viewer__cell {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.replica-viewer__empty {
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+  padding: 40px 0;
+  font-size: 14px;
+}
+
+/* 精制唐卡成品 PNG */
+.replica-viewer__refined-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.replica-viewer__info {
+  padding: 14px 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.replica-viewer__quality {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.replica-viewer__quality-icon {
+  font-size: 18px;
+}
+
+.replica-viewer__quality--deep .replica-viewer__quality-icon {
+  color: #FFD700;
+}
+
+.replica-viewer__quality--basic .replica-viewer__quality-icon {
+  color: #4CAF50;
+}
+
+.replica-viewer__quality-label {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.replica-viewer__quality--deep .replica-viewer__quality-label {
+  color: #FFD700;
+}
+
+.replica-viewer__quality--basic .replica-viewer__quality-label {
+  color: #4CAF50;
+}
+
+.replica-viewer__description {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+.replica-viewer__choice-note {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+}

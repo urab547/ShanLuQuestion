@@ -1,0 +1,89 @@
+.pulu-grinder {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulu-fade-in 0.25s ease;
+  will-change: transform;
+}
+
+@keyframes pulu-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.pulu-grinder__mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.pulu-grinder__panel {
+  position: relative;
+  width: 320px;
+  padding: 32px 28px 24px;
+  background: var(--color-rice-white);
+  border: 2px solid var(--color-tibetan-red);
+  border-radius: var(--radius-md);
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.pulu-grinder__close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 20px;
+  color: var(--color-tibetan-red);
+  opacity: 0.5;
+  border-radius: 4px;
+  transition: opacity 0.15s;
+}
+
+.pulu-grinder__close:hover {
+  opacity: 1;
+  background: rgba(139, 26, 26, 0.08);
+}
+
+.pulu-grinder__icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.pulu-grinder__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-tibetan-red);
+  margin-bottom: 12px;
+}
+
+.pulu-grinder__desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--color-text-dark);
+  margin-bottom: 20px;
+}
+
+.pulu-grinder__btn {
+  padding: 10px 32px;
+  background: var(--color-tibetan-red);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.pulu-grinder__btn:hover {
+  background: #6d1515;
+}
+
+.pulu-grinder__done {
+  font-size: 16px;
+  color: #1a7a4a;
+  font-weight: 600;
+}

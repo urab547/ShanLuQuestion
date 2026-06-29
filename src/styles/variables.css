@@ -1,0 +1,24 @@
+:root {
+  /* 藏式主色 */
+  --color-tibetan-red: #8B1A1A;
+  --color-earth-yellow: #D4A574;
+  --color-tibetan-blue: #1A5C8B;
+  --color-rice-white: #FFF8E7;
+  --color-deep-purple: #5B2C6E;
+
+  /* 辅助色 */
+  --color-ground: #C4955E;
+  --color-stone: #A0826D;
+  --color-text-dark: #3A3A3A;
+  --color-text-light: #FFF8E7;
+  --color-shadow: rgba(91, 44, 110, 0.2);
+
+  /* 尺寸 */
+  --scene-width: 1280px;
+  --scene-height: 720px;
+
+  /* 圆角 / 阴影 */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-soft: 0 4px 16px rgba(91, 44, 110, 0.15);
+}

@@ -1,0 +1,85 @@
+/* ================================================================
+   PuzzleWrapper —— 拼图可拖拽/缩放容器
+   ================================================================ */
+.puzzle-wrapper {
+  position: absolute;
+  z-index: 3;
+  transition: transform 0.18s ease;
+  pointer-events: auto;
+}
+
+/* ─── 拖拽中：半透明 + 金影 ─── */
+.puzzle-wrapper--dragging {
+  opacity: 0.7;
+  filter: drop-shadow(0 0 10px rgba(212, 165, 116, 0.3));
+}
+
+/* ─── 缩放模式：金色虚线框 ─── */
+.puzzle-wrapper--resizing {
+  box-shadow: 0 0 0 2px dashed rgba(255, 215, 0, 0.6);
+}
+
+/* ─── 提示文字 ─── */
+.puzzle-wrapper__hint {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+.puzzle-wrapper__hint--drag {
+  color: rgba(255, 215, 0, 0.9);
+}
+
+/* ─── 缩放控制（横向排列） ─── */
+.puzzle-wrapper__scale-ctrl {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.puzzle-wrapper__scale-input {
+  width: 56px;
+  padding: 1px 4px;
+  background: rgba(26, 26, 26, 0.9);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 11px;
+  text-align: center;
+  outline: none;
+}
+
+.puzzle-wrapper__scale-input:focus {
+  border-color: rgba(255, 215, 0, 0.9);
+  box-shadow: 0 0 4px rgba(255, 215, 0, 0.3);
+}
+
+/* 隐藏 number input 箭头 */
+.puzzle-wrapper__scale-input::-webkit-inner-spin-button,
+.puzzle-wrapper__scale-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.puzzle-wrapper__scale-input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* ─── 内部 SortablePuzzle 取消绝对定位（由 wrapper 控制位置） ─── */
+.puzzle-wrapper .sortable-puzzle {
+  position: static;
+  transform: none;
+  bottom: auto;
+  left: auto;
+}

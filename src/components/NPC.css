@@ -1,0 +1,179 @@
+/* ================================================================
+   NPC —— 场景角色
+   纯立绘图片展示 + 右键切换缩放模式
+   ================================================================ */
+
+.npc {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  /* 无背景、无边框、无 padding —— 就是立绘本身 */
+  cursor: pointer;
+  user-select: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ─── 立绘图片 ─── */
+.npc__portrait {
+  width: 96px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.55));
+  transition: filter 0.35s ease;
+}
+
+/* ─── emoji 回退 ─── */
+.npc__emoji {
+  font-size: 64px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+  transition: filter 0.35s ease;
+}
+
+/* ─── hover：整组件放大 + 柔光 ─── */
+.npc:not(.npc--resizing):not(.npc--dragging):hover {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.npc:not(.npc--resizing):not(.npc--dragging):hover .npc__portrait,
+.npc:not(.npc--resizing):not(.npc--dragging):hover .npc__emoji {
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.25))
+          drop-shadow(0 4px 16px rgba(0, 0, 0, 0.55));
+}
+
+.npc:not(.npc--resizing):not(.npc--dragging):hover .npc__name {
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.95);
+}
+
+/* ─── 名字 ─── */
+.npc__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+  white-space: nowrap;
+}
+
+/* ─── 提示文字 ─── */
+.npc__hint {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  opacity: 0;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.npc:hover .npc__hint {
+  opacity: 1;
+}
+
+/* ─── 缩放模式 ─── */
+.npc--resizing {
+  cursor: ew-resize;
+  z-index: 5;
+}
+
+.npc--resizing .npc__portrait {
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.55)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.55));
+}
+
+.npc__hint--resize {
+  color: rgba(255, 215, 0, 0.9) !important;
+  opacity: 1 !important;
+}
+
+/* ─── 精确缩放输入控件 ─── */
+.npc__scale-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.npc__scale-input {
+  width: 52px;
+  padding: 1px 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  color: rgba(255, 215, 0, 0.95);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 3px;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.npc__scale-input::-webkit-inner-spin-button,
+.npc__scale-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.npc__scale-input:focus {
+  border-color: rgba(255, 215, 0, 0.8);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* ─── 移动拖拽中 ─── */
+.npc--dragging {
+  z-index: 10 !important;
+  transition: none;
+  opacity: 0.9;
+}
+
+.npc--dragging .npc__portrait {
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.7));
+}
+
+/* ─── 信任阶段标签 ─── */
+.npc__stage {
+  font-size: 11px;
+  padding: 1px 8px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+}
+
+.npc__stage--stranger     { color: #bbb; }
+.npc__stage--listener     { color: #6CB4EE; }
+.npc__stage--acknowledged { color: #D4A574; }
+.npc__stage--confidant    { color: #E07070; }
+
+/* ─── 赠予高亮 ─── */
+.npc--highlight .npc__portrait {
+  animation: npc-glow 1.4s ease-in-out infinite;
+}
+
+@keyframes npc-glow {
+  0%,
+  100% { filter: drop-shadow(0 0 4px rgba(212, 165, 116, 0.4)); }
+  50%   { filter: drop-shadow(0 0 18px rgba(212, 165, 116, 0.85)); }
+}
+
+.npc--highlight:hover .npc__portrait {
+  animation: none;
+  filter: drop-shadow(0 0 10px rgba(212, 165, 116, 0.7));
+}
+
+/* ─── 卡关引导 ─── */
+.npc--stuck-hint .npc__portrait {
+  animation: npc-stuck 2s ease-in-out infinite;
+}
+
+@keyframes npc-stuck {
+  0%,
+  100% { filter: drop-shadow(0 0 3px rgba(212, 165, 116, 0.25)); }
+  50%   { filter: drop-shadow(0 0 14px rgba(212, 165, 116, 0.55)); }
+}
+
+.npc--stuck-hint:hover .npc__portrait {
+  animation: none;
+}

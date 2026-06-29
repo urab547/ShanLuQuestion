@@ -1,0 +1,349 @@
+/* ─── 基础布局 ─── */
+.sang-viewer {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  animation: sang-fade-in 0.25s ease;
+}
+@keyframes sang-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.sang-viewer__mask {
+  position: absolute; inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.sang-viewer__panel {
+  position: relative;
+  width: 88%; max-width: 520px; max-height: 92%;
+  background: linear-gradient(180deg, #1e1a16 0%, #2a221c 100%);
+  border: 2px solid var(--color-tibetan-red);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 48px rgba(0, 0, 0, 0.7), inset 0 0 80px rgba(139, 26, 26, 0.03);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+
+/* ─── 标题栏 ─── */
+.sang-viewer__header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 18px;
+  background: rgba(139, 26, 26, 0.25);
+  border-bottom: 1px solid rgba(139, 26, 26, 0.35);
+  flex-shrink: 0;
+}
+.sang-viewer__title {
+  font-size: 17px; font-weight: 700;
+  color: var(--color-earth-yellow);
+  letter-spacing: 1px;
+}
+.sang-viewer__close {
+  width: 30px; height: 30px; font-size: 20px; line-height: 1;
+  color: rgba(255,255,255,0.4); background: none; border: none;
+  border-radius: 4px; cursor: pointer;
+}
+.sang-viewer__close:hover {
+  color: #fff; background: rgba(255,255,255,0.1);
+}
+
+/* ─── 内容区 ─── */
+.sang-viewer__body {
+  flex: 1; padding: 20px 24px;
+  display: flex; flex-direction: column; gap: 16px;
+  overflow-y: auto; position: relative;
+}
+
+/* ─── 已完成状态 ─── */
+.sang-viewer__body--done {
+  align-items: center; justify-content: center; padding: 40px 24px;
+}
+.sang-viewer__done-icon { font-size: 48px; margin-bottom: 12px; }
+.sang-viewer__done-text {
+  font-size: 18px; font-weight: 700; color: var(--color-earth-yellow); margin: 0 0 6px;
+}
+.sang-viewer__done-sub {
+  font-size: 13px; color: rgba(255,255,255,0.4); margin: 0;
+}
+
+/* ─── 烟雾动画区 ─── */
+.sang-viewer__smoke {
+  position: relative; height: 90px;
+  display: flex; align-items: flex-end; justify-content: center; gap: 14px;
+}
+.sang-viewer__smoke-pillar {
+  width: 10px; height: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  opacity: 0;
+  transition: background 0.5s, opacity 0.5s;
+}
+.sang-viewer__smoke-pillar--2 { margin-bottom: 4px; }
+.sang-viewer__smoke-pillar--3 { margin-bottom: 8px; }
+
+/* 点火中 */
+.sang-viewer__smoke--igniting .sang-viewer__smoke-pillar {
+  opacity: 0.25;
+  animation: smoke-ignite 0.5s ease-out forwards;
+}
+.sang-viewer__smoke-pillar--2 { animation-delay: 0.15s !important; }
+.sang-viewer__smoke-pillar--3 { animation-delay: 0.3s !important; }
+
+@keyframes smoke-ignite {
+  0% { height: 2px; opacity: 0; }
+  50% { opacity: 0.4; background: rgba(255, 180, 80, 0.6); }
+  100% { height: 22px; opacity: 0.5; background: rgba(200, 200, 200, 0.4); }
+}
+
+/* 笔直上升（正确） */
+.sang-viewer__smoke--rising .sang-viewer__smoke-pillar {
+  opacity: 0.6;
+  animation: smoke-rise 5s ease-out forwards;
+}
+.sang-viewer__smoke--rising .sang-viewer__smoke-pillar--2 { animation-delay: 0.4s !important; }
+.sang-viewer__smoke--rising .sang-viewer__smoke-pillar--3 { animation-delay: 0.8s !important; }
+
+@keyframes smoke-rise {
+  0% { height: 22px; opacity: 0.5; background: rgba(200, 200, 200, 0.4); }
+  40% { height: 70px; opacity: 0.8; background: rgba(255, 255, 255, 0.5); }
+  100% { height: 90px; opacity: 0.7; background: rgba(255, 255, 255, 0.3); }
+}
+
+/* 飘散/向下（错误） */
+.sang-viewer__smoke--drifting .sang-viewer__smoke-pillar {
+  opacity: 0.5;
+  animation: smoke-drift 2s ease-out forwards;
+}
+.sang-viewer__smoke--drifting .sang-viewer__smoke-pillar--2 { animation-delay: 0.3s !important; }
+.sang-viewer__smoke--drifting .sang-viewer__smoke-pillar--3 { animation-delay: 0.6s !important; }
+
+@keyframes smoke-drift {
+  0% { height: 16px; opacity: 0.5; }
+  30% { height: 30px; opacity: 0.6; }
+  100% { height: 8px; opacity: 0.1; transform: translateY(20px); background: rgba(120, 100, 80, 0.2); }
+}
+
+/* ─── NPC 演出层 ─── */
+.sang-viewer__npcs {
+  position: absolute; top: 100px; left: 0; right: 0; bottom: 60px;
+  pointer-events: none;
+}
+.sang-viewer__npc {
+  position: absolute;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 8px 14px; border-radius: 6px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: npc-appear 0.6s ease;
+}
+.sang-viewer__npc-icon { font-size: 22px; }
+.sang-viewer__npc-name { font-size: 12px; color: rgba(255,255,255,0.75); font-weight: 600; }
+
+.sang-viewer__npc-pos--left   { top: 10%; left: 8%; }
+.sang-viewer__npc-pos--right  { top: 12%; right: 8%; }
+.sang-viewer__npc-pos--front  { top: 60%; left: 50%; transform: translateX(-50%); }
+.sang-viewer__npc-pos--edge   { top: 35%; right: -120px; }
+
+/* 旦增滑动入场 */
+.sang-viewer__npc--sliding {
+  animation: npc-slide-in 3.5s ease-out forwards;
+}
+@keyframes npc-slide-in {
+  0% { right: -120px; opacity: 0; }
+  60% { right: 18px; opacity: 0.9; }
+  100% { right: 24px; opacity: 1; }
+}
+
+@keyframes npc-appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sang-viewer__npc--zhuoma  { border-color: rgba(26, 92, 139, 0.5); }
+.sang-viewer__npc--gesang  { border-color: rgba(212, 165, 116, 0.5); }
+.sang-viewer__npc--baima   { border-color: rgba(91, 44, 110, 0.5); }
+.sang-viewer__npc--danzeng { border-color: var(--color-tibetan-red); }
+
+/* ─── 旁白文字 ─── */
+.sang-viewer__narration {
+  position: absolute; bottom: 70px; left: 24px; right: 24px;
+  text-align: center; animation: narration-fade 1.5s ease;
+}
+.sang-viewer__narration p {
+  margin: 0 0 6px; font-size: 14px; color: rgba(255,255,255,0.75);
+  line-height: 1.7; text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+.sang-viewer__narration-end {
+  font-size: 16px !important; color: var(--color-earth-yellow) !important;
+  font-weight: 600; margin-top: 4px !important;
+}
+@keyframes narration-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ─── 彩蛋旁白 ─── */
+.sang-viewer__easter-egg {
+  position: absolute; top: 50%; left: 24px; right: 24px;
+  transform: translateY(-50%);
+  text-align: center; animation: narration-fade 2s ease;
+}
+.sang-viewer__easter-egg p {
+  font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.8;
+  font-style: italic;
+}
+
+/* ─── 植物槽 ─── */
+.sang-viewer__plants {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.sang-viewer__slot-row {
+  display: flex; align-items: center; gap: 10px;
+}
+.sang-viewer__slot-tag {
+  width: 40px; font-size: 12px; font-weight: 700; color: var(--color-earth-yellow);
+  text-align: right; flex-shrink: 0;
+}
+.sang-viewer__plant-slot {
+  flex: 1; padding: 12px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px dashed rgba(255,255,255,0.15);
+  border-radius: var(--radius-sm);
+  color: rgba(255,255,255,0.35);
+  font-size: 13px; cursor: pointer;
+  transition: all 0.2s;
+}
+.sang-viewer__plant-slot:hover {
+  background: rgba(212,165,116,0.08);
+  border-color: rgba(212,165,116,0.3);
+}
+.sang-viewer__plant-slot--filled {
+  border-style: solid;
+  border-color: rgba(76,175,80,0.4);
+  background: rgba(76,175,80,0.08);
+  color: #a5d6a7;
+}
+.sang-viewer__plant-item {
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.sang-viewer__plant-placeholder {
+  opacity: 0.4; font-style: italic;
+}
+
+/* ─── 植物选择菜单 ─── */
+.sang-viewer__plant-menu {
+  background: #1e1a16;
+  border: 1px solid rgba(212,165,116,0.3);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.sang-viewer__plant-menu-header {
+  padding: 8px 14px; font-size: 12px; font-weight: 600;
+  color: var(--color-earth-yellow);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sang-viewer__plant-menu-item {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; padding: 10px 14px;
+  background: none; border: none; border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.8); font-size: 13px; cursor: pointer;
+  transition: background 0.15s;
+}
+.sang-viewer__plant-menu-item:hover { background: rgba(212,165,116,0.08); }
+.sang-viewer__plant-menu-hint {
+  font-size: 11px; color: rgba(255,255,255,0.3);
+}
+.sang-viewer__plant-menu-empty {
+  padding: 20px 14px; text-align: center;
+  font-size: 12px; color: rgba(255,255,255,0.25);
+}
+.sang-viewer__plant-menu-cancel {
+  width: 100%; padding: 8px;
+  background: none; border: none;
+  color: rgba(255,255,255,0.3); font-size: 12px;
+  cursor: pointer;
+}
+.sang-viewer__plant-menu-cancel:hover { color: rgba(255,255,255,0.6); }
+
+/* ─── 燃烧顺序 ─── */
+.sang-viewer__order-display {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm);
+}
+.sang-viewer__order-label {
+  font-size: 12px; font-weight: 600; color: var(--color-earth-yellow);
+  flex-shrink: 0;
+}
+.sang-viewer__order-text {
+  font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.3);
+}
+.sang-viewer__order-text--correct { color: #81c784; }
+.sang-viewer__order-text--wrong { color: #ef9a9a; }
+
+/* ─── 诵念选项 ─── */
+.sang-viewer__chant-section {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.sang-viewer__chant-label {
+  font-size: 12px; font-weight: 600; color: var(--color-earth-yellow);
+  margin-bottom: 2px;
+}
+.sang-viewer__chant-option {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sang-viewer__chant-option:hover {
+  background: rgba(212,165,116,0.06);
+  border-color: rgba(212,165,116,0.2);
+}
+.sang-viewer__chant-option--selected {
+  border-color: rgba(212,165,116,0.4) !important;
+  background: rgba(212,165,116,0.1) !important;
+}
+.sang-viewer__chant-option input[type="radio"] {
+  margin-top: 3px; accent-color: var(--color-earth-yellow);
+  flex-shrink: 0;
+}
+.sang-viewer__chant-text {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.sang-viewer__chant-main {
+  font-size: 14px; color: rgba(255,255,255,0.85);
+  line-height: 1.5;
+}
+.sang-viewer__chant-sub {
+  font-size: 11px; color: rgba(255,255,255,0.3);
+}
+
+/* ─── 点燃按钮 ─── */
+.sang-viewer__ignite {
+  margin-top: 4px; padding: 14px 0;
+  background: var(--color-tibetan-red);
+  border: none; border-radius: var(--radius-sm);
+  color: var(--color-rice-white);
+  font-size: 16px; font-weight: 700; cursor: pointer;
+  transition: all 0.2s; letter-spacing: 1px;
+}
+.sang-viewer__ignite:hover:not(:disabled) {
+  background: #6d1515;
+  box-shadow: 0 4px 16px rgba(139, 26, 26, 0.4);
+}
+.sang-viewer__ignite--disabled {
+  opacity: 0.35; cursor: not-allowed; background: #3a2a2a;
+}
+
+/* ─── 底部提示 ─── */
+.sang-viewer__info {
+  padding: 10px 18px; font-size: 12px;
+  color: rgba(255,255,255,0.3); text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  flex-shrink: 0; min-height: 38px;
+  display: flex; align-items: center; justify-content: center;
+}
