@@ -188,11 +188,12 @@ export function buildMessages(systemPrompt, history = []) {
  * 检查 endpoint 是否为默认占位、API Key 是否存在且不含非 ASCII 字符
  */
 export function isAiConfigured() {
-  const hasEndpoint = Boolean(CONFIG.endpoint && CONFIG.endpoint !== '/api/chat');
+  const hasEndpoint = Boolean(CONFIG.endpoint);
+  // 走代理时无需前端 API Key；直连时需要有效 Key
+  const isProxy = CONFIG.endpoint === '/api/chat';
+  if (isProxy) return hasEndpoint;
   const hasKey = Boolean(CONFIG.apiKey);
-  // API Key 必须是纯 ASCII（HTTP 头只支持 ISO-8859-1）
   const keyIsAscii = hasKey && /^[\x20-\x7E]*$/.test(CONFIG.apiKey);
-  // 排除明显未替换的占位符
   const isPlaceholder = /你的|API_KEY|xxx|替换/i.test(CONFIG.apiKey || '');
   return hasEndpoint && hasKey && keyIsAscii && !isPlaceholder;
 }
