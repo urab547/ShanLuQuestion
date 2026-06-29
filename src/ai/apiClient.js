@@ -2,21 +2,16 @@
  * AI API 客户端
  * 封装与 LLM 后端的通信：流式请求、超时、重试、错误处理
  *
- * ============================================================
- * 改造时机到了之后，只需要改这块：
- *   1. 把 endpoint / apiKey 换成真实地址
- *   2. 根据实际 LLM Provider 调整请求体格式（body.schema）
- *   3. 如果后端不用 SSE 用别的协议，改 streamParser 那块
- * ============================================================
+ * 生产环境：请求发到 /api/chat（Vercel Serverless Function 代理），API Key 存在服务端
+ * 本地开发：可在 .env 中设置 VITE_AI_ENDPOINT / VITE_AI_API_KEY 直连 LLM
  */
 
-// ── 配置（改造时替换真实值） ──────────────────────────────
 const CONFIG = {
   endpoint: import.meta.env.VITE_AI_ENDPOINT || '/api/chat',
   apiKey: import.meta.env.VITE_AI_API_KEY || '',
-  model: import.meta.env.VITE_AI_MODEL || 'gpt-4o-mini',
-  timeout: 30000,        // 单次请求超时 ms
-  maxRetries: 1,         // 网络错误重试次数
+  model: import.meta.env.VITE_AI_MODEL || 'deepseek-chat',
+  timeout: 30000,
+  maxRetries: 1,
 };
 
 // ── 消息格式 ──────────────────────────────────────────────
