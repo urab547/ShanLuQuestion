@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import './IntroScreen.css';
 
 const PARAGRAPHS = [
@@ -7,38 +7,53 @@ const PARAGRAPHS = [
   '我没有明确目的，只为循着笔记，看一看祖父牵挂半生的人与村庄。村口玛尼堆、上锁的经堂、紧闭的院门处处透着沉寂，我隐约察觉，这片土地藏着一段尘封十二年的往事。',
 ];
 
-/**
- * IntroScreen —— 新游戏开场叙事过渡
- *
- * Props:
- * - onComplete  叙事结束后的回调，触发时组件已开始退场动画
- */
 export default function IntroScreen({ onComplete }) {
   const [visibleCount, setVisibleCount] = useState(0);
-  const [allDone, setAllDone] = useState(false);
   const [exiting, setExiting] = useState(false);
+  const [skipHint, setSkipHint] = useState(false);
+  const skipReady = useRef(false);
+  const hintTimer = useRef(null);
 
-  // 逐段淡入
+  const allShown = visibleCount >= PARAGRAPHS.length;
+
   useEffect(() => {
-    if (visibleCount >= PARAGRAPHS.length) {
-      // 所有段落出现后，等待一会儿再显示"点击继续"
-      const timer = setTimeout(() => setAllDone(true), 1000);
-      return () => clearTimeout(timer);
-    }
-    const timer = setTimeout(() => {
-      setVisibleCount((prev) => prev + 1);
-    }, visibleCount === 0 ? 800 : 2200);
+    if (allShown) return;
+    const delay = visibleCount === 0 ? 800 : 2200;
+    const timer = setTimeout(() => setVisibleCount((c) => c + 1), delay);
     return () => clearTimeout(timer);
-  }, [visibleCount]);
+  }, [visibleCount, allShown]);
 
-  // 点击继续 → 退场动画 → 回调
-  const handleClick = useCallback(() => {
-    if (!allDone || exiting) return;
+  const doExit = useCallback(() => {
+    if (exiting) return;
     setExiting(true);
-    setTimeout(() => {
-      onComplete();
-    }, 800);
-  }, [allDone, exiting, onComplete]);
+    setTimeout(() => onComplete(), 800);
+  }, [exiting, onComplete]);
+
+  const handleClick = useCallback(() => {
+    if (exiting) return;
+
+    if (allShown) {
+      doExit();
+      return;
+    }
+
+    if (skipReady.current) {
+      doExit();
+      return;
+    }
+
+    setSkipHint(true);
+    skipReady.current = true;
+    clearTimeout(hintTimer.current);
+    hintTimer.current = setTimeout(() => {
+      setSkipHint(false);
+      skipReady.current = false;
+    }, 2000);
+  }, [exiting, allShown, doExit]);
+
+  useEffect(() => {
+    return () => clearTimeout(hintTimer.current);
+  }, []);
 
   return (
     <div
@@ -54,10 +69,13 @@ export default function IntroScreen({ onComplete }) {
             {text}
           </p>
         ))}
-        <p
-          className={`intro-continue${allDone ? ' intro-continue--visible' : ''}`}
-        >
-          点击继续
+        {allShown && (
+          <p className="intro-continue intro-continue--visible">
+            点击继续
+          </p>
+        )}
+        <p className={`intro-skip-hint${skipHint ? ' intro-skip-hint--visible' : ''}`}>
+          再次点击将跳过
         </p>
       </div>
     </div>

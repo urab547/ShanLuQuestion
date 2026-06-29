@@ -65,3 +65,19 @@
   0%, 100% { opacity: 0.35; }
   50%      { opacity: 0.75; }
 }
+
+/* 跳过提示 */
+.intro-skip-hint {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-top: 24px;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+.intro-skip-hint--visible {
+  opacity: 1;
+}
