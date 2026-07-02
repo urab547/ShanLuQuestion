@@ -7,7 +7,7 @@ export const SCENES = {
     exits: [
       { target: 'village_square', label: '前往广场', side: 'right' },
     ],
-    interactables: ['mani_pile', 'road_sign', 'blue_ore_a', 'blue_ore_b'],
+    interactables: ['mani_pile', 'road_sign', 'blue_ore_a', 'blue_ore_b', 'village_view', 'north_house', 'snow_peak'],
   },
   village_square: {
     id: 'village_square',

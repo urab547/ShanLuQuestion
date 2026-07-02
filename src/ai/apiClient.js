@@ -169,6 +169,42 @@ export async function chat(messages, options = {}) {
   return data.choices?.[0]?.message?.content ?? '';
 }
 
+/**
+ * AI 对话裁判 —— 自由对话结束后评估玩家表现，返回信任增减值
+ *
+ * 评估标准与 GDD「聊绘画/山/颜色→逐渐开口；逼问唐卡/隐私→关闭」一致。
+ * 返回 -5..+5 的整数；解析失败或无明显倾向时返回 0。
+ *
+ * @param {{ npcName: string, transcript: string, signal?: AbortSignal }} params
+ * @returns {Promise<number>} trustDelta
+ */
+export async function judgeAiChat({ npcName, transcript, signal }) {
+  const judgePrompt = `你是叙事游戏《山麓之问》的对话裁判。玩家刚刚与藏族村民NPC「${npcName}」进行了一段自由对话。请评估玩家这段对话对该NPC信任度的影响，标准如下：
+- 玩家认真倾听、聊绘画/山/颜色/村子生活/藏族文化、表现出尊重与耐心 → 加分（+1到+5）
+- 玩家普通寒暄、话题中性、无明显倾向 → 0
+- 玩家生硬逼问唐卡去向/经堂秘密/他人隐私，或言语轻慢冒犯 → 减分（-1到-5）
+只输出一个JSON对象，不要输出任何其他文字。格式：{"trustDelta": 整数}`;
+
+  const text = await chat(
+    [
+      { role: 'system', content: judgePrompt },
+      { role: 'user', content: transcript },
+    ],
+    { signal },
+  );
+
+  try {
+    const jsonMatch = text.match(/\{[\s\S]*?\}/);
+    if (!jsonMatch) return 0;
+    const parsed = JSON.parse(jsonMatch[0]);
+    const delta = Math.round(Number(parsed.trustDelta));
+    if (!Number.isFinite(delta)) return 0;
+    return Math.max(-5, Math.min(5, delta));
+  } catch {
+    return 0;
+  }
+}
+
 // ── 工具 ──────────────────────────────────────────────────
 
 /**

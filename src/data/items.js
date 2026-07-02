@@ -16,6 +16,31 @@ export const ITEMS = {
     dialogueId: 'dlg_road_sign',
     position: { top: '50%', left: '55%' },
   },
+  // ===== 第一章·村口观察节点（内心OS） =====
+  village_view: {
+    id: 'village_view',
+    sceneId: 'village_entrance',
+    label: '村子全貌',
+    emoji: '🏘️',
+    dialogueId: 'dlg_ch1_s1_village',
+    position: { top: '42%', left: '78%' },
+  },
+  north_house: {
+    id: 'north_house',
+    sceneId: 'village_entrance',
+    label: '北坡老屋',
+    emoji: '🏚️',
+    dialogueId: 'dlg_ch1_s1_north',
+    position: { top: '30%', left: '18%' },
+  },
+  snow_peak: {
+    id: 'snow_peak',
+    sceneId: 'village_entrance',
+    label: '远处雪峰',
+    emoji: '🏔️',
+    dialogueId: 'dlg_ch1_s1_peak',
+    position: { top: '14%', left: '48%' },
+  },
   blue_ore_a: {
     id: 'blue_ore_a',
     sceneId: 'village_entrance',

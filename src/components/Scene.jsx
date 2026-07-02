@@ -25,12 +25,41 @@ import SangRitualViewer from './SangRitualViewer';
 import DialogueOverlay from './DialogueOverlay';
 import SettingsPanel from './SettingsPanel';
 import DialogueReview from './DialogueReview';
+import EndingSequence from './EndingSequence';
 import { getTalkedToNpcs } from '../data/dialogueHistory';
 import { PIGMENTS } from '../data/pigments';
 import { SOUNDS, SCENE_BG } from '../data/assets';
 import customDefaults from '../data/customPositions';
 import { audioManager } from '../utils/audioManager';
+import { judgeAiChat, isAiConfigured } from '../ai/apiClient';
 import './Scene.css';
+
+// ─── 信任供给账表：关键对话首次关闭时授予的信任增量 ───
+// 数值设计目标（详见 评估.md）：正常流程不开调试面板即可达到全部阶段门槛
+// 旦增：12+15+8+8+8+15+10 = 76（知己71✓）  白玛：10+12+8+8+6+10+10+15 = 79（知己71✓）
+// 格桑：22+8+8+8 = 46（倾听者21✓）        卓玛：10+12+8 = 30（次要角色，非通关必需）
+const TRUST_AWARDS_ON_CLOSE = {
+  // 旦增线
+  dlg_danzeng_scene3_look:    ['danzeng', 12], // 首次到院墙外，「你走路的样子，和他一样」
+  dlg_danzeng_r3_final:       ['danzeng', 15], // 通过「先听，再问」测试，获得「明天再来」
+  dlg_danzeng_listener:       ['danzeng', 8],
+  dlg_danzeng_acknowledged:   ['danzeng', 10],
+  dlg_furnace_inscription:    ['danzeng', 8],  // 在他院中读懂朱砂古法
+  dlg_danzeng_stone_found:    ['danzeng', 8],  // 找到残卷第四页
+  // 白玛线
+  dlg_baima_stranger:         ['baima', 10],
+  dlg_baima_listener:         ['baima', 8],
+  dlg_baima_acknowledged:     ['baima', 10],
+  dlg_baima_corner_found:     ['baima', 8],    // 找到残卷第二页
+  // 格桑线
+  dlg_gesang_scene2_guide:    ['gesang', 22],  // 完成初遇三轮对话
+  dlg_gesang_scene4_close:    ['gesang', 8],
+  dlg_gesang_portfolio_found: ['gesang', 8],   // 找到残卷第三页
+  dlg_gesang_zangjin_recipe:  ['gesang', 8],
+  // 卓玛线
+  dlg_zhuoma_stranger:        ['zhuoma', 10],
+  dlg_zhuoma_listener:        ['zhuoma', 8],
+};
 
 // 出口方向 → 默认位置（百分比）映射
 const EXIT_DEFAULT_POSITIONS = {
@@ -364,6 +393,19 @@ export default function Scene({
     () => savedScenes.oldPrescriptionViewed === '1' || savedScenes.oldPrescriptionViewed === true
   );
 
+  // ─── 第四章经堂真相：三件物品检视追踪 + 真相完成标记 ───
+  const [hallViewed, setHallViewed] = useState(() => ({
+    frame: savedScenes.hallFrameViewed === '1' || savedScenes.hallFrameViewed === true,
+    mural: savedScenes.hallMuralViewed === '1' || savedScenes.hallMuralViewed === true,
+    cloth: savedScenes.hallClothViewed === '1' || savedScenes.hallClothViewed === true,
+  }));
+  const [ch4TruthDone, setCh4TruthDone] = useState(
+    () => savedScenes.ch4TruthDone === '1' || savedScenes.ch4TruthDone === true
+  );
+
+  // ─── 第五章留白结局演出 ───
+  const [endingActive, setEndingActive] = useState(false);
+
   // 派生玛尼堆状态
   const scrollCollected = inventory?.includes('scroll_page_1') ?? false;
   const maniState = scrollCollected ? 'collected' : (maniPileViewed ? 'viewed' : 'unviewed');
@@ -391,9 +433,89 @@ export default function Scene({
     ? 'collected'
     : (stoneLocked ? 'locked' : (danzengStoneViewed ? 'viewed' : 'unviewed'));
 
+  // ─── 调试模式：URL 带 ?debug 或 localStorage.shanglu_debug='1' 时才显示开发工具 ───
+  const debugMode = useMemo(() => {
+    try {
+      return new URLSearchParams(window.location.search).has('debug')
+        || localStorage.getItem('shanglu_debug') === '1';
+    } catch { return false; }
+  }, []);
+
+  // ─── 一次性信任授予：同一 key 只生效一次（localStorage 持久化） ───
+  const awardTrustOnce = useCallback((key, npcId, delta) => {
+    try {
+      const raw = localStorage.getItem('shanglu_trust_awards');
+      const awards = raw ? JSON.parse(raw) : {};
+      if (awards[key]) return;
+      awards[key] = true;
+      localStorage.setItem('shanglu_trust_awards', JSON.stringify(awards));
+    } catch { /* ignore */ }
+    onAdjustTrust(npcId, delta);
+  }, [onAdjustTrust]);
+
+  // ─── 玩家选项副作用：禁忌/危险选项扣信任等（选项对象带 trustDelta + npcId） ───
+  const handleOptionSelect = useCallback((option) => {
+    if (option?.trustDelta && option?.npcId) {
+      onAdjustTrust(option.npcId, option.trustDelta);
+    }
+  }, [onAdjustTrust]);
+
+  // ─── AI 自由对话裁判：对话结束后评估玩家表现 → 信任增减 ───
+  // 正向收益每个 NPC 累计上限 15，防止刷分；负向不设限（逼问就该有代价）
+  const handleAiChatEnd = useCallback((npcId, messages) => {
+    if (!isAiConfigured()) return;
+    const npcName = NPCS[npcId]?.name || npcId;
+    const transcript = messages
+      .map((m) => `${m.role === 'user' ? '玩家' : npcName}：${m.content}`)
+      .join('\n');
+    const gainKey = `shanglu_ai_trust_gained_${npcId}`;
+    let gained = 0;
+    try { gained = Number(localStorage.getItem(gainKey) || '0') || 0; } catch { /* ignore */ }
+
+    judgeAiChat({ npcName, transcript })
+      .then((delta) => {
+        let d = Math.max(-5, Math.min(5, Math.round(delta) || 0));
+        if (d > 0) {
+          d = Math.min(d, Math.max(0, 15 - gained));
+          if (d > 0) {
+            try { localStorage.setItem(gainKey, String(gained + d)); } catch { /* ignore */ }
+          }
+        }
+        if (d !== 0) onAdjustTrust(npcId, d);
+      })
+      .catch(() => { /* 裁判失败静默忽略，不影响游戏 */ });
+  }, [onAdjustTrust]);
+
+  // ─── 为 AI 自由对话注入当前剧情进度，保证 AI 角色与固定剧情一致 ───
+  const getAiContext = useCallback((npcId) => {
+    const trust = npcTrust?.[npcId];
+    const stage = trust ? getTrustStage(npcId, trust.trustLevel) : null;
+    const facts = [];
+    if (stage) facts.push(`该角色与玩家当前的关系阶段：${stage.label}（${stage.stage}）。请让语气与此阶段相符。`);
+    if (npcTrust?.danzeng?.flags?.danzengSceneBCompleted) facts.push('旦增已对玩家说过「明天再来」——他认可了玩家「先听，再问」的方式。');
+    if (npcTrust?.danzeng?.flags?.hasDiscussedPainting) facts.push('旦增已与玩家聊过绘画与雪山。');
+    if (npcTrust?.danzeng?.flags?.hasRevealedGubaiSecret) facts.push('旦增已向玩家透露骨白颜料来自亡妻的白色氆氇。');
+    if (npcTrust?.danzeng?.flags?.hasGivenThangka) facts.push('玩家已复刻《度母护法图》并赠予旦增，旦增收下了。');
+    if (npcTrust?.baima?.flags?.hasTaughtSangOrder) facts.push('白玛已教过玩家煨桑顺序：松柏先入净化，杜松后入祈福。');
+    if (npcTrust?.baima?.flags?.hasTaughtSangChant) facts.push('白玛已教过玩家煨桑诵词：莲师心咒。');
+    if (npcTrust?.baima?.flags?.hasOpenedTemple || npcTrust?.zhuoma?.flags?.hasOpenedTemple) facts.push('经堂已经重新打开，玩家进去过了。');
+    if (facts.length === 0) return '';
+    return `\n\n## 当前游戏进度（角色扮演参考，不要向玩家复述本段内容）\n- ${facts.join('\n- ')}`;
+  }, [npcTrust]);
+
   // 包装 onCloseDialogue：检测各类对话关闭后更新场景状态 + 集中存档
   const handleCloseDialogue = () => {
     const sceneChanges = {};
+
+    // ─── 信任供给：账表中的对话首次关闭时授予信任（见文件顶部 TRUST_AWARDS_ON_CLOSE） ───
+    const trustAward = TRUST_AWARDS_ON_CLOSE[dialogue?.dialogueId];
+    if (trustAward) {
+      awardTrustOnce(`close_${dialogue.dialogueId}`, trustAward[0], trustAward[1]);
+    }
+    // 旦增「先听，再问」测试通过 → 场景B完成标记（此后点击旦增走信任阶段对话）
+    if (dialogue?.dialogueId === 'dlg_danzeng_r3_final') {
+      onSetNpcFlag('danzeng', 'danzengSceneBCompleted', true);
+    }
 
     if (dialogue?.dialogueId === 'dlg_mani_pile' && !scrollCollected && !maniPileViewed) {
       setManiPileViewed(true);
@@ -435,6 +557,9 @@ export default function Scene({
     }
     // 佛青：关闭任意白玛对话（非陌生人阶段）+ 已读残卷第二页 → 学制法
     if (dialogue?.dialogueId?.startsWith('dlg_baima_') && baimaStage && baimaStage.stage !== 'stranger' && scroll2Collected) {
+      if (!pigments?.foqing_blue?.recipeUnderstood) {
+        awardTrustOnce('learn_foqing_blue', 'baima', 6);
+      }
       onLearnRecipe('foqing_blue');
     }
     // 松石绿：关闭老药方 → 标记已查看
@@ -562,6 +687,34 @@ export default function Scene({
       return;
     }
 
+    // ─── 第四章经堂真相：三件物品都检视过 → 旦增出现在门口，说出真相 ───
+    const HALL_ITEM_MAP = {
+      dlg_empty_frame: ['frame', 'hallFrameViewed'],
+      dlg_faded_mural: ['mural', 'hallMuralViewed'],
+      dlg_torn_cloth: ['cloth', 'hallClothViewed'],
+    };
+    const hallItem = HALL_ITEM_MAP[dialogue?.dialogueId];
+    if (hallItem) {
+      const [stateKey, saveKey] = hallItem;
+      const nextHallViewed = { ...hallViewed, [stateKey]: true };
+      setHallViewed(nextHallViewed);
+      sceneChanges[saveKey] = '1';
+      if (!ch4TruthDone && nextHallViewed.frame && nextHallViewed.mural && nextHallViewed.cloth) {
+        saveGame({ scenes: sceneChanges });
+        onInteract({ dialogueId: 'dlg_danzeng_ch4_truth_open', label: '旦增', isNpc: true });
+        return;
+      }
+    }
+
+    // ─── 第五章收束：内心OS关闭 → 留白结局演出，并标记真相线完成 ───
+    if (dialogue?.dialogueId === 'dlg_ch5_transition') {
+      setCh4TruthDone(true);
+      saveGame({ scenes: { ch4TruthDone: '1' } });
+      setEndingActive(true);
+      onCloseDialogue();
+      return;
+    }
+
     // 经堂开门剧情：关闭后自动进入经堂
     if (dialogue?.dialogueId === 'dlg_temple_opened_by_baima'
         || dialogue?.dialogueId === 'dlg_temple_opened_by_zhuoma') {
@@ -578,9 +731,15 @@ export default function Scene({
   };
 
   // 链式推进：直接切换到下一段对话，不走 handleCloseDialogue（无副作用）
+  // 保留 isNpc/npcId，链中不丢失 AI 自由对话入口
   const handleAdvanceDialogue = useCallback((nextDialogueId) => {
-    onInteract({ dialogueId: nextDialogueId, label: dialogue?.itemLabel ?? '' });
-  }, [dialogue?.itemLabel, onInteract]);
+    onInteract({
+      dialogueId: nextDialogueId,
+      label: dialogue?.itemLabel ?? '',
+      isNpc: dialogue?.isNpc || false,
+      npcId: dialogue?.npcId || null,
+    });
+  }, [dialogue?.itemLabel, dialogue?.isNpc, dialogue?.npcId, onInteract]);
 
   // 玛尼堆特殊 onClick
   const handleManiClick = () => {
@@ -749,19 +908,19 @@ export default function Scene({
   // useRef 防止 StrictMode 双重挂载导致提示被跳过
   const hintTriggeredRef = useRef(false);
 
-  // 临时：进入山顶时自动清除旧的经幡拼图完成标记（测试用，后续移除）
+  // 第一章开场：首次进入村口 → 自动触发内心OS（dlg_ch1_s1_entry）
+  const ch1EntryRef = useRef(false);
   useEffect(() => {
-    if (scene.id !== 'mountain_peak') return;
+    if (scene.id !== 'village_entrance') return;
+    if (dialogue) return;
+    if (ch1EntryRef.current) return;
     try {
-      if (localStorage.getItem('puzzle_prayer_flags_solved') === '1') {
-        localStorage.removeItem('puzzle_prayer_flags_solved');
-        localStorage.removeItem('puzzle_prayer_flags_hint_shown');
-        // 同时清理新键名
-        localStorage.removeItem('shanglu_puzzle_prayer_flags_solved');
-        localStorage.removeItem('shanglu_puzzle_prayer_flags_hint_shown');
-      }
-    } catch { /* ignore */ }
-  }, [scene.id]);
+      if (localStorage.getItem('shanglu_ch1_entry_shown') === '1') return;
+      localStorage.setItem('shanglu_ch1_entry_shown', '1');
+    } catch { return; }
+    ch1EntryRef.current = true;
+    onInteract({ dialogueId: 'dlg_ch1_s1_entry', label: '' });
+  }, [scene.id, dialogue, onInteract]);
 
   // 藏獒状态1/2：进入旦增院子时的吠叫动画触发
   useEffect(() => {
@@ -1057,10 +1216,14 @@ export default custom;
             puzzleId={MANI_STONE_PUZZLE.id}
             items={MANI_STONE_PUZZLE.items}
             correctOrder={MANI_STONE_PUZZLE.correctOrder}
-            onSolved={() => onInteract({
-              dialogueId: 'dlg_mani_stones_solved',
-              label: '六字真言石',
-            })}
+            onSolved={() => {
+              // 在白玛面前排对六字真言 → 她开始正眼看你
+              awardTrustOnce('puzzle_mani_stones', 'baima', 12);
+              onInteract({
+                dialogueId: 'dlg_mani_stones_solved',
+                label: '六字真言石',
+              });
+            }}
             columns={6}
             slotGap={6}
             onStuck={({ npc }) => setStuckNpc(npc)}
@@ -1086,7 +1249,7 @@ export default custom;
               items={PRAYER_FLAGS_PUZZLE.items}
               correctOrder={PRAYER_FLAGS_PUZZLE.correctOrder}
               onSolved={() => {
-                onAdjustTrust('baima', 10);
+                awardTrustOnce('puzzle_prayer_flags', 'baima', 10);
                 onInteract({ dialogueId: 'dlg_flags_solved', label: '经幡' });
               }}
               columns={5}
@@ -1162,6 +1325,11 @@ export default custom;
               dialogueId = 'dlg_gesang_zangjin_recipe';
             }
           }
+          // 旦增：初次正式对话 = 第二章场景B「先听，再问」测试
+          // 碰禁忌选项 → dlg_danzeng_scene_end（可重试）；全程安全 → r3_final「明天再来」+信任
+          if (npc.id === 'danzeng' && !(trust?.flags?.danzengSceneBCompleted)) {
+            dialogueId = 'dlg_danzeng_r1_open';
+          }
           // 旦增骨白特殊对话：confidant 阶段 + 未透露过
           if (
             npc.id === 'danzeng' &&
@@ -1231,8 +1399,8 @@ export default custom;
         );
       })}
 
-      {/* 信任值调试面板（折叠浮层，默认收起） */}
-      {onAdjustTrust && sceneNpcs.length > 0 && (
+      {/* 信任值调试面板（仅调试模式：URL ?debug 或 localStorage.shanglu_debug='1'） */}
+      {debugMode && onAdjustTrust && sceneNpcs.length > 0 && (
         <>
           {/* 触发按钮 —— 右上角 */}
           <button
@@ -1388,6 +1556,9 @@ export default custom;
           onClose={handleCloseDialogue}
           onKeyLineAdded={() => setRedDot('dialogue', true)}
           onAdvanceDialogue={handleAdvanceDialogue}
+          onOptionSelect={handleOptionSelect}
+          onAiChatEnd={handleAiChatEnd}
+          getAiContext={getAiContext}
         />
       )}
 
@@ -1466,7 +1637,10 @@ export default custom;
             onInteract(dialogueInfo);
           }}
           onComplete={() => {
-            onAdjustTrust('baima', 15);
+            // dlg_sang_success 演出：白玛诵经、卓玛到场、旦增第一次走出院子 → 全村信任跃迁
+            awardTrustOnce('sang_ritual_baima', 'baima', 15);
+            awardTrustOnce('sang_ritual_danzeng', 'danzeng', 15);
+            awardTrustOnce('sang_ritual_zhuoma', 'zhuoma', 12);
             onCloseViewer();
           }}
           onStuck={() => setStuckNpc('baima')}
@@ -1515,15 +1689,22 @@ export default custom;
         );
       })()}
 
-      {/* 保存布局按钮（开发工具） */}
-      <button
-        className="scene__save-layout-btn"
-        onClick={handleSaveLayout}
-        title="将当前拖拽调整的所有位置写入源码文件，换浏览器不丢失"
-      >
-        💾 保存布局
-      </button>
+      {/* 保存布局按钮（仅调试模式显示的开发工具） */}
+      {debugMode && (
+        <button
+          className="scene__save-layout-btn"
+          onClick={handleSaveLayout}
+          title="将当前拖拽调整的所有位置写入源码文件，换浏览器不丢失"
+        >
+          💾 保存布局
+        </button>
+      )}
       {layoutToast && <div className="scene__save-layout-toast">{layoutToast}</div>}
+
+      {/* 第五章留白结局演出 */}
+      {endingActive && (
+        <EndingSequence onFinish={() => setEndingActive(false)} />
+      )}
     </div>
   );
 }

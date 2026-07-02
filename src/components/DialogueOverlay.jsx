@@ -47,6 +47,12 @@ function isKeyLine(line) {
   return typeof line === 'object' && line !== null && line.isKeyLine === true;
 }
 
+/** 从选项获取显示文本（兼容字符串/对象 { text, next, trustDelta, npcId }） */
+function getOptionText(option) {
+  if (typeof option === 'string') return option;
+  return option?.text ?? '';
+}
+
 /**
  * DialogueOverlay —— 对话弹出层
  *
@@ -57,7 +63,7 @@ function isKeyLine(line) {
  * - 自动记录关键台词至对话历史
  * - 支持 AI 自由对话模式（随时切换，退出后恢复固定对话进度）
  */
-export default function DialogueOverlay({ dialogue, itemLabel, isNpc, startInAi, npcIdOverride, onClose, onKeyLineAdded, onAdvanceDialogue }) {
+export default function DialogueOverlay({ dialogue, itemLabel, isNpc, startInAi, npcIdOverride, onClose, onKeyLineAdded, onAdvanceDialogue, onOptionSelect, onAiChatEnd, getAiContext }) {
   const [lineIndex, setLineIndex] = useState(0);
   const lines = dialogue?.lines ?? [];
   const isLast = lineIndex >= lines.length - 1;
@@ -76,7 +82,14 @@ export default function DialogueOverlay({ dialogue, itemLabel, isNpc, startInAi,
     if (npcIdOverride) return npcIdOverride;
     return isNpc ? deriveNpcId(dialogue?.id) : null;
   }, [dialogue?.id, isNpc, npcIdOverride]);
-  const systemPrompt = useMemo(() => (npcId ? getNpcPrompt(npcId) : ''), [npcId]);
+  const systemPrompt = useMemo(() => {
+    if (!npcId) return '';
+    const base = getNpcPrompt(npcId);
+    if (!base) return '';
+    // 注入当前剧情进度，让 AI 角色与固定剧情保持一致（如"玩家已赠唐卡"）
+    const context = getAiContext ? getAiContext(npcId) : '';
+    return context ? `${base}${context}` : base;
+  }, [npcId, getAiContext]);
   const aiAvailable = isNpc && npcId && isAiConfigured() && systemPrompt;
 
   // ─── 隐性引导：对话框首次使用提示 ───
@@ -143,20 +156,29 @@ export default function DialogueOverlay({ dialogue, itemLabel, isNpc, startInAi,
     if (isLast) {
       // 有玩家选项时，不因点击而关闭——等玩家选选项
       if (dialogue?.playerOptions) return;
+      // 无选项但有 nextDialogueId → 链式自动推进（用于回忆/演出等多段过场）
+      if (dialogue?.nextDialogueId && onAdvanceDialogue) {
+        onAdvanceDialogue(dialogue.nextDialogueId);
+        return;
+      }
       onClose();
     } else {
       setLineIndex((i) => i + 1);
     }
-  }, [isLast, onClose, mode, dialogue?.playerOptions]);
+  }, [isLast, onClose, mode, dialogue?.playerOptions, dialogue?.nextDialogueId, onAdvanceDialogue]);
 
-  // 玩家选择选项：有 nextDialogueId 则链式推进，否则关闭
-  const handleSelectOption = useCallback(() => {
-    if (dialogue?.nextDialogueId && onAdvanceDialogue) {
-      onAdvanceDialogue(dialogue.nextDialogueId);
+  // 玩家选择选项：选项自带 next 优先（真实分叉），否则走对话默认 nextDialogueId，都没有则关闭
+  // 选项若带副作用（trustDelta 等）先交给 onOptionSelect 处理
+  const handleSelectOption = useCallback((option) => {
+    const opt = typeof option === 'object' && option !== null ? option : null;
+    if (opt && onOptionSelect) onOptionSelect(opt);
+    const next = opt?.next || dialogue?.nextDialogueId;
+    if (next && onAdvanceDialogue) {
+      onAdvanceDialogue(next);
     } else {
       onClose();
     }
-  }, [dialogue?.nextDialogueId, onAdvanceDialogue, onClose]);
+  }, [dialogue?.nextDialogueId, onAdvanceDialogue, onClose, onOptionSelect]);
 
   // ESC 关闭
   useEffect(() => {
@@ -175,6 +197,27 @@ export default function DialogueOverlay({ dialogue, itemLabel, isNpc, startInAi,
   useEffect(() => {
     return () => {
       if (abortRef.current) abortRef.current.abort();
+    };
+  }, []);
+
+  // ─── AI 对话裁判：对话结束（组件卸载）时，若玩家在自由对话中发过言，
+  //     将完整聊天记录交给 onAiChatEnd 评估信任增减（fire-and-forget） ───
+  const aiMessagesRef = useRef([]);
+  const npcIdRef = useRef(null);
+  const onAiChatEndRef = useRef(null);
+  useEffect(() => {
+    aiMessagesRef.current = aiMessages;
+    npcIdRef.current = npcId;
+    onAiChatEndRef.current = onAiChatEnd;
+  }, [aiMessages, npcId, onAiChatEnd]);
+  useEffect(() => {
+    return () => {
+      const msgs = aiMessagesRef.current;
+      const id = npcIdRef.current;
+      const cb = onAiChatEndRef.current;
+      if (id && cb && msgs.some((m) => m.role === 'user')) {
+        cb(id, msgs);
+      }
     };
   }, []);
 
@@ -323,9 +366,9 @@ export default function DialogueOverlay({ dialogue, itemLabel, isNpc, startInAi,
             <button
               key={i}
               className="dialogue-overlay__option-btn"
-              onClick={handleSelectOption}
+              onClick={() => handleSelectOption(option)}
             >
-              {option}
+              {getOptionText(option)}
             </button>
           ))}
         </div>

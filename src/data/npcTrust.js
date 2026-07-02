@@ -14,6 +14,7 @@ export const INITIAL_NPC_TRUST = {
       hasRevealedGubaiSecret: false,
       hasVisitedDanzengWall: false,
       hasShownPhoto: false,
+      danzengSceneBCompleted: false, // 第二章场景B「先听，再问」测试是否通过
     },
     unlockedDialogueTopics: [],
   },
